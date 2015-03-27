@@ -13,3 +13,11 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+#slides{
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
