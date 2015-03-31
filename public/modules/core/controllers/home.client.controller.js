@@ -8,18 +8,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
     $animate.enabled(false);
     $scope.myInterval = 3000;
-  var slides = $scope.slides = [];
-  $scope.addSlide = function() {
-    var newWidth = 600 + slides.length + 1;
-    slides.push({
-      image: 'http://placekitten.com/' + newWidth + '/300',
-      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-    });
-  };
-  for (var i=0; i<4; i++) {
-    $scope.addSlide();
-  }
+    $scope.slides = [{ image: 'modules/core/img/activity/basketball01.jpg', text: 'Dida' },
+      { image: 'modules/core/img/activity/basketball02.jpg', text: 'Dida' },
+      { image: 'modules/core/img/activity/basketball03.jpg', text: 'Dida' }];
 
   $scope.icons = [{ src: 'modules/core/img/cohort/01.jpg', name: 'haoran'},
     { src: 'modules/core/img/cohort/02.jpg' },

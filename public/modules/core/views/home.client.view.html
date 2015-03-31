@@ -1,19 +1,18 @@
 <section data-ng-controller="HomeController">
-   <div style="height: 305px" >
-    <carousel interval="myInterval" set-ng-animate="false">
+
+    <carousel interval="myInterval" set-ng-animate="false" id="welcome-slides">
       <slide ng-repeat="slide in slides" active="slide.active">
         <img ng-src="{{slide.image}}" style="margin:auto;">
         <div class="carousel-caption">
-          <h4>Slide {{$index}}</h4>
-          <p>{{slide.text}}</p>
+          <h2>{{slide.text}}</h2>
         </div>
       </slide>
     </carousel>
-  </div>
+
   <div class="container-fluid">
   <div class="row">
     <div class="col-md-1" ng-repeat="icon in icons" >
-      <img src="{{ icon.src }}" alt="{{icon.name}}" class="img-circle cohort-icon">
+      <img src="{{icon.src}}" alt="{{icon.name}}" class="img-circle cohort-icon">
     </div>
   </div>
 </div>

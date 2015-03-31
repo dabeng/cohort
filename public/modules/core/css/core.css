@@ -26,6 +26,11 @@ html, body {
   height: calc(100% - 50px);
   width: 100%;
 }
+#welcome-slides {
+  height: 400px;
+  width: 1000px;
+  margin: 0 auto;
+}
 .cohort-icon {
   width: 70px;
   height: 70px;
