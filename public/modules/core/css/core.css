@@ -26,10 +26,20 @@ html, body {
   height: calc(100% - 50px);
   width: 100%;
 }
+#slides-wrapper {
+  width: 1012px;
+  height: 412px;
+  background-color: white;
+  border: 1px solid #ccc;
+  -moz-box-shadow: 0 0 10px #888;
+  -webkit-box-shadow: 0 0 10px#888;
+  box-shadow: 0 0 10px #888;
+  margin: 20px auto;
+}
 #welcome-slides {
   height: 400px;
   width: 1000px;
-  margin: 0 auto;
+  margin: 5px;
 }
 .cohort-icon {
   width: 70px;
