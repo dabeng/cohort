@@ -2,18 +2,21 @@
     <div class="page-header">
         <h1>Activities</h1>
     </div>
-    <div class="list-group">
-        <a data-ng-repeat="activity in activities" data-ng-href="#!/activities/{{activity._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="activity.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="activity.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="activity.name"></h4>
+    <div class="row">
+      <div class="col-md-4" data-ng-repeat="activity in activities">
+        <a data-ng-href="#!/activities/{{activity._id}}" class="list-group-item activity-item">
+          <img class="activity-cover" src="modules/activities/img/basketball.jpg">
+            <small class="list-group-item-text">
+                Posted on
+                <span data-ng-bind="activity.created | date:'medium'"></span>
+                by
+                <span data-ng-bind="activity.user.displayName"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="activity.name"></h4>
         </a>
+      </div>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!activities.$resolved || activities.length">
-    	No Activities yet, why don't you <a href="/#!/activities/create">create one</a>?
+        No Activities yet, why don't you <a href="/#!/activities/create">create one</a>?
     </div>
 </section>
