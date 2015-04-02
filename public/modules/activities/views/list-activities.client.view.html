@@ -4,15 +4,15 @@
     </div>
     <div class="row">
       <div class="col-md-4" data-ng-repeat="activity in activities">
-        <a data-ng-href="#!/activities/{{activity._id}}" class="list-group-item activity-item">
+        <a data-ng-href="#!/activities/{{activity._id}}" class="activity-item">
           <img class="activity-cover" src="modules/activities/img/basketball.jpg">
-            <small class="list-group-item-text">
+            <small class="activity-details">
                 Posted on
                 <span data-ng-bind="activity.created | date:'medium'"></span>
                 by
                 <span data-ng-bind="activity.user.displayName"></span>
             </small>
-            <h4 class="list-group-item-heading" data-ng-bind="activity.name"></h4>
+            <h4 class="activity-name" data-ng-bind="activity.name"></h4>
         </a>
       </div>
     </div>
