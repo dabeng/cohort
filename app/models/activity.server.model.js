@@ -4,26 +4,31 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 /**
  * Activity Schema
  */
 var ActivitySchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Activity name',
-		trim: true
-	},
-	created: {
-		type: Date,
-		default: Date.now
-	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+  name: {
+    type: String,
+    default: '',
+    required: 'Please fill Activity name',
+    trim: true
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  dateTime: {
+    type: Date,
+    default: Date.now,
+    expires: 60*60*24
+  },
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  }
 });
 
 mongoose.model('Activity', ActivitySchema);

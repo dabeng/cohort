@@ -7,12 +7,13 @@
         <a data-ng-href="#!/activities/{{activity._id}}" class="activity-item">
           <img class="activity-cover" src="modules/activities/img/basketball.jpg">
             <small class="activity-details">
-                Posted on
-                <span data-ng-bind="activity.created | date:'medium'"></span>
-                by
-                <span data-ng-bind="activity.user.displayName"></span>
+              Posted on
+              <span data-ng-bind="activity.created | date:'medium'"></span>
+              by
+              <span data-ng-bind="activity.user.displayName"></span>
             </small>
             <h4 class="activity-name" data-ng-bind="activity.name"></h4>
+            <h5 class="activity-datetime" data-ng-bind="activity.dateTime | date:'medium'"></h5>
         </a>
       </div>
     </div>

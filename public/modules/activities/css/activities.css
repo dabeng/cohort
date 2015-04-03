@@ -15,7 +15,7 @@ a.activity-item {
 }
 
 a.activity-item:hover {
-  box-shadow: 0 0 15px 2px rgba(51,113,199, 0.5);
+  box-shadow: 0 0 15px 2px #2aabd2;
 }
 
 .activity-cover {
@@ -30,3 +30,11 @@ a.activity-item:hover {
   margin: 5px;
 }
 
+.activity-datetime {
+ text-align: right;
+ margin: 5px 5px 0px 5px;
+}
+
+.control-label {
+  margin-top: 10px;
+}

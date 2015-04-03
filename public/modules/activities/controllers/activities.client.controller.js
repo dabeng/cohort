@@ -5,11 +5,14 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 	function($scope, $stateParams, $location, Authentication, Activities) {
 		$scope.authentication = Authentication;
 
+		$scope.datetime = { holdDate: '', holdTime: ''};
+
 		// Create new Activity
 		$scope.create = function() {
 			// Create new Activity object
 			var activity = new Activities ({
-				name: this.name
+				name: this.name,
+				dateTime: new Date(this.datetime.holdDate + ' ' + this.datetime.holdTime)
 			});
 
 			// Redirect after save
