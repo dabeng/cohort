@@ -20,14 +20,25 @@ var ActivitySchema = new Schema({
     type: Date,
     default: Date.now
   },
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
   dateTime: {
     type: Date,
     default: Date.now,
     expires: 60*60*24
   },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
+  dest: {
+    type: String,
+    default: '',
+    required: 'Please fill Activity destination',
+    trim: true
+  },
+  route: {
+    type: String,
+    default: '',
+    trim: true
   }
 });
 

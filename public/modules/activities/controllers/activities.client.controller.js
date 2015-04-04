@@ -13,7 +13,9 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
       // Create new Activity object
       var activity = new Activities ({
         name: this.name,
-        dateTime: new Date(this.datetime.holdDate + ' ' + this.datetime.holdTime)
+        dateTime: new Date(this.datetime.holdDate + ' ' + this.datetime.holdTime),
+        dest: this.dest,
+        route: this.route
       });
 
       // Redirect after save
