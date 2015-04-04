@@ -8,12 +8,12 @@
           <img class="activity-cover" src="modules/activities/img/basketball.jpg">
             <small class="activity-details">
               Posted on
-              <span data-ng-bind="activity.created | date:'medium'"></span>
+              <span data-ng-bind="activity.created | date:'short'"></span>
               by
               <span data-ng-bind="activity.user.displayName"></span>
             </small>
             <h4 class="activity-name" data-ng-bind="activity.name"></h4>
-            <h5 class="activity-datetime" data-ng-bind="activity.dateTime | date:'medium'"></h5>
+            <h5 class="activity-datetime" data-ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></h5>
         </a>
       </div>
     </div>
