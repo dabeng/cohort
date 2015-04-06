@@ -8,9 +8,17 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
     $animate.enabled(false);
     $scope.myInterval = 3000;
-    $scope.slides = [{ image: 'modules/core/img/slides/01.jpg', text: 'Dida' },
-      { image: 'modules/core/img/slides/02.jpg', text: 'Dida' },
-      { image: 'modules/core/img/slides/03.jpg', text: 'Dida' }];
+    $scope.slides = [{ image: 'modules/core/img/slides/01.jpg', text: 'basketball at Dida' },
+      { image: 'modules/core/img/slides/02.jpg', text: 'basketball at Dida' },
+      { image: 'modules/core/img/slides/03.jpg', text: 'basketball at Dida' },
+      { image: 'modules/core/img/slides/04.jpg', text: 'fishing' },
+      { image: 'modules/core/img/slides/05.jpg', text: 'fishing' },
+      { image: 'modules/core/img/slides/06.jpg', text: 'fishing' },
+      { image: 'modules/core/img/slides/07.jpg', text: 'travel' },
+      { image: 'modules/core/img/slides/08.jpg', text: 'travel' },
+      { image: 'modules/core/img/slides/09.jpg', text: 'travel' },
+      { image: 'modules/core/img/slides/10.jpg', text: 'party' }
+      ];
 
     $scope.icons = [{ src: 'modules/core/img/cohort/01.jpg', name: 'haoran'},
       { src: 'modules/core/img/cohort/02.jpg' },

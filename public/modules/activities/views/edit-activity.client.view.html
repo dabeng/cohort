@@ -11,19 +11,17 @@
           <label class="control-label">Date and Time</label>
           <div class="row">
             <div class="col-md-4">
-              <div ng-controller="DatePickerCtrl">
+              <!-- <div ng-controller="DatePickerCtrl"> -->
                 <p class="input-group" style="top: 20px;">
-                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="activity.dateTime" is-open="opened" min-date="'1982-01-01'" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                  <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="activity.dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
                 </p>
-              </div>
+              <!-- </div> -->
             </div>
             <div class="col-md-4">
-              <div ng-controller="TimePickerCtrl">
                 <timepicker ng-model="activity.dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -14px;"></timepicker>
-              </div>
             </div>
           </div>  
           <label class="control-label" for="dest">Destination</label>

@@ -5,15 +5,14 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
   function($scope, $stateParams, $location, Authentication, Activities) {
     $scope.authentication = Authentication;
 
-    $scope.datetime = { holdDate: (new Date()).toDateString(),
-      holdTime: (new Date()).toTimeString() };
+    $scope.dateTime = new Date();
 
     // Create new Activity
     $scope.create = function() {
       // Create new Activity object
       var activity = new Activities ({
         name: this.name,
-        dateTime: new Date(this.datetime.holdDate + ' ' + this.datetime.holdTime),
+        dateTime: this.dateTime,
         dest: this.dest,
         route: this.route
       });
@@ -68,5 +67,13 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
         activityId: $stateParams.activityId
       });
     };
+
+    $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
   }
 ]);

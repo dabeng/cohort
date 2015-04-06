@@ -11,19 +11,19 @@
           <label class="control-label">Date and Time</label>
           <div class="row">
             <div class="col-md-4">
-              <div ng-controller="DatePickerCtrl">
+              <!-- <div ng-controller="DatePickerCtrl"> -->
                 <p class="input-group" style="top: 20px;">
-                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="holdDate" is-open="opened" min-date="'1982-01-01'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-change="changed()"/>
+                  <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
                 </p>
-              </div>
+              <!-- </div> -->
             </div>
             <div class="col-md-4">
-              <div ng-controller="TimePickerCtrl">
-                <timepicker ng-model="holdTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" style=" position: relative;top: -14px;"></timepicker>
-              </div>
+              <!-- <div ng-controller="TimePickerCtrl"> -->
+                <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -14px;"></timepicker>
+              <!-- </div> -->
             </div>
           </div>
           <label class="control-label">Destination and Route</label>
