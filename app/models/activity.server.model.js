@@ -16,6 +16,12 @@ var ActivitySchema = new Schema({
     required: 'Please fill Activity name',
     trim: true
   },
+  category: {
+    type: String,
+    default: '',
+    required: 'Please fill Activity category',
+    trim: true
+  },
   created: {
     type: Date,
     default: Date.now

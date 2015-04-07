@@ -4,7 +4,8 @@
 angular.module('activities').controller('ActivitiesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Activities',
   function($scope, $stateParams, $location, Authentication, Activities) {
     $scope.authentication = Authentication;
-
+    
+    $scope.category = 'party';
     $scope.dateTime = new Date();
 
     // Create new Activity
@@ -12,6 +13,7 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
       // Create new Activity object
       var activity = new Activities ({
         name: this.name,
+        category: this.category,
         dateTime: this.dateTime,
         dest: this.dest,
         route: this.route

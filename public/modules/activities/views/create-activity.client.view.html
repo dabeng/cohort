@@ -8,22 +8,26 @@
         <div class="form-group">
           <label class="control-label" for="name">Name</label>
           <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+          <label class="control-label">Category</label>
+          <div class="btn-group" style="width: 100%;">
+            <label class="btn btn-info" ng-model="category" btn-radio="'basketball'">basketball</label>
+            <label class="btn btn-info" ng-model="category" btn-radio="'football'">football</label>
+            <label class="btn btn-info" ng-model="category" btn-radio="'fishing'">fishing</label>
+            <label class="btn btn-info" ng-model="category" btn-radio="'party'">party</label>
+            <label class="btn btn-info" ng-model="category" btn-radio="'travel'">travel</label>
+          </div>
           <label class="control-label">Date and Time</label>
           <div class="row">
             <div class="col-md-4">
-              <!-- <div ng-controller="DatePickerCtrl"> -->
-                <p class="input-group" style="top: 20px;">
-                  <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                  </span>
-                </p>
-              <!-- </div> -->
+              <p class="input-group" style="top: 20px;">
+                <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
             </div>
             <div class="col-md-4">
-              <!-- <div ng-controller="TimePickerCtrl"> -->
-                <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -14px;"></timepicker>
-              <!-- </div> -->
+              <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -14px;"></timepicker>
             </div>
           </div>
           <label class="control-label">Destination and Route</label>
