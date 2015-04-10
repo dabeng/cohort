@@ -19,6 +19,7 @@ module.exports = {
         'public/lib/blueimp-file-upload/css/jquery.fileupload-ui.css'
       ],
       js: [
+        'public/lib/jquery/dist/jquery.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js', 
         'public/lib/angular-cookies/angular-cookies.js', 
@@ -28,7 +29,6 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-        'public/lib/jquery/dist/jquery.js',
         'public/lib/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
         'public/lib/blueimp-load-image/js/load-image.js',
         'public/lib/blueimp-canvas-to-blob/canvas-to-blob.js',
