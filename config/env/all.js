@@ -30,7 +30,7 @@ module.exports = {
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
-        'public/lib/blueimp-load-image/js/load-image.js',
+        'public/lib/blueimp-load-image/js/load-image.all.min.js',
         'public/lib/blueimp-canvas-to-blob/canvas-to-blob.js',
         'public/lib/blueimp-file-upload/js/jquery.iframe-transport.js',
         'public/lib/blueimp-file-upload/js/jquery.fileupload.js',

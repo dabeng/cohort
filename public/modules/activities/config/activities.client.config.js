@@ -1,6 +1,5 @@
 'use strict';
 
-var isOnGitHub = true,url = '//jquery-file-upload.appspot.com/';
 // Configuring the Articles module
 angular.module('activities')
   .config([ '$httpProvider', 'fileUploadProvider',
@@ -10,7 +9,7 @@ angular.module('activities')
           /\/[^\/]*$/,
           '/cors/result.html?%s'
       );
-      if (isOnGitHub) {
+ 
           // Demo settings:
           angular.extend(fileUploadProvider.defaults, {
               // Enable image resizing, except for Android and Opera,
@@ -21,7 +20,7 @@ angular.module('activities')
               maxFileSize: 5000000,
               acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
           });
-      }
+      
     }
   ])
   .run(['Menus',
