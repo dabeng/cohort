@@ -18,71 +18,67 @@ exports.index = function(req, res) {
   });
 };
 
-function fSRename(renameParams) {
-  var fileExt = utils.getExtension(renameParams.targetFilename);
-  var filename = renameParams.targetFilename.slice(0, renameParams.targetFilename.lastIndexOf('.'))
-    .replace(/\W+/g, '-').toLowerCase();
-  var standardFilename = filename + fileExt;
-  var partialPath = renameParams.targetPath + '/' + filename;
-  var fullPath = renameParams.targetPath + '/' + standardFilename;
-  fs.rename(renameParams.tmpPath, fullPath, function(err) {
+function keepImage(uploading) {
+  var fullPath = uploading.fullPath;
+  var partialPath = fullPath.slice(0, fullPath.lastIndexOf('.'));
+  var fileExt = fullPath.slice(fullPath.lastIndexOf('.'));
+  // keeping a original uploding attachments
+  fs.rename(uploading.tmpPath, fullPath, function(err) {
     if (err) {
-      renameParams.res.json({'user_error': 'Uploading attachment failed',
+      uploading.res.json({'user_error': 'Uploading attachment failed',
         'maintainer_error': 'Renaming path failed'});
-    } else {
-      var imageRegExp = /(\.|\/)(bmp|gif|jpe?g|png)$/i;
-      if (imageRegExp.test(fileExt)) {
+    } else { // if attachment is picture, we need to creat mutliple thumbnails for feature use.
         var thumbPath_actList = partialPath + '-thumb-actlist' + fileExt;
         var thumbPath_act = partialPath + '-thumb-act' + fileExt;
         easyimg.info(fullPath).then(
           function(file) {
             var originalWidth = file.width;
             var originalHeight = file.height;
-            var ratio = 5 / 3;
+            var ratio = 16 / 9;
             var resizeWidth = 0;
             var resizeHeight = 0;
 
-            if (originalWidth > 250 || originalHeight > 150) {
+            if (originalWidth > 800 || originalHeight > 450) {
               if (originalWidth / originalHeight >= ratio) {
-                resizeHeight = 150;
+                resizeHeight = 450;
               } else {
-                resizeWidth = 250;
+                resizeWidth = 800;
               }
               easyimg.rescrop({
                   src: fullPath,
                   dst: thumbPath_actList,
                   width: resizeWidth || originalWidth,
                   height: resizeHeight || originalHeight,
-                  cropwidth: 250,
-                  cropheight: 150
+                  cropwidth: 800,
+                  cropheight: 450
                 }).then(
                 function(image) {
                   easyimg.resize({
                       src: thumbPath_actList,
                       dst: thumbPath_act,
-                      width: 70,
-                      height: 42
+                      width: 160,
+                      height: 90
                     }).then(
                     function(image) {
-                      renameParams.res.json({'attachment': {
-                        'activityId': renameParams.activityId,
-                        'uploaderId': renameParams.uploaderId,
+                      uploading.res.json({'attachment': {
+                        'activityId': uploading.activityId,
+                        'uploaderId': uploading.uploaderId,
                         'name': standardFilename,
                         'fileType': 'picture',
-                        'size': renameParams.size,
+                        'size': uploading.size,
                         'path': fullPath,
-                        'cardThumbPath': thumbPath_actList,
-                        'cardDetailThumbPath': thumbPath_act
+                        'actListThumbPath': thumbPath_actList,
+                        'actThumbPath': thumbPath_act
                       }});
                     },
                     function(err) {
-                      renameParams.res.json({'user_error': 'Uploading attachment failed',
+                      uploading.res.json({'user_error': 'Uploading attachment failed',
                         'maintainer_error': 'Generating thumbnail for the card details view failed'});
                     }
                   );
                 },
                 function(err) {
-                  renameParams.res.json({'user_error': 'Uploading attachment failed',
+                  uploading.res.json({'user_error': 'Uploading attachment failed',
                     'maintainer_error': 'Generating thumbnail for the card view failed'});
                 }
               );
@@ -90,73 +86,77 @@ function fSRename(renameParams) {
               easyimg.resize({
                 src: fullPath,
                 dst: thumbPath_act,
-                width: 70,
-                height: 42
+                width: 160,
+                height: 90
               }).then(
               function(image) {
-                renameParams.res.json({'attachment': {
-                  'activityId': renameParams.activityId,
-                  'uploaderId': renameParams.uploaderId,
+                uploading.res.json({'attachment': {
+                  'activityId': uploading.activityId,
+                  'uploaderId': uploading.uploaderId,
                   'name': standardFilename,
                   'fileType': 'picture',
-                  'size': renameParams.size,
+                  'size': uploading.size,
                   'path': fullPath,
-                  'cardDetailThumbPath': thumbPath_act
+                  'actThumbPath': thumbPath_act
                 }});
               },
               function(err) {
-                renameParams.res.json({'user_error': 'Uploading attachment failed',
+                uploading.res.json({'user_error': 'Uploading attachment failed',
                   'maintainer_error': 'Generating thumbnail for the card details view failed'});
               }
             );
           }
         },
         function(err) {
-          renameParams.res.json({'user_error': 'Uploading attachment failed',
+          uploading.res.json({'user_error': 'Uploading attachment failed',
             'maintainer_error': 'Reading image info failed'});
         }
       );
-      } else {
-        renameParams.res.json({'attachment': {
-          'activityId': renameParams.activityId,
-          'uploaderId': renameParams.uploaderId,
-          'name': standardFilename,
-          'size': renameParams.size,
-          'path': fullPath
-        }});
-      }
+    }
+  });
+}
+
+function keepVedio(uploading) {
+  fs.rename(uploading.tmpPath, uploading.fullPath, function(err) {
+    if (err) {
+      uploading.res.json({'user_error': 'Uploading vedio failed',
+        'maintainer_error': 'Renaming path failed'});
+    } else {
+
     }
   });
 }
 
 // rote to upload attachments for card
 exports.uploadFile = function(req, res) {
-      var tmpPath = req.files.attachment.path;
-      var targetPath = __dirname + '/../../public/attachments/' + req.params.activityId;
-      var targetFilename = req._startTime.valueOf() + '-' + req.files.attachment.originalname;
+  var isImage = req.files.attachment.mimetype.indexOf('image') > -1;
+  var originalname = req.files.attachment.originalname;
+  var activityFolder = __dirname + '/../../public/attachments/' + req.params.activityId;
+  var filename = req._startTime.valueOf() + '-'
+    + originalname.slice(0, originalname.lastIndexOf('.')).replace(/\W+/g, '-').toLowerCase()
+    + '.' + req.files.attachment.extension;
 
-      var renameParams = {
-        'tmpPath': tmpPath,
-        'targetPath': targetPath,
-        'targetFilename': targetFilename,
-        'activityId': req.params.activityId,
-        'uploaderId': req.user.id,
-        'size': req.files.attachment.size,
-        'res': res
-      };
-      fs.exists(targetPath, function (isExist) {
-        if (!isExist) {
-          fs.mkdir(targetPath, function(err) {
-            if (err) {
-              res.json({'user_error': 'Uploading attachment failed',
-                'maintainer_error': 'Making directory failed'});
-            } else {
-              fSRename(renameParams);
-            }
-          });
+  var uploading = {
+    'tmpPath': req.files.attachment.path,
+    'fullPath': activityFolder + '/' + filename,
+    'activityId': req.params.activityId,
+    'uploaderId': req.user.id,
+    'size': req.files.attachment.size,
+    'res': res
+  };
+
+  fs.exists(activityFolder, function (isExist) {
+    if (!isExist) {
+      fs.mkdir(activityFolder, function(err) {
+        if (err) {
+          res.json({'user_error': 'Uploading attachment failed',
+            'maintainer_error': 'Making directory failed'});
         } else {
-          fSRename(renameParams);
+          isImage ? keepImage(uploading) : keepVideo(uploading);
         }
       });
-
-    };
+    } else {
+      isImage ? keepImage(uploading) : keepVideo(uploading);
+    }
+  });
+};
