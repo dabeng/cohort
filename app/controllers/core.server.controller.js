@@ -7,12 +7,9 @@
 var moment = require('moment');
 var utils = require('./utils.server.controller');
 var Activity = require('../models/activity.server.model');
-// var Attachment = require('../models/attachment');
 var User = require('../models/user.server.model');
 var fs = require('fs');
 var easyimg = require('easyimage');
-// var busboy = require('connect-busboy');
-// app.use(busboy());
 
 exports.index = function(req, res) {
   res.render('index', {
@@ -22,21 +19,21 @@ exports.index = function(req, res) {
 };
 
 function fSRename(renameParams) {
-  var filenameExt = utils.getExtension(renameParams.targetFilename);
-  // remove filename string's extension type
-  var unSanitizedString = renameParams.targetFilename.replace(/(.*)\.[^.]+$/, "$1");
-  var sanitizedFilename = utils.formatForUrl(unSanitizedString) + filenameExt;
-  var partialPath = renameParams.targetPath + '/' + utils.formatForUrl(unSanitizedString);
-  var fullPath = renameParams.targetPath + '/' + sanitizedFilename;
+  var fileExt = utils.getExtension(renameParams.targetFilename);
+  var filename = renameParams.targetFilename.slice(0, renameParams.targetFilename.lastIndexOf('.'))
+    .replace(/\W+/g, '-').toLowerCase();
+  var standardFilename = filename + fileExt;
+  var partialPath = renameParams.targetPath + '/' + filename;
+  var fullPath = renameParams.targetPath + '/' + standardFilename;
   fs.rename(renameParams.tmpPath, fullPath, function(err) {
     if (err) {
       renameParams.res.json({'user_error': 'Uploading attachment failed',
         'maintainer_error': 'Renaming path failed'});
     } else {
       var imageRegExp = /(\.|\/)(bmp|gif|jpe?g|png)$/i;
-      if (imageRegExp.test(filenameExt)) {
-        var thumbPath_card = partialPath + '-thumb-card' + filenameExt;
-        var thumbPath_cardDetail = partialPath + '-thumb-cardDetail' + filenameExt;
+      if (imageRegExp.test(fileExt)) {
+        var thumbPath_actList = partialPath + '-thumb-actlist' + fileExt;
+        var thumbPath_act = partialPath + '-thumb-act' + fileExt;
         easyimg.info(fullPath).then(
           function(file) {
             var originalWidth = file.width;
@@ -53,7 +50,7 @@ function fSRename(renameParams) {
               }
               easyimg.rescrop({
                   src: fullPath,
-                  dst: thumbPath_card,
+                  dst: thumbPath_actList,
                   width: resizeWidth || originalWidth,
                   height: resizeHeight || originalHeight,
                   cropwidth: 250,
@@ -61,8 +58,8 @@ function fSRename(renameParams) {
                 }).then(
                 function(image) {
                   easyimg.resize({
-                      src: thumbPath_card,
-                      dst: thumbPath_cardDetail,
+                      src: thumbPath_actList,
+                      dst: thumbPath_act,
                       width: 70,
                       height: 42
                     }).then(
@@ -70,12 +67,12 @@ function fSRename(renameParams) {
                       renameParams.res.json({'attachment': {
                         'activityId': renameParams.activityId,
                         'uploaderId': renameParams.uploaderId,
-                        'name': sanitizedFilename,
+                        'name': standardFilename,
                         'fileType': 'picture',
                         'size': renameParams.size,
                         'path': fullPath,
-                        'cardThumbPath': thumbPath_card,
-                        'cardDetailThumbPath': thumbPath_cardDetail
+                        'cardThumbPath': thumbPath_actList,
+                        'cardDetailThumbPath': thumbPath_act
                       }});
                     },
                     function(err) {
@@ -92,7 +89,7 @@ function fSRename(renameParams) {
             } else {
               easyimg.resize({
                 src: fullPath,
-                dst: thumbPath_cardDetail,
+                dst: thumbPath_act,
                 width: 70,
                 height: 42
               }).then(
@@ -100,11 +97,11 @@ function fSRename(renameParams) {
                 renameParams.res.json({'attachment': {
                   'activityId': renameParams.activityId,
                   'uploaderId': renameParams.uploaderId,
-                  'name': sanitizedFilename,
+                  'name': standardFilename,
                   'fileType': 'picture',
                   'size': renameParams.size,
                   'path': fullPath,
-                  'cardDetailThumbPath': thumbPath_cardDetail
+                  'cardDetailThumbPath': thumbPath_act
                 }});
               },
               function(err) {
@@ -123,7 +120,7 @@ function fSRename(renameParams) {
         renameParams.res.json({'attachment': {
           'activityId': renameParams.activityId,
           'uploaderId': renameParams.uploaderId,
-          'name': sanitizedFilename,
+          'name': standardFilename,
           'size': renameParams.size,
           'path': fullPath
         }});
