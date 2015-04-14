@@ -19,7 +19,18 @@ exports.index = function(req, res) {
 };
 
 function keepImage(uploading) {
-  var fullPath = uploading.fullPath;
+  async.parallel([
+    function(callback){
+      KeepStandardImage(uploading, callback);
+    },
+    function(callback){
+      KeepCoverImage(uploading, callback);
+    },
+    function(callback){
+      KeepThumbnailImage(uploading, callback);
+    }
+  ]);
+  /*var fullPath = uploading.fullPath;
   var partialPath = fullPath.slice(0, fullPath.lastIndexOf('.'));
   var fileExt = fullPath.slice(fullPath.lastIndexOf('.'));
   // keeping a original uploding attachments
@@ -113,7 +124,7 @@ function keepImage(uploading) {
         }
       );
     }
-  });
+  });*/
 }
 
 function keepVedio(uploading) {
@@ -131,23 +142,24 @@ function keepVedio(uploading) {
 exports.uploadFile = function(req, res) {
   var isImage = req.files.attachment.mimetype.indexOf('image') > -1;
   var originalname = req.files.attachment.originalname;
-  var activityFolder = __dirname + '/../../public/attachments/' + req.params.activityId;
-  var filename = req._startTime.valueOf() + '-'
+  var activityStuff = __dirname + '/../../public/attachments/' + req.params.activityId;
+  var filename = Date.now() + '-'
     + originalname.slice(0, originalname.lastIndexOf('.')).replace(/\W+/g, '-').toLowerCase()
     + '.' + req.files.attachment.extension;
 
   var uploading = {
     'tmpPath': req.files.attachment.path,
-    'fullPath': activityFolder + '/' + filename,
+    'targetPath': activityStuff,
+    'timestamp': Date.now(),
     'activityId': req.params.activityId,
     'uploaderId': req.user.id,
     'size': req.files.attachment.size,
     'res': res
   };
 
-  fs.exists(activityFolder, function (isExist) {
+  fs.exists(activityStuff, function (isExist) {
     if (!isExist) {
-      fs.mkdir(activityFolder, function(err) {
+      fs.mkdir(activityStuff, function(err) {
         if (err) {
           res.json({'user_error': 'Uploading attachment failed',
             'maintainer_error': 'Making directory failed'});
