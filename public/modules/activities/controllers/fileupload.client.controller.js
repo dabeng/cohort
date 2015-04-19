@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('activities')
-  .controller('DemoFileUploadController', [
-      '$scope', '$http', '$filter', '$window',
+  .controller('DemoFileUploadController', [ '$scope', '$http', '$filter', '$window',
       function ($scope, $http) {
           // $scope.options = {
           //     url: url
           // };
+
+        $scope.$on('fileuploaddone', function(){
+            console.log('All uploads have finished');
+        });
 
       }
   ])

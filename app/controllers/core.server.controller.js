@@ -126,12 +126,12 @@ function keepImage(uploading) {
           'attachment': {
             'activityId': uploading.activityId,
             'uploaderId': uploading.uploaderId,
-            'name': standardFilename,
+            'name': uploading.filename,
             'fileType': 'picture',
             'size': uploading.size,
-            'path': results[0],
-            'thumbImagePath': results[1],
-            'coverImagePath': results[2],
+            'path': results[0][0],
+            'thumbImagePath': results[0][1],
+            'coverImagePath': results[1],
           }
         });
       });
