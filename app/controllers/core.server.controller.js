@@ -122,18 +122,23 @@ function keepImage(uploading) {
        }
       ],
       function(err, results){
-        uploading.res.json({
-          'attachment': {
-            'activityId': uploading.activityId,
-            'uploaderId': uploading.uploaderId,
-            'name': uploading.filename,
-            'fileType': 'picture',
-            'size': uploading.size,
-            'path': results[0][0],
-            'thumbImagePath': results[0][1],
-            'coverImagePath': results[1],
-          }
-        });
+        // uploading.res.json({
+        //   'attachment': {
+        //     'activityId': uploading.activityId,
+        //     'uploaderId': uploading.uploaderId,
+        //     'name': uploading.filename,
+        //     'fileType': 'picture',
+        //     'size': uploading.size,
+        //     'path': results[0][0],
+        //     'thumbImagePath': results[0][1],
+        //     'coverImagePath': results[1],
+        //   }
+        // });
+        if (err) {
+          uploading.res.json({ 'error_message': 'Uploading attachment failed' });
+        } else {
+          
+        }
       });
     },
     function(err) {
