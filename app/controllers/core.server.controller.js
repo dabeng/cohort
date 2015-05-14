@@ -7,6 +7,7 @@
 var moment = require('moment');
 var utils = require('./utils.server.controller');
 var Activity = require('../models/activity.server.model');
+var Attachment = require('../models/attachment.server.model');
 var User = require('../models/user.server.model');
 var fs = require('fs');
 var async = require('async');
@@ -122,22 +123,25 @@ function keepImage(uploading) {
        }
       ],
       function(err, results){
-        // uploading.res.json({
-        //   'attachment': {
-        //     'activityId': uploading.activityId,
-        //     'uploaderId': uploading.uploaderId,
-        //     'name': uploading.filename,
-        //     'fileType': 'picture',
-        //     'size': uploading.size,
-        //     'path': results[0][0],
-        //     'thumbImagePath': results[0][1],
-        //     'coverImagePath': results[1],
-        //   }
-        // });
         if (err) {
           uploading.res.json({ 'error_message': 'Uploading attachment failed' });
         } else {
-          
+          var attachment = new Attachment({
+            'name': uploading.filename,
+            'fileType': 'picture',
+            'size': uploading.size,
+            'path': results[0][0],
+            'thumbImagePath': results[0][1],
+            'coverImagePath': results[1],
+          });
+          attachment.user = uploading.req.user;
+          attachment.save(function(err) {
+            if (err) {
+              uploading.res.json({ 'error_message': 'Uploading attachment failed' });
+            } else {
+              uploading.res.json(attachment);
+            }
+          });
         }
       });
     },
@@ -174,6 +178,7 @@ exports.uploadFile = function(req, res) {
     'activityId': req.params.activityId,
     'uploaderId': req.user.id,
     'size': req.files.attachment.size,
+    'req': req,
     'res': res
   };
 

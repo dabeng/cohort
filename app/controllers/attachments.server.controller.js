@@ -5,102 +5,102 @@
  */
 var mongoose = require('mongoose'),
   errorHandler = require('./errors.server.controller'),
-  Activity = mongoose.model('Activity'),
+  Attachment = mongoose.model('Attachment'),
   _ = require('lodash');
 
 /**
- * Create a Activity
+ * Create a Attachment
  */
 exports.create = function(req, res) {
-  var activity = new Activity(req.body);
-  activity.user = req.user;
+  var attachment = new Attachment(req.body);
+  attachment.user = req.user;
 
-  activity.save(function(err) {
+  attachment.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(activity);
+      res.jsonp(attachment);
     }
   });
 };
 
 /**
- * Show the current Activity
+ * Show the current attachment
  */
 exports.read = function(req, res) {
-  res.jsonp(req.activity);
+  res.jsonp(req.attachment);
 };
 
 /**
- * Update a Activity
+ * Update a attachment
  */
 exports.update = function(req, res) {
-  var activity = req.activity ;
+  var attachment = req.attachment ;
 
-  activity = _.extend(activity , req.body);
+  attachment = _.extend(attachment , req.body);
 
-  activity.save(function(err) {
+  attachment.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(activity);
+      res.jsonp(attachment);
     }
   });
 };
 
 /**
- * Delete an Activity
+ * Delete an attachment
  */
 exports.delete = function(req, res) {
-  var activity = req.activity ;
+  var attachment = req.attachment ;
 
-  activity.remove(function(err) {
+  attachment.remove(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(activity);
+      res.jsonp(attachment);
     }
   });
 };
 
 /**
- * List of Activities
+ * List of Attachments
  */
 exports.list = function(req, res) { 
-  Activity.find().sort('-created').populate('user', 'displayName').exec(function(err, activities) {
+  attachment.find().sort('-created').populate('user', 'displayName').exec(function(err, Attachments) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(activities);
+      res.jsonp(Attachments);
     }
   });
 };
 
 /**
- * Activity middleware
+ * attachment middleware
  */
-exports.activityByID = function(req, res, next, id) { 
-  Activity.findById(id).populate('user', 'displayName').exec(function(err, activity) {
+exports.attachmentByID = function(req, res, next, id) { 
+  attachment.findById(id).populate('user', 'displayName').exec(function(err, attachment) {
     if (err) return next(err);
-    if (! activity) return next(new Error('Failed to load Activity ' + id));
-    req.activity = activity ;
+    if (! attachment) return next(new Error('Failed to load attachment ' + id));
+    req.attachment = attachment ;
     next();
   });
 };
 
 /**
- * Activity authorization middleware
+ * attachment authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-  if (req.activity.user.id !== req.user.id) {
+  if (req.attachment.user.id !== req.user.id) {
     return res.status(403).send('User is not authorized');
   }
   next();
