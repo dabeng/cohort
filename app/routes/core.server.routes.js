@@ -8,11 +8,8 @@ module.exports = function(app) {
   app.route('/').get(core.index);
 
   // attchament upload routing
-  app.use(multer({
-    dest: '../../public/attachments'//,
-    // rename: function (fieldname, filename) {
-    //   return filename.replace(/\W+/g, '-').toLowerCase() + Date.now();
-    // }
-  }));
-  app.post('/upload/:activityId', core.uploadFile);
+  // app.use(multer({
+  //   dest: '../../public/attachments'
+  // }));
+  // app.post('/upload/:activityId', core.uploadFile);
 };

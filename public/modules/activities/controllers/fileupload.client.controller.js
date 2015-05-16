@@ -3,11 +3,7 @@
 angular.module('activities')
   .controller('DemoFileUploadController', [ '$scope', '$http', '$filter', '$window',
       function ($scope, $http) {
-          // $scope.options = {
-          //     url: url
-          // };
-
-        $scope.$on('fileuploaddone', function(){
+        $scope.$on('fileuploaddone', function(e, data) {
             console.log('All uploads have finished');
         });
 

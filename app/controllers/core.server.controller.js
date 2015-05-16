@@ -20,7 +20,7 @@ exports.index = function(req, res) {
   });
 };
 
-function keepThumbnailImage(uploading, callback) {
+/*function keepThumbnailImage(uploading, callback) {
   var thumbImagePath = uploading.targetPath + '/' + uploading.timestamp + '-' + uploading.filename
     + '-thumb' + uploading.extension;
   easyimg.resize({
@@ -129,11 +129,11 @@ function keepImage(uploading) {
           var attachment = new Attachment({
             'name': uploading.filename,
             'fileType': 'picture',
-            'size': uploading.size,
             'path': results[0][0],
             'thumbImagePath': results[0][1],
-            'coverImagePath': results[1],
+            'coverImagePath': results[1]
           });
+          attachment.activity = uploading.req.activity;
           attachment.user = uploading.req.user;
           attachment.save(function(err) {
             if (err) {
@@ -175,8 +175,6 @@ exports.uploadFile = function(req, res) {
     'filename': filename,
     'extension': '.' + req.files.attachment.extension,
     'timestamp': Date.now(),
-    'activityId': req.params.activityId,
-    'uploaderId': req.user.id,
     'size': req.files.attachment.size,
     'req': req,
     'res': res
@@ -196,4 +194,4 @@ exports.uploadFile = function(req, res) {
       isImage ? keepImage(uploading) : keepVideo(uploading);
     }
   });
-};
+};*/

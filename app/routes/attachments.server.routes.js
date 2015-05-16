@@ -3,11 +3,19 @@
 module.exports = function(app) {
   var users = require('../../app/controllers/users.server.controller');
   var attachments = require('../../app/controllers/attachments.server.controller');
+  var  multer  = require('multer');
+
+  app.use(multer({
+    dest: '../../public/attachments'
+  }));
+  // app.post('/upload/:activityId', core.uploadFile);
 
   // Attachments Routes
   app.route('/attachments')
-    .get(attachments.list)
-    .post(users.requiresLogin, attachments.create);
+    .get(attachments.list);
+    
+  app.route('/attachments/:activityId')
+    .post(users.requiresLogin, attachments.uploadAttachment);
 
   app.route('/attachments/:attachmentId')
     .get(attachments.read)

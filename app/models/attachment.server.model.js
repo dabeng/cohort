@@ -32,14 +32,16 @@ var AttachmentSchema = new Schema({
     type: String,
     trim: true
   },
-  // activity: {
-  //   type: Schema.ObjectId,
-  //   ref: 'Activity'
-  // },
-  user: {
+  activity: {
     type: Schema.ObjectId,
-    ref: 'User'
+    required: true,
+    ref: 'Activity'
   },
+  uploader: {
+    type: Schema.ObjectId,
+    required: true,
+    ref: 'User'
+  }
 });
 
-mongoose.model('Attachment', AttachmentSchema);
+module.exports = mongoose.model('Attachment', AttachmentSchema);
