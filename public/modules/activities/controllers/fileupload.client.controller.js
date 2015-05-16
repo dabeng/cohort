@@ -4,13 +4,16 @@ angular.module('activities')
   .controller('DemoFileUploadController', [ '$scope', '$http', '$filter', '$window',
       function ($scope, $http) {
         $scope.$on('fileuploaddone', function(e, data) {
-            console.log('All uploads have finished');
+            if (data.result.error_message) {
+              alert(data.result.error_message);
+            } else {
+              console.log('All uploads have finished');
+            }
         });
 
       }
   ])
-  .controller('FileDestroyController', [
-      '$scope', '$http',
+  .controller('FileDestroyController', [ '$scope', '$http',
       function ($scope, $http) {
           var file = $scope.file,
               state;

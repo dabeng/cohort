@@ -8,7 +8,6 @@ module.exports = function(app) {
   app.use(multer({
     dest: '../../public/attachments'
   }));
-  // app.post('/upload/:activityId', core.uploadFile);
 
   // Attachments Routes
   app.route('/attachments')
