@@ -24,7 +24,7 @@ function keepThumbnailImage(uploading, callback) {
       callback(null, uploading.stdImagePath, thumbImagePath);
     },
     function(err) {
-      uploading.res.json({ 'user_error': 'Uploading attachment failed' });
+      uploading.res.json({ 'error_message': 'Uploading attachment failed' });
     }
   );
 }
@@ -77,27 +77,26 @@ function keepCoverImage(uploading, callback) {
   var coverImagePath = uploading.targetPath + '/' + uploading.timestamp + '-' + uploading.filename
     + '-cover' + uploading.extension;
 
-    if (originalWidth / originalHeight >= 1) {
-      resizeHeight = 300;
-    } else {
-      resizeWidth = 300;
+  if (originalWidth / originalHeight >= 1) {
+    resizeHeight = 300;
+  } else {
+    resizeWidth = 300;
+  }
+  easyimg.rescrop({
+      src: uploading.tmpPath,
+      dst: coverImagePath,
+      width: resizeWidth || originalWidth,
+      height: resizeHeight || originalHeight,
+      cropwidth: 300,
+      cropheight: 300
+    }).then(
+    function(image) {
+      callback(null, coverImagePath);
+    },
+    function(err) {
+      uploading.res.json({ 'error_message': 'Uploading attachment failed' });
     }
-    easyimg.rescrop({
-        src: uploading.tmpPath,
-        dst: coverImagePath,
-        width: resizeWidth || originalWidth,
-        height: resizeHeight || originalHeight,
-        cropwidth: 300,
-        cropheight: 300
-      }).then(
-      function(image) {
-        callback(null, coverImagePath);
-      },
-      function(err) {
-        uploading.res.json({ 'error_message': 'Uploading attachment failed' });
-      }
-    );
-
+  );
 }
 
 function keepImage(uploading) {
@@ -145,8 +144,7 @@ function keepImage(uploading) {
 function keepVedio(uploading) {
   fs.rename(uploading.tmpPath, uploading.fullPath, function(err) {
     if (err) {
-      uploading.res.json({'user_error': 'Uploading vedio failed',
-        'maintainer_error': 'Renaming path failed'});
+      uploading.res.json({'error_message': 'Uploading attachment failed' });
     } else {
 
     }
@@ -175,8 +173,7 @@ exports.uploadAttachment = function(req, res) {
     if (!isExist) {
       fs.mkdir(activityStuff, function(err) {
         if (err) {
-          res.json({'user_error': 'Uploading attachment failed',
-            'maintainer_error': 'Making directory failed'});
+          res.json({ 'error_message': 'Uploading attachment failed' });
         } else {
           isImage ? keepImage(uploading) : keepVideo(uploading);
         }
