@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
   _ = require('lodash'),
   fs = require('fs'),
   async = require('async'),
-  easyimg = require('easyimage');
+  easyimg = require('easyimage'),
+  ObjectId = mongoose.Types.ObjectId; 
 
 function keepThumbnailImage(uploading, callback) {
   var thumbImagePath = uploading.targetPath + '/' + uploading.timestamp + '-' + uploading.filename
@@ -116,12 +117,13 @@ function keepImage(uploading) {
         if (err) {
           uploading.res.json({ 'error_message': 'Uploading attachment failed' });
         } else {
+          var relativePathStart = results[0][0].indexOf('public') + 7;
           var attachment = new Attachment({
             'name': uploading.filename,
             'fileType': 'picture',
-            'path': results[0][0],
-            'thumbImagePath': results[0][1],
-            'coverImagePath': results[1]
+            'path': results[0][0].slice(relativePathStart),
+            'thumbImagePath': results[0][1].slice(relativePathStart),
+            'coverImagePath': results[1].slice(relativePathStart)
           });
           attachment.activity = uploading.req.activity;
           attachment.uploader = uploading.req.user;
@@ -248,14 +250,17 @@ exports.delete = function(req, res) {
 /**
  * List of Attachments
  */
-exports.list = function(req, res) { 
-  Attachment.find().sort('-created').populate('user', 'displayName').exec(function(err, Attachments) {
+exports.list = function(req, res) {
+  if (req.query.activity) {
+    req.query.activity = new ObjectId(req.query.activity);
+  }
+  Attachment.find( req.query || {} , function(err, attachments) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(Attachments);
+      res.jsonp(attachments);
     }
   });
 };

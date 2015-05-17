@@ -1,5 +1,11 @@
 'use strict'
 
-$scope.attachments = Activities.get({
-        activityId: activity._id
-      });
+angular.module('attachments').controller('AttachmentGalleryCtrl',
+  ['$scope', '$stateParams', '$location', 'Authentication', 'Attachments',
+  function($scope, $stateParams, $location, Authentication, Attachments) {
+
+    $scope.attachments = Attachments.query({
+      activity: $stateParams.activityId
+    });
+
+}]);
