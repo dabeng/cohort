@@ -40,3 +40,14 @@ a.activity-item:hover {
 .control-label {
   margin-top: 10px;
 }
+
+.attachment-gallery {
+  border-color: rgba(82,168,236,.8);
+  box-shadow: 0 0 8px rgba(82,168,236,.6);
+  padding: 20px;
+}
+
+.attachment-gallery > img {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}

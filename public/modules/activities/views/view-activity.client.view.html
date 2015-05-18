@@ -36,7 +36,9 @@
   </div>
   <div class="row">
     <label class="control-label">Details</label>
-    <div ng-include="'modules/attachments/views/attachment-gallery.client.view.html'" ng-controller="AttachmentGalleryCtrl"></div>
+    <div class="attachment-gallery">
+      <img src="{{attachment.thumbImagePath}}" ng-repeat="attachment in attachments">
+    </div>
   </div>
   <div class="row">
     <!-- The file upload form used as target for the file upload widget -->

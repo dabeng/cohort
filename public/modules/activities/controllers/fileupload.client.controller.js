@@ -7,7 +7,7 @@ angular.module('activities')
             if (data.result.error_message) {
               alert(data.result.error_message);
             } else {
-              console.log('All uploads have finished');
+              $scope.$parent.attachments = $scope.$parent.attachments.concat(data.result);
             }
         });
 

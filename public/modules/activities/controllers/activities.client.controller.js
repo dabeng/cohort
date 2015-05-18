@@ -1,8 +1,9 @@
 'use strict';
 
 // Activities controller
-angular.module('activities').controller('ActivitiesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Activities',
-  function($scope, $stateParams, $location, Authentication, Activities) {
+angular.module('activities').controller('ActivitiesController',
+  ['$scope', '$stateParams', '$location', 'Authentication', 'Activities', 'Attachments',
+  function($scope, $stateParams, $location, Authentication, Activities, Attachments) {
     $scope.authentication = Authentication;
     
     $scope.category = 'party';
@@ -67,6 +68,9 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
     $scope.findOne = function() {
       $scope.activity = Activities.get({
         activityId: $stateParams.activityId
+      });
+      $scope.attachments = Attachments.query({
+        activity: $stateParams.activityId
       });
     };
 
