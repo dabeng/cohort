@@ -1,3 +1,7 @@
+.hidden-stuff {
+  display: none;
+}
+
 .activity-item {
   position: relative;
   width: 330px;
@@ -41,15 +45,33 @@ a.activity-item:hover {
   margin-top: 10px;
 }
 
+.attachment-container {
+  width: 100%;
+  height: 490px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  background-color: #000;
+  text-align: center;
+}
+
+.attachment-container > img {
+  margin: 20px auto;
+}
+
 .attachment-gallery {
-  border-color: rgba(82,168,236,.8);
-  box-shadow: 0 0 8px rgba(82,168,236,.6);
-  padding: 20px;
-  max-height: 310px;
+  border: 1px solid #9acfea;
+  border-radius: 5px;
+  padding: 20px 20px 0px 20px;
+  max-height: 246px;
   overflow-y: auto;
 }
 
 .attachment-gallery > img {
+  border: 1px solid #fff;
   margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.attachment-gallery > img:hover {
+  box-shadow: 0 0 10px rgba(0,0,0, 0.8);
 }

@@ -8,6 +8,8 @@ angular.module('activities').controller('ActivitiesController',
     
     $scope.category = 'party';
     $scope.dateTime = new Date();
+    $scope.attachCollapsed = true;
+    $scope.currentAttach = "";
 
     // Create new Activity
     $scope.create = function() {
@@ -75,11 +77,16 @@ angular.module('activities').controller('ActivitiesController',
     };
 
     $scope.open = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
+      $event.preventDefault();
+      $event.stopPropagation();
 
-    $scope.opened = true;
-  };
+      $scope.opened = true;
+    };
+
+    $scope.playAttachment = function($event) {
+      $scope.attachCollapsed = false;
+      $scope.currentAttach = $event.target.src.replace(/thumb./, 'std.');
+    };
 
   }
 ]);

@@ -36,11 +36,6 @@
   </div>
   <div class="row">
     <label class="control-label">Details</label>
-    <div class="attachment-gallery">
-      <img src="{{attachment.thumbImagePath}}" ng-repeat="attachment in attachments">
-    </div>
-  </div>
-  <div class="row">
     <!-- The file upload form used as target for the file upload widget -->
     <form id="fileupload" action="{{'/attachments/' + activity._id}}" method="POST" enctype="multipart/form-data" data-ng-controller="DemoFileUploadController" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -111,5 +106,11 @@
             </tr>
         </table>
     </form>
+    <div class="attachment-gallery">
+      <img src="{{attachment.thumbImagePath}}" ng-repeat="attachment in attachments" ng-click="playAttachment($event)">
+    </div>
+    <div class="attachment-container" ng-class="{'hidden-stuff': attachCollapsed}">
+      <img src="{{currentAttach}}">
+    </div>
   </div>
 </section>
