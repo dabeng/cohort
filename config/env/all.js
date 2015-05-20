@@ -16,7 +16,8 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/blueimp-file-upload/css/jquery.fileupload.css',
-        'public/lib/blueimp-file-upload/css/jquery.fileupload-ui.css'
+        'public/lib/blueimp-file-upload/css/jquery.fileupload-ui.css',
+        'public/lib/animate.css/animate.css'
       ],
       js: [
         'public/lib/jquery/dist/jquery.js',
