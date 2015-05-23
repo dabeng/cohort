@@ -2,6 +2,10 @@
 
 angular.module('activities')
   .controller('AttachmentUploadCtrl', [ '$scope', '$http', '$filter', '$window', function ($scope, $http) {
+    // $scope.options = {
+    //   loadVideoFileTypes: /^mp4$/
+    // };
+
     $scope.$on('fileuploaddone', function(e, data) {
       if (data.result.error_message) {
         alert(data.result.error_message);
@@ -10,6 +14,7 @@ angular.module('activities')
         data.files[0].$destroy();
       }
     });
+
   }])
   .controller('FileDestroyController', function ($scope) {
     var file = $scope.file;
