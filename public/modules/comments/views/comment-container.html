@@ -1,0 +1,6 @@
+<div class="one-comment" id="comment{{comment.id}}" ng-repeat="comment in comments">
+  <label class="commenter">{{comment.displayname}}</label>
+  <label class="comment-time">{{comment.dateTime | date:"MMM/dd/yy 'at' h:mm a"}}</label>
+  <p>{{comment.content}}</p>
+  <hr/>
+</div>
