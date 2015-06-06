@@ -4,7 +4,7 @@ angular.module('comments').directive('commentcontainer', function() {
   return {
     restrict: 'E',
     scope: {
-      datasource: '=',
+      datasource: '='
       // currentActivity: '@'
     },
     templateUrl: 'modules/comments/views/comment-container.html',
@@ -35,10 +35,11 @@ angular.module('comments').directive('commentcontainer', function() {
         var params = {
           'content': $scope.commentValue,
           'dateTime': new Date(),
-          'activity': $scope.$parent.activity
-        }
-        var newComment = Comments.save(params, function() {
-          $scope.datasource.pop(newComment);
+          'activity': $scope.$parent.activity._id
+        };
+
+        Comments.save(params, function(newComment) {
+          $scope.datasource.push(newComment);
           $scope.cancelCommentEdit($event);
         });
       };

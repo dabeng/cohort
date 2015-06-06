@@ -14,6 +14,7 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
   var comment = new Comment(req.body);
+  comment.activity = new ObjectId(req.body.activity);
   comment.commenter = req.user;
 
   comment.save(function(err) {
