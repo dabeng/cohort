@@ -2,19 +2,24 @@
 
 // Activities controller
 angular.module('activities').controller('ViewActivityCtrl',
-  ['$scope', '$stateParams', '$location', 'Authentication', 'Activities','Attachments',
-  function($scope, $stateParams, $location, Authentication, Activities, Attachments) {
+  ['$scope', '$stateParams', '$location', 'Authentication', 'Activities','Attachments', 'Comments',
+  function($scope, $stateParams, $location, Authentication, Activities, Attachments, Comments) {
     $scope.authentication = Authentication;
 
     $scope.currentAttach = "";
     $scope.attachCollapsed = true;
 
     // Find existing Activity
-    $scope.findOne = function() {
+    $scope.init = function() {
       $scope.activity = Activities.get({
         activityId: $stateParams.activityId
       });
+
       $scope.attachments = Attachments.query({
+        activity: $stateParams.activityId
+      });
+
+      $scope.comments = Comments.query({
         activity: $stateParams.activityId
       });
     };
