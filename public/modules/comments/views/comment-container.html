@@ -1,7 +1,7 @@
 <div class="one-comment" id="comment{{comment.id}}" ng-repeat="comment in datasource">
-  <label class="commenter">{{comment.displayname}}</label>
-  <label class="comment-time">{{comment.dateTime | date:"MMM/dd/yy 'at' h:mm a"}}</label>
-  <p>{{comment.content}}</p>
+  <label class="comment-heading" ng-bind="comment.commenter.displayName"></label>
+  <label class="comment-heading" ng-bind="comment.dateTime | date:'MMMM d, y \'at\' h:mm a'"></label>
+  <p ng-bind="comment.content"></p>
   <hr/>
 </div>
 <textarea class="ta-comment" name="newComment" placeholder=" Write a comment..." ng-trim="boolean" ng-class="{'edit-status':commentEditing}" ng-model="commentValue" ng-click="triggerCommentEdit($event)">{{commentValue}}

@@ -58,7 +58,7 @@ exports.update = function(req, res) {
  * Delete an comment
  */
 exports.delete = function(req, res) {
-  var comment = req.comment ;
+  var comment = req.comment;
 
   comment.remove(function(err) {
     if (err) {
@@ -78,7 +78,7 @@ exports.list = function(req, res) {
   if (req.query.activity) {
     req.query.activity = new ObjectId(req.query.activity);
   }
-  Comment.find( req.query || {} , function(err, comments) {
+  Comment.find( req.query || {}).populate('commenter', 'displayName').exec(function(err, comments) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -93,7 +93,7 @@ exports.list = function(req, res) {
  * comment middleware
  */
 exports.commentByID = function(req, res, next, id) {
-  Comment.findById(id).populate('user', 'displayName').exec(function(err, comment) {
+  Comment.findById(id).populate('commenter', 'displayName').exec(function(err, comment) {
     if (err) return next(err);
     if (! comment) return next(new Error('Failed to load comment ' + id));
     req.comment = comment;

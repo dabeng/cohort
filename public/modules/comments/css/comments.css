@@ -6,3 +6,8 @@
 .ta-comment.edit-status {
   height: 80px;
 }
+
+.comment-heading {
+  font-size: 0.5em;
+  font-weight: normal;
+}
