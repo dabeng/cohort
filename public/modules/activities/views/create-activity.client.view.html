@@ -6,30 +6,38 @@
     <form class="form-horizontal" data-ng-submit="create()" novalidate>
       <fieldset>
         <div class="form-group">
-          <label class="control-label" for="name">Name</label>
-          <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
-          <label class="control-label">Category</label>
-          <div class="btn-group" style="width: 100%;">
-            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'basketball'">
-              <i class="fa fa-dribbble fa-lg"></i>basketball
-            </label>
-            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'football'">
-              <i class="fa fa-futbol-o fa-lg"></i>football
-            </label>
-            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'fishing'">
-              <i class="fa fa-ticket fa-lg"></i>fishing
-            </label>
-            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'party'">
-              <i class="fa fa-beer fa-lg"></i>party
-            </label>
-            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'travel'">
-              <i class="fa fa-plane fa-lg"></i>travel
-            </label>
-          </div>
-          <label class="control-label">Date and Time</label>
           <div class="row">
+            <label class="control-label" for="name"><i class="fa fa-leaf fa-lg"></i>Name</label>
+            <p class="alert alert-info">
+            <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+          </p>
+          </div>
+          <div class="row">
+            <label class="control-label"><i class="fa fa-tags fa-lg"></i>Category</label>
+            <div class="btn-group" style="width: 100%;">
+              <p class="alert alert-info">
+                <label class="btn btn-primary cat-label" ng-model="category" btn-radio="'basketball'">
+                  <i class="fa fa-dribbble fa-lg"></i>basketball
+                </label>
+                <label class="btn btn-primary cat-label" ng-model="category" btn-radio="'football'">
+                  <i class="fa fa-futbol-o fa-lg"></i>football
+                </label>
+                <label class="btn btn-primary cat-label" ng-model="category" btn-radio="'fishing'">
+                  <i class="fa fa-ticket fa-lg"></i>fishing
+                </label>
+                <label class="btn btn-primary cat-label" ng-model="category" btn-radio="'party'">
+                  <i class="fa fa-beer fa-lg"></i>party
+                </label>
+                <label class="btn btn-primary cat-label" ng-model="category" btn-radio="'travel'">
+                  <i class="fa fa-plane fa-lg"></i>travel
+                </label>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <label class="control-label"><i class="fa fa-clock-o fa-lg"></i>Date and Time</label><br/>
             <div class="col-md-4">
-              <p class="input-group" style="top: 20px;">
+              <p class="input-group alert alert-info">
                 <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -37,21 +45,28 @@
               </p>
             </div>
             <div class="col-md-4">
-              <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -14px;"></timepicker>
+              <p class="alert alert-info" style="height: 66px;">
+                <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -32px;"></timepicker>
+              </p>
             </div>
           </div>
-          <label class="control-label">Destination and Route</label>
           <div class="row">
-            <div class="col-md-6">
-              <input type="text" data-ng-model="dest" class="form-control" placeholder="Destination" required>
+            <div class="col-md-6" style="padding-left:0;">
+              <label class="control-label"><i class="fa fa-anchor fa-lg"></i>Destination</label>
+              <p class="alert alert-info">
+                <input type="text" data-ng-model="dest" class="form-control" placeholder="Destination" required>
+              </p>
             </div>
-            <div class="col-md-6">
-              <input type="text" data-ng-model="route" class="form-control" placeholder="Route">
+            <div class="col-md-6" style="padding:0;">
+              <label class="control-label"><i class="fa fa-paper-plane fa-lg"></i>Route</label>
+              <p class="alert alert-info">
+                <input type="text" data-ng-model="route" class="form-control" placeholder="Route">
+              </p>
             </div>
           </div>
         </div>  
         <div class="form-group">
-          <input type="submit" class="btn btn-default">
+          <input type="submit" class="btn btn-success pull-right">
         </div>
 		<div data-ng-show="error" class="text-danger">
 		  <strong data-ng-bind="error"></strong>

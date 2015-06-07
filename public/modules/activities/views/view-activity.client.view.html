@@ -6,7 +6,7 @@
     <a class="btn btn-primary" href="/#!/activities/{{activity._id}}/edit">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
-    <a class="btn btn-primary" data-ng-click="remove();">
+    <a class="btn btn-danger" data-ng-click="remove();">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
@@ -23,7 +23,7 @@
     <p class="alert alert-info" data-ng-bind="activity.category"></p>
   </div>
   <div class="row">
-    <label class="control-label"><i class="fa fa-calendar fa-lg"></i>Date and Time</label>
+    <label class="control-label"><i class="fa fa-clock-o fa-lg"></i>Date and Time</label>
     <p class="alert alert-info" data-ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></p>
   </div>
   <div class="row">

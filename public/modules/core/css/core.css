@@ -10,6 +10,16 @@ html, body {
   height: 100%;
   font-family: Lato;
 }
+.navbar-brand {
+  font-size: 48px;
+  color: #fff!important;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+.page-header {
+  border-color: #666;
+}
 .content {
 	/*margin-top: 50px;*/
 }
