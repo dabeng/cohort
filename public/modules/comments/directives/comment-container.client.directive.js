@@ -4,8 +4,8 @@ angular.module('comments').directive('commentcontainer', function() {
   return {
     restrict: 'E',
     scope: {
-      datasource: '='
-      // currentActivity: '@'
+      datasource: '=',
+      activityId: '@'
     },
     templateUrl: 'modules/comments/views/comment-container.html',
     controller: function($scope, Comments) {
@@ -35,7 +35,7 @@ angular.module('comments').directive('commentcontainer', function() {
         var params = {
           'content': $scope.commentValue,
           'dateTime': new Date(),
-          'activity': $scope.$parent.activity._id
+          'activity': $scope.activityId
         };
 
         Comments.save(params, function(newComment) {
