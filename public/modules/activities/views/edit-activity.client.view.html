@@ -6,18 +6,32 @@
     <form class="form-horizontal" data-ng-submit="update()" novalidate>
       <fieldset>
         <div class="form-group">
-          <label class="control-label" for="name">Name</label>
-          <input type="text" data-ng-model="activity.name" id="name" class="form-control" placeholder="Name" required>
-          <label class="control-label">Category</label>
-          <div class="btn-group" style="width: 100%;">
-            <label class="btn btn-info" ng-model="activity.category" btn-radio="'basketball'">basketball</label>
-            <label class="btn btn-info" ng-model="activity.category" btn-radio="'football'">football</label>
-            <label class="btn btn-info" ng-model="activity.category" btn-radio="'fishing'">fishing</label>
-            <label class="btn btn-info" ng-model="activity.category" btn-radio="'party'">party</label>
-            <label class="btn btn-info" ng-model="activity.category" btn-radio="'travel'">travel</label>
-          </div>
-          <label class="control-label">Date and Time</label>
           <div class="row">
+            <label class="control-label" for="name"><i class="fa fa-leaf fa-lg"></i>Name</label><p>
+            <input type="text" data-ng-model="activity.name" id="name" class="form-control" placeholder="Name" required></p>
+          </div>
+          <div class="row">
+            <label class="control-label"><i class="fa fa-tags fa-lg"></i>Category</label>
+            <div class="btn-group" style="width: 100%;">
+              <label class="btn btn-info cat-label" ng-model="activity.category" btn-radio="'basketball'">
+                <i class="fa fa-dribbble fa-lg"></i>basketball
+              </label>
+              <label class="btn btn-info cat-label" ng-model="activity.category" btn-radio="'football'">
+                <i class="fa fa-futbol-o fa-lg"></i>football
+              </label>
+              <label class="btn btn-info cat-label" ng-model="activity.category" btn-radio="'fishing'">
+                <i class="fa fa-ticket fa-lg"></i>fishing
+              </label>
+              <label class="btn btn-info cat-label" ng-model="activity.category" btn-radio="'party'">
+                <i class="fa fa-beer fa-lg"></i>party
+              </label>
+              <label class="btn btn-info cat-label" ng-model="activity.category" btn-radio="'travel'">
+                <i class="fa fa-plane fa-lg"></i>travel
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <label class="control-label"><i class="fa fa-calendar fa-lg"></i>Date and Time</label><br/>
             <div class="col-md-4">
               <p class="input-group" style="top: 20px;">
                 <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="activity.dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
@@ -29,11 +43,15 @@
             <div class="col-md-4">
               <timepicker ng-model="activity.dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -14px;"></timepicker>
             </div>
-          </div>  
-          <label class="control-label" for="dest">Destination</label>
-          <input type="text" data-ng-model="activity.dest" id="dest" class="form-control" placeholder="Destination" required>
-          <label class="control-label" for="route">Route</label>
-          <input type="text" data-ng-model="activity.route" id="name" class="form-control" placeholder="Route" required>
+          </div>
+          <div class="row">
+            <label class="control-label" for="dest"><i class="fa fa-anchor fa-lg"></i>Destination</label>
+            <input type="text" data-ng-model="activity.dest" id="dest" class="form-control" placeholder="Destination" required>
+          </div>
+          <div class="row">
+            <label class="control-label" for="route"><i class="fa fa-paper-plane fa-lg"></i>Route</label>
+            <input type="text" data-ng-model="activity.route" id="name" class="form-control" placeholder="Route" required>
+          </div>
         </div>
         <div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">

@@ -1,0 +1,8 @@
+.ta-comment {
+  width: 100%;
+  resize: vertical;
+}
+
+.ta-comment.edit-status {
+  height: 80px;
+}

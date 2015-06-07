@@ -1,12 +1,12 @@
-<textarea class="ta-comment" name="newComment" placeholder=" Write a comment..." ng-trim="boolean" ng-class="{'edit-status':commentEditing}" ng-model="commentValue" ng-click="triggerCommentEdit($event)">{{commentValue}}
-</textarea>
-<div class="row">
-  <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addComment($event)">Add</button>
-  <button type="button" class="btn btn-warning btn-sm pull-right" style="margin-right:10px" ng-click="cancelCommentEdit($event)">Cancel</button>
-</div>
 <div class="one-comment" id="comment{{comment.id}}" ng-repeat="comment in datasource">
   <label class="commenter">{{comment.displayname}}</label>
   <label class="comment-time">{{comment.dateTime | date:"MMM/dd/yy 'at' h:mm a"}}</label>
   <p>{{comment.content}}</p>
   <hr/>
+</div>
+<textarea class="ta-comment" name="newComment" placeholder=" Write a comment..." ng-trim="boolean" ng-class="{'edit-status':commentEditing}" ng-model="commentValue" ng-click="triggerCommentEdit($event)">{{commentValue}}
+</textarea>
+<div class="row">
+  <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addComment($event)">Add</button>
+  <button type="button" class="btn btn-warning btn-sm pull-right" style="margin-right:10px" ng-click="cancelCommentEdit($event)">Cancel</button>
 </div>

@@ -10,11 +10,21 @@
           <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
           <label class="control-label">Category</label>
           <div class="btn-group" style="width: 100%;">
-            <label class="btn btn-info" ng-model="category" btn-radio="'basketball'">basketball</label>
-            <label class="btn btn-info" ng-model="category" btn-radio="'football'">football</label>
-            <label class="btn btn-info" ng-model="category" btn-radio="'fishing'">fishing</label>
-            <label class="btn btn-info" ng-model="category" btn-radio="'party'">party</label>
-            <label class="btn btn-info" ng-model="category" btn-radio="'travel'">travel</label>
+            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'basketball'">
+              <i class="fa fa-dribbble fa-lg"></i>basketball
+            </label>
+            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'football'">
+              <i class="fa fa-futbol-o fa-lg"></i>football
+            </label>
+            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'fishing'">
+              <i class="fa fa-ticket fa-lg"></i>fishing
+            </label>
+            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'party'">
+              <i class="fa fa-beer fa-lg"></i>party
+            </label>
+            <label class="btn btn-info cat-label" ng-model="category" btn-radio="'travel'">
+              <i class="fa fa-plane fa-lg"></i>travel
+            </label>
           </div>
           <label class="control-label">Date and Time</label>
           <div class="row">

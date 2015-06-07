@@ -45,6 +45,10 @@ a.activity-item:hover {
   margin-top: 10px;
 }
 
+.control-label .fa,.cat-label .fa {
+  margin-right: 5px;
+}
+
 .attachment-gallery {
   border: 1px solid #9acfea;
   border-radius: 5px;

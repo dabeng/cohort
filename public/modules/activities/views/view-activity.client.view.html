@@ -19,24 +19,27 @@
     </em>
   </small>
   <div class="row">
-    <label class="control-label">Category</label>
+    <label class="control-label"><i class="fa fa-tags fa-lg"></i>Category</label>
     <p class="alert alert-info" data-ng-bind="activity.category"></p>
   </div>
   <div class="row">
-    <label class="control-label">Date and Time</label>
+    <label class="control-label"><i class="fa fa-calendar fa-lg"></i>Date and Time</label>
     <p class="alert alert-info" data-ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></p>
   </div>
   <div class="row">
-    <label class="control-label">Destination</label>
+    <label class="control-label"><i class="fa fa-anchor fa-lg"></i>Destination</label>
     <p class="alert alert-info" data-ng-bind="activity.dest"></p>
   </div>
   <div class="row">
-    <label class="control-label">Route</label>
+    <label class="control-label"><i class="fa fa-paper-plane fa-lg"></i>Route</label>
     <p class="alert alert-info" data-ng-bind="activity.route"></p>
   </div>
   <div class="row">
-    <label class="control-label">Details</label>
-    <!-- The file upload form used as target for the file upload widget -->
+    <label class="control-label"><i class="fa fa-comments fa-lg"></i>Discussions</label>
+    <commentcontainer datasource="comments"></commentcontainer>
+  </div>
+  <div class="row">
+    <label class="control-label"><i class="fa fa-picture-o fa-lg"></i>Pictures and Vedios</label>
     <form id="fileupload" action="{{'/attachments/' + activity._id}}" method="POST" enctype="multipart/form-data" data-ng-controller="AttachmentUploadCtrl" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
       <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
       <div class="row fileupload-buttonbar">
@@ -117,6 +120,5 @@
     <div class="attachment-container" ng-class="{'hidden-stuff': attachCollapsed}">
       <img src="{{currentAttach}}">
     </div>
-    <commentcontainer datasource="comments"></commentcontainer>
   </div>
 </section>

@@ -15,6 +15,7 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        'public/modules/core/css/font-awesome.css',
         'public/lib/blueimp-file-upload/css/jquery.fileupload.css',
         'public/lib/blueimp-file-upload/css/jquery.fileupload-ui.css',
         'public/lib/animate.css/animate.css'
