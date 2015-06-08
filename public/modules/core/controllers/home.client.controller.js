@@ -9,8 +9,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     $animate.enabled(false);
     $scope.myInterval = 3000;
     $scope.slides = [{ image: 'modules/core/img/slides/01.jpg', text: 'basketball at Dida' },
-      { image: 'modules/core/img/slides/02.jpg', text: 'basketball at Dida' },
-      { image: 'modules/core/img/slides/03.jpg', text: 'basketball at Dida' },
+      { image: 'modules/core/img/slides/02.jpg', text: 'basketball at Qinghua' },
+      { image: 'modules/core/img/slides/03.jpg', text: 'basketball at Beida' },
       { image: 'modules/core/img/slides/04.jpg', text: 'fishing' },
       { image: 'modules/core/img/slides/05.jpg', text: 'fishing' },
       { image: 'modules/core/img/slides/06.jpg', text: 'fishing' },

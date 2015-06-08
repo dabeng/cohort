@@ -143,12 +143,27 @@ function keepImage(uploading) {
   );
 }
 
-function keepVedio(uploading) {
-  fs.rename(uploading.tmpPath, uploading.fullPath, function(err) {
+function keepVideo(uploading) {
+  var fullPath = uploading.targetPath + '/' +uploading.timestamp + '-' + uploading.filename
+    + uploading.extension;
+  fs.rename(uploading.tmpPath, fullPath, function(err) {
     if (err) {
       uploading.res.json({'error_message': 'Uploading attachment failed' });
     } else {
-
+      var attachment = new Attachment({
+        'name': uploading.filename,
+        'fileType': 'video',
+        'path': fullPath.slice(fullPath.indexOf('public') + 7)
+      });
+      attachment.activity = uploading.req.activity;
+      attachment.uploader = uploading.req.user;
+      attachment.save(function(err) {
+        if (err) {
+          uploading.res.json({ 'error_message': 'Uploading attachment failed' });
+        } else {
+          uploading.res.json(attachment);
+        }
+      });
     }
   });
 }
