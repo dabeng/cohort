@@ -41,7 +41,8 @@ module.exports = {
         'public/lib/blueimp-file-upload/js/jquery.fileupload-audio.js',
         'public/lib/blueimp-file-upload/js/jquery.fileupload-video.js',
         'public/lib/blueimp-file-upload/js/jquery.fileupload-validate.js',
-        'public/lib/blueimp-file-upload/js/jquery.fileupload-angular.js'
+        'public/lib/blueimp-file-upload/js/jquery.fileupload-angular.js',
+        'public/lib/highcharts-ng/dist/highcharts-ng.js'
       ]
     },
     css: [
