@@ -5,7 +5,7 @@
 .activity-item {
   position: relative;
   width: 330px;
-  height: 396px;
+  height: 406px;
   display: block;
   margin: 15px;
   padding: 15px;
@@ -57,14 +57,18 @@ a.activity-item:hover {
   background-color: #fafafa;
 }
 
-.attachment-gallery > img {
+.attachment-gallery > div {
+  display: inline-block;
+}
+
+.attachment-gallery img {
   border: 2px solid #fff;
   margin-right: 20px;
   margin-bottom: 20px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.6);
 }
 
-.attachment-gallery > img:hover {
+.attachment-gallery img:hover {
   box-shadow: 0 3px 8px rgba(51,122,183,0.8);
 }
 
@@ -79,6 +83,6 @@ a.activity-item:hover {
   text-align: center;
 }
 
-.attachment-container > img {
+.attachment-container img {
   margin: 20px auto;
 }

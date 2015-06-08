@@ -120,7 +120,7 @@
           <img src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
         </div>
         <div ng-if="attachment.fileType==='video'" >
-          <video controls="controls">
+          <video controls="controls" width="1128">
             <source src="{{attachment.path}}" type="video/mp4" />
           </video>
         </div>
