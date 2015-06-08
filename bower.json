@@ -4,6 +4,7 @@
 	"description": "A arrange activities tool for cohort",
 	"dependencies": {
 		"bootstrap": "~3",
+		"DataTables": "~1.10.6",
 		"angular": "~1.2",
 		"angular-resource": "~1.2",
 		"angular-mocks": "~1.2",
@@ -16,6 +17,7 @@
 		"angular-ui-router": "~0.2.11",
 		"blueimp-file-upload": "~9.9.3",
 		"animate.css": "~3.2.5",
+		"highcharts": "~4.1.5",
 		"highcharts-ng": "~0.0.8"
 	}
 }

@@ -22,6 +22,7 @@ module.exports = {
       ],
       js: [
         'public/lib/jquery/dist/jquery.js',
+        'public/lib/DataTables/media/js/jquery.dataTables.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js', 
         'public/lib/angular-cookies/angular-cookies.js', 
@@ -42,6 +43,9 @@ module.exports = {
         'public/lib/blueimp-file-upload/js/jquery.fileupload-video.js',
         'public/lib/blueimp-file-upload/js/jquery.fileupload-validate.js',
         'public/lib/blueimp-file-upload/js/jquery.fileupload-angular.js',
+        'public/lib/highcharts/highcharts.js',
+        'public/lib/mapdata/map.js',
+        'public/lib/mapdata/world.js',
         'public/lib/highcharts-ng/dist/highcharts-ng.js'
       ]
     },
