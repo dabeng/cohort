@@ -1,0 +1,22 @@
+<section data-ng-controller="CookbooksController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="cookbook.name"></h1>
+		<img ng-src="/modules/cookbooks/img/{{cookbook.picture}}" />
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == cookbook.user._id))">
+		<a class="btn btn-primary" href="/#!/cookbooks/{{cookbook._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="cookbook.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="cookbook.user.displayName"></span>
+		</em>
+	</small>
+</section>

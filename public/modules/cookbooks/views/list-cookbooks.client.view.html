@@ -1,0 +1,26 @@
+<section data-ng-controller="CookbooksController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Cookbooks</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="cookbook in cookbooks" data-ng-href="#!/cookbooks/{{cookbook._id}}" class="list-group-item">
+            <div class="row">
+                <div class="col-md-4">
+            <img ng-src="/modules/cookbooks/img/{{cookbook.picture}}" />
+                    </div>
+                    <div class="col-md-8">
+            <small class="list-group-item-text">
+                Posted on
+                <span data-ng-bind="cookbook.created | date:'medium'"></span>
+                by
+                <span data-ng-bind="cookbook.user.displayName"></span>
+            </small>
+            <h1 class="list-group-item-heading" data-ng-bind="cookbook.name"></h1>
+        </div>
+        </div>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!cookbooks.$resolved || cookbooks.length">
+    	No Cookbooks yet, why don't you <a href="/#!/cookbooks/create">create one</a>?
+    </div>
+</section>
