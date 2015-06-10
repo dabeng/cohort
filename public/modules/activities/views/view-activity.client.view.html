@@ -115,19 +115,16 @@
         </table>
     </form>  
     <div class="attachment-gallery">
-      <div ng-repeat="attachment in attachments">
-        <div ng-if="attachment.fileType==='picture'" >
-          <img src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
-        </div>
-        <div ng-if="attachment.fileType==='video'" >
-          <video controls="controls" width="1128">
+<!--       <div ng-repeat="attachment in attachments">
+          <img ng-if="attachment.fileType==='picture'" src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
+          <video ng-if="attachment.fileType==='video'" controls="controls" width="160">
             <source src="{{attachment.path}}" type="video/mp4" />
           </video>
-        </div>
-      </div>
+      </div> -->
+       <attachmentitem datasource="attachments" activity-id="{{activity._id}}"></attachmentitem>
     </div>
-    <div class="attachment-container" ng-class="{'hidden-stuff': attachCollapsed}">
+<!--     <div class="attachment-container" ng-class="{'hidden-stuff': attachCollapsed}">
       <img src="{{currentAttach}}">
-    </div>
+    </div> -->
   </div>
 </section>
