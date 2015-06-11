@@ -53,12 +53,6 @@ a.activity-item:hover {
   border: 1px solid #9acfea;
   border-radius: 5px;
   padding: 20px 20px 0px 20px;
-  overflow-y: auto;
-  background-color: #fafafa;
-}
-
-.attachment-gallery > div {
-  display: inline-block;
 }
 
 .attachment-gallery img {
@@ -68,21 +62,4 @@ a.activity-item:hover {
   box-shadow: 0 3px 8px rgba(0,0,0,0.6);
 }
 
-.attachment-gallery img:hover {
-  box-shadow: 0 3px 8px rgba(51,122,183,0.8);
-}
 
-.attachment-container {
-  width: 100%;
-  height: 490px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #9acfea;
-  border-radius: 5px;
-  background-color: #fafafa;
-  text-align: center;
-}
-
-.attachment-container img {
-  margin: 20px auto;
-}

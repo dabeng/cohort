@@ -1,19 +1,4 @@
-<div class="one-attachment" id="comment{{comment.id}}" ng-repeat=" in datasource">
-  <label class="comment-heading" ng-bind="comment.commenter.displayName"></label>
-  <label class="comment-heading" ng-bind="comment.dateTime | date:'MMMM d, y \'at\' h:mm a'"></label>
-  <p ng-bind="comment.content"></p>
-  <hr/>
-</div>
-<textarea class="ta-comment" name="newComment" placeholder=" Write a comment..." ng-trim="boolean" ng-class="{'edit-status':commentEditing}" ng-model="commentValue" ng-click="triggerCommentEdit($event)">{{commentValue}}
-</textarea>
-<div class="row">
-  <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addComment($event)">Add</button>
-  <button type="button" class="btn btn-warning btn-sm pull-right" style="margin-right:10px" ng-click="cancelCommentEdit($event)">Cancel</button>
-</div>
-
-      <div ng-repeat="attachment in attachments">
-          <img ng-if="attachment.fileType==='picture'" src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
-          <video ng-if="attachment.fileType==='video'" controls="controls" width="160">
-            <source src="{{attachment.path}}" type="video/mp4" />
-          </video>
-      </div>
+<a class="one-attachment" ng-href="#!/attachments/{{attachment._id}}" ng-repeat="attachment in datasource">
+  <img ng-if="attachment.fileType==='picture'" src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
+  <img ng-if="attachment.fileType==='video'" src="{{attachment.path}}" width="160" height="90">
+</a>

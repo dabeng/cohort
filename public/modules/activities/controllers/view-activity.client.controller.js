@@ -41,10 +41,10 @@ angular.module('activities').controller('ViewActivityCtrl',
       }
     };
 
-    $scope.playAttachment = function($event) {
-      $scope.attachCollapsed = false;
-      $scope.currentAttach = $event.target.src.replace(/thumb./, 'std.');
-    };
+    // $scope.playAttachment = function($event) {
+    //   $scope.attachCollapsed = false;
+    //   $scope.currentAttach = $event.target.src.replace(/thumb./, 'std.');
+    // };
 
   }
 ]);
