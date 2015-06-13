@@ -95,7 +95,7 @@
               </div>
             </td>
             <td>
-              <textarea class="attach-des" placeholder="Say something"></textarea>
+              <textarea name="attachDes" ng-model="file.attachDes" placeholder="Say something"></textarea>
             </td>
             <td>
               <button type="button" class="btn btn-primary start" data-ng-click="file.$submit()" data-ng-hide="!file.$submit || options.autoUpload" data-ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">
@@ -114,17 +114,8 @@
           </tr>
         </table>
     </form>  
-    <div class="attachment-gallery">
-<!--       <div ng-repeat="attachment in attachments">
-          <img ng-if="attachment.fileType==='picture'" src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
-          <video ng-if="attachment.fileType==='video'" controls="controls" width="160">
-            <source src="{{attachment.path}}" type="video/mp4" />
-          </video>
-      </div> -->
-       <attachmentitem datasource="attachments" activity-id="{{activity._id}}"></attachmentitem>
+    <div class="attachment-container">
+      <attachmentitem datasource="attachments" activity-id="{{activity._id}}"></attachmentitem>
     </div>
-<!--     <div class="attachment-container" ng-class="{'hidden-stuff': attachCollapsed}">
-      <img src="{{currentAttach}}">
-    </div> -->
   </div>
 </section>

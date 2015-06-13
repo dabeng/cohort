@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
   errorHandler = require('./errors.server.controller'),
   Attachment = mongoose.model('Attachment'),
+  Comment = mongoose.model('Comment'),
   _ = require('lodash'),
   fs = require('fs'),
   async = require('async'),
@@ -100,6 +101,27 @@ function keepCoverImage(uploading, callback) {
   );
 }
 
+function finishUplaod(uploading, attachment) {
+  if (uploading.req.body.attachDes) {
+    var comment = new Comment({
+      'content': uploading.req.body.attachDes,
+      'dateTime': Date.now()
+    });
+    comment.activity = uploading.req.activity._doc._id;
+    comment.commenter = uploading.req.user;
+
+    comment.save(function(err) {
+      if (err) {
+        uploading.res.json({ 'error_message': 'Uploading attachment failed' });
+      } else {
+        uploading.res.json({'attachment': attachment, 'comment': comment});
+      }
+    });
+  } else {
+    uploading.res.json({'attachment': attachment});
+  }
+}
+
 function keepImage(uploading) {
   easyimg.info(uploading.tmpPath).then(
     function(file) {
@@ -131,7 +153,7 @@ function keepImage(uploading) {
             if (err) {
               uploading.res.json({ 'error_message': 'Uploading attachment failed' });
             } else {
-              uploading.res.json(attachment);
+              finishUplaod(uploading, attachment);
             }
           });
         }
@@ -161,7 +183,7 @@ function keepVideo(uploading) {
         if (err) {
           uploading.res.json({ 'error_message': 'Uploading attachment failed' });
         } else {
-          uploading.res.json(attachment);
+          finishUplaod(uploading, attachment);
         }
       });
     }

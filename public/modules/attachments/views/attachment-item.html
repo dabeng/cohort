@@ -1,4 +1,4 @@
-<a class="one-attachment" ng-href="#!/attachments/{{attachment._id}}" ng-repeat="attachment in datasource">
+<a class="attachment-item" ng-href="#!/attachments/{{attachment._id}}" ng-repeat="attachment in datasource">
   <img ng-if="attachment.fileType==='picture'" src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
   <img ng-if="attachment.fileType==='video'" src="{{attachment.path}}" width="160" height="90">
 </a>

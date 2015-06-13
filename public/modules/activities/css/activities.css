@@ -49,17 +49,12 @@ a.activity-item:hover {
   margin-right: 5px;
 }
 
-.attachment-gallery {
+.attachment-container {
   border: 1px solid #9acfea;
   border-radius: 5px;
-  padding: 20px 20px 0px 20px;
+  padding: 10px;
 }
 
-.attachment-gallery img {
-  border: 2px solid #fff;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.6);
-}
+
 
 
