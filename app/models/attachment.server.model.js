@@ -32,6 +32,11 @@ var AttachmentSchema = new Schema({
     type: String,
     trim: true
   },
+  dateTime: {
+    type: Date,
+    default: Date.now,
+    expires: 60*60*24
+  },
   activity: {
     type: Schema.ObjectId,
     required: true,

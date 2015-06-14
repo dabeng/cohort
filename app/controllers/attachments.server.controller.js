@@ -145,7 +145,8 @@ function keepImage(uploading) {
             'fileType': 'picture',
             'path': results[0][0].slice(relativePathStart),
             'thumbImagePath': results[0][1].slice(relativePathStart),
-            'coverImagePath': results[1].slice(relativePathStart)
+            'coverImagePath': results[1].slice(relativePathStart),
+            'dateTime': Date.now()
           });
           attachment.activity = uploading.req.activity;
           attachment.uploader = uploading.req.user;
@@ -175,7 +176,8 @@ function keepVideo(uploading) {
       var attachment = new Attachment({
         'name': uploading.filename,
         'fileType': 'video',
-        'path': fullPath.slice(fullPath.indexOf('public') + 7)
+        'path': fullPath.slice(fullPath.indexOf('public') + 7),
+        'dateTime': Date.now()
       });
       attachment.activity = uploading.req.activity;
       attachment.uploader = uploading.req.user;
@@ -306,7 +308,7 @@ exports.list = function(req, res) {
  * attachment middleware
  */
 exports.attachmentByID = function(req, res, next, id) { 
-  Attachment.findById(id).populate('user', 'displayName').exec(function(err, attachment) {
+  Attachment.findById(id).populate('uploader', 'displayName').exec(function(err, attachment) {
     if (err) return next(err);
     if (! attachment) return next(new Error('Failed to load attachment ' + id));
     req.attachment = attachment ;

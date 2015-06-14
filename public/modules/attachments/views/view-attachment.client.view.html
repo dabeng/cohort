@@ -1,11 +1,11 @@
 <section ng-controller="ViewAttachmentCtrl" ng-init="findOne()">
     <div class="page-header">
-    <img ng-if="attachment.fileType==='picture'" src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
-  <video ng-if="attachment.fileType==='video'" controls="controls" width="160">
+    <img ng-if="attachment.fileType==='picture'" src="{{attachment.path}}" ng-click="playAttachment($event)">
+  <video ng-if="attachment.fileType==='video'" controls="controls" width="800">
             <source src="{{attachment.path}}" type="video/mp4" />
           </video>
     </div>
-    <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == cookbook.user._id))">
+    <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == attachment.uploader._id))">
         <a class="btn btn-primary" href="/#!/attachments/{{attachment._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>
         </a>
@@ -15,8 +15,8 @@
     </div>
     <small>
         <em class="text-muted">
-            Posted on
-            <span data-ng-bind="attachment.dateTime | date:'mediumDate'"></span>
+            Uploaded on
+            <span data-ng-bind="attachment.dateTime | date:'MMMM d, y \'at\' h:mm a'"></span>
             by
             <span data-ng-bind="attachment.uploader.displayName"></span>
         </em>
