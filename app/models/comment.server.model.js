@@ -21,8 +21,11 @@ var CommentSchema = new Schema({
   },
   activity: {
     type: Schema.ObjectId,
-    required: true,
     ref: 'Activity'
+  },
+  attachment: {
+    type: Schema.ObjectId,
+    ref: 'Attachment'
   },
   commenter: {
     type: Schema.ObjectId,

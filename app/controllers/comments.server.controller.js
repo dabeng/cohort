@@ -78,6 +78,9 @@ exports.list = function(req, res) {
   if (req.query.activity) {
     req.query.activity = new ObjectId(req.query.activity);
   }
+  if (req.query.attachment) {
+    req.query.attachment = new ObjectId(req.query.attachment);
+  }
   Comment.find( req.query || {}).populate('commenter', 'displayName').exec(function(err, comments) {
     if (err) {
       return res.status(400).send({

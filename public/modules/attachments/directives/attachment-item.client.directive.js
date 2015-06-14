@@ -4,12 +4,12 @@ angular.module('attachments').directive('attachmentitem', function() {
   return {
     restrict: 'E',
     scope: {
-      datasource: '=',
-      activityId: '@'
+      datasource: '='
     },
     templateUrl: 'modules/attachments/views/attachment-item.html',
     controller: function($scope, Comments) {
-
+      // var ngRef = angular.element(this).prop('nf-ref').val();
+      // $scope.comments = Comments.query({attachment: ngRef.slice(ngRef.lastIndexOf('/'))});
 
 
     }

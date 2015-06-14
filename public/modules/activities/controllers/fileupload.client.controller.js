@@ -4,10 +4,6 @@ angular.module('activities')
   .controller('AttachmentUploadCtrl', [ '$scope', '$http', '$filter', '$window', function ($scope, $http) {
     $scope.options = {
       // loadVideoFileTypes: /^mp4$/
-      // multipart: true,
-      // formData: function() {
-      //   return {'firstComment': angular.element('.attach-des').val()};
-      // }
     };
 
     $scope.$on('fileuploadsubmit', function (e, data) {

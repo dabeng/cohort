@@ -107,7 +107,7 @@ function finishUplaod(uploading, attachment) {
       'content': uploading.req.body.attachDes,
       'dateTime': Date.now()
     });
-    comment.activity = uploading.req.activity._doc._id;
+    comment.attachment = attachment._doc._id;
     comment.commenter = uploading.req.user;
 
     comment.save(function(err) {
