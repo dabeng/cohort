@@ -36,7 +36,8 @@
   </div>
   <div class="row">
     <label class="control-label"><i class="fa fa-comments fa-lg"></i>Discussions</label>
-    <commentcontainer datasource="comments" activity-id="{{activity._id}}"></commentcontainer>
+    <commentitem datasource="comments"></commentitem>
+    <commenteditor datasource="comments" activity-id="{{activity._id}}"></commenteditor>
   </div>
   <div class="row">
     <label class="control-label"><i class="fa fa-picture-o fa-lg"></i>Pictures and Vedios</label>
@@ -115,7 +116,7 @@
         </table>
     </form>  
     <div class="attachment-container">
-      <attachmentitem datasource="attachments" activity-id="{{activity._id}}"></attachmentitem>
+      <attachmentitem datasource="attachments"></attachmentitem>
     </div>
   </div>
 </section>

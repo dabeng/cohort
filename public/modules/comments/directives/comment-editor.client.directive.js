@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('comments').directive('commentcontainer', function() {
+angular.module('comments').directive('commenteditor', function() {
   return {
     restrict: 'E',
     scope: {
       datasource: '=',
       activityId: '@'
     },
-    templateUrl: 'modules/comments/views/comment-container.html',
+    templateUrl: 'modules/comments/views/comment-editor.html',
     controller: function($scope, Comments) {
 
       $scope.commentEditing = false;
@@ -25,7 +25,7 @@ angular.module('comments').directive('commentcontainer', function() {
 
       $scope.cancelCommentEdit = function($event) {
         $event.stopPropagation();
-        angular.element($event.target).closest('commentcontainer').find('.ta-comment').attr('style','');
+        angular.element($event.target).closest('commenteditor').find('.ta-comment').attr('style','');
         $scope.commentValue = '';
         $scope.commentEditing = false;
       };
