@@ -18,8 +18,10 @@ angular.module('comments').directive('commentitem', function() {
       }
       $scope.datasource = Comments.query(param);
 
-      $scope.$on('newcomment', function(e, newComment) {
-        $scope.datasource.push(newComment);
+      $scope.$on('newcomment', function(event, newComment) {
+        if (event.currentScope.activityId) {
+          $scope.datasource.push(newComment);
+        }
       });
     }
   }

@@ -4,7 +4,6 @@ angular.module('comments').directive('commenteditor', function() {
   return {
     restrict: 'E',
     scope: {
-      datasource: '=',
       activityId: '@'
     },
     templateUrl: 'modules/comments/views/comment-editor.html',
