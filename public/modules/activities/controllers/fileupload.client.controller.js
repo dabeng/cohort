@@ -8,7 +8,9 @@ angular.module('activities')
     };
 
     $scope.$on('fileuploadsubmit', function (e, data) {
-      data.formData = {'attachDes': data.files[0].attachDes};
+      if (data.files[0].attachDes) {
+        data.formData = {'attachDes': data.files[0].attachDes};
+      }
     });
 
     $scope.$on('fileuploaddone', function(e, data) {
