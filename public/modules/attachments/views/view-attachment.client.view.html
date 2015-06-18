@@ -1,17 +1,17 @@
 <section ng-controller="ViewAttachmentCtrl" ng-init="findOne()">
-    <div class="page-header">
+  <div class="page-header original-attach">
     <img ng-if="attachment.fileType==='picture'" src="{{attachment.path}}" ng-click="playAttachment($event)">
-  <video ng-if="attachment.fileType==='video'" controls="controls" width="800">
-            <source src="{{attachment.path}}" type="video/mp4" />
-          </video>
-    </div>
-    <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == attachment.uploader._id))">
-        <a class="btn btn-primary" href="/#!/attachments/{{attachment._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i>
-        </a>
-        <a class="btn btn-primary" ng-click="remove();">
-            <i class="glyphicon glyphicon-trash"></i>
-        </a>
+    <video ng-if="attachment.fileType==='video'" controls="controls">
+      <source src="{{attachment.path}}" type="video/mp4" />
+    </video>
+  </div>
+  <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == attachment.uploader._id))">
+    <a class="btn btn-primary" href="/#!/attachments/{{attachment._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
     </div>
     <small>
         <em class="text-muted">
