@@ -18,32 +18,32 @@
       <span data-ng-bind="activity.user.displayName"></span>
     </em>
   </small>
-  <div class="row">
-    <label class="control-label"><i class="fa fa-tags fa-lg"></i>Category</label>
-    <p class="alert alert-info" data-ng-bind="activity.category"></p>
+  <div class="activity-factor">
+    <label><i class="fa fa-tags fa-lg"></i> Category</label>
+    <p data-ng-bind="activity.category"></p>
   </div>
-  <div class="row">
-    <label class="control-label"><i class="fa fa-clock-o fa-lg"></i>Date and Time</label>
-    <p class="alert alert-info" data-ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></p>
+  <div class="activity-factor">
+    <label><i class="fa fa-clock-o fa-lg"></i> Date and Time</label>
+    <p data-ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></p>
   </div>
-  <div class="row">
-    <label class="control-label"><i class="fa fa-anchor fa-lg"></i>Destination</label>
-    <p class="alert alert-info" data-ng-bind="activity.dest"></p>
+  <div class="activity-factor">
+    <label><i class="fa fa-anchor fa-lg"></i> Destination</label>
+    <p data-ng-bind="activity.dest"></p>
   </div>
-  <div class="row">
-    <label class="control-label"><i class="fa fa-paper-plane fa-lg"></i>Route</label>
-    <p class="alert alert-info" data-ng-bind="activity.route"></p>
+  <div class="activity-factor">
+    <label><i class="fa fa-paper-plane fa-lg"></i> Route</label>
+    <p data-ng-bind="activity.route"></p>
   </div>
-  <div class="row">
-    <label class="control-label"><i class="fa fa-comments fa-lg"></i>Discussions</label>
+  <div class="activity-factor">
+    <label><i class="fa fa-comments fa-lg"></i> Discussions</label>
     <commentitem activity-id="{{activityId}}"></commentitem>
-    <commenteditor activity-id="{{activityId}}"></commenteditor>
+    <commenteditor activity-id="{{activityId}}" style="width:100%;"></commenteditor>
   </div>
-  <div class="row">
-    <label class="control-label"><i class="fa fa-picture-o fa-lg"></i>Pictures and Vedios</label>
+  <div class="activity-factor">
+    <label class="control-label"><i class="fa fa-picture-o fa-lg"></i> Pictures and Vedios</label>
     <form id="fileupload" action="{{'/attachments/' + activity._id}}" method="POST" enctype="multipart/form-data" data-ng-controller="AttachmentUploadCtrl" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
       <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-      <div class="row fileupload-buttonbar">
+      <div class="fileupload-buttonbar">
         <div class="col-lg-7">
           <!-- The fileinput-button span is used to style the file input field as button -->
           <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">

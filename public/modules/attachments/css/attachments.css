@@ -1,11 +1,9 @@
 
 .attachment-container {
   width: 100%;
-  margin-top: 10px;
   margin-bottom: 15px;
-  border: 1px solid #9acfea;
-  border-radius: 5px;
-  background-color: #fafafa;
+  border: 1px solid #666;
+  border-radius: 4px;
 }
 
 .attachment-item {

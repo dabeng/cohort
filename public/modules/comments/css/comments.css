@@ -1,3 +1,7 @@
+commenteditor {
+  display: inline-block;
+}
+
 .ta-comment {
   width: 100%;
   resize: vertical;
