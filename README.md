@@ -1,4 +1,2 @@
 # Cohort
-Cohort is a activity management tool for cohortstool. It'b based on AngularJS + NodeJS + MongoDB.
-
-Welcome to find your true life in your cohorts.
+Cohort is a hotchpotch where you can share any media stuff with your dudes. In the other hand, I regard it as a undefended area where I play around and demonstrate the every aspect of MEAN.JS(MongoDB + Express + AngularJS + Node.js).
