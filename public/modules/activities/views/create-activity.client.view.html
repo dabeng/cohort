@@ -7,11 +7,11 @@
       <fieldset>
         <div class="form-group">
           <div class="activity-factor">
-            <label><i class="fa fa-leaf fa-lg"></i> Name</label>
+            <label class="control-label"><i class="fa fa-leaf fa-lg"></i> Name</label>
             <input type="text" data-ng-model="name" class="form-control" placeholder="Name" required>
           </div>
           <div class="activity-factor">
-            <label><i class="fa fa-tags fa-lg"></i> Category</label>
+            <label class="control-label"><i class="fa fa-tags fa-lg"></i> Category</label>
             <div class="btn-group" style="width: 100%;">
               <label class="btn btn-default cat-label" ng-model="category" btn-radio="'basketball'">
                 <i class="fa fa-dribbble fa-lg"></i>basketball
@@ -31,23 +31,22 @@
             </div>
           </div>
           <div class="activity-factor" style="height:80px;">
-            <label><i class="fa fa-clock-o fa-lg"></i> Date and Time</label>
+            <label class="control-label"><i class="fa fa-clock-o fa-lg"></i> Date and Time</label>
             <p class="input-group" style="width:200px;">
               <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
-            <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -78px; left: 250px;"></timepicker>
+            <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -78px; left: 230px;"></timepicker>
           </div>
           <div class="activity-factor">
-              <label><i class="fa fa-anchor fa-lg"></i> Destination</label>
-                <input type="text" data-ng-model="dest" class="form-control" placeholder="Destination" required>
-              
-            </div>
-            <div class="activity-factor">
-              <label><i class="fa fa-paper-plane fa-lg"></i> Route</label>
-                <input type="text" data-ng-model="route" class="form-control" placeholder="Route">
+            <label class="control-label"><i class="fa fa-anchor fa-lg"></i> Destination</label>
+            <input type="text" data-ng-model="dest" class="form-control" placeholder="Destination" required>  
+          </div>
+          <div class="activity-factor">
+            <label class="control-label"><i class="fa fa-paper-plane fa-lg"></i> Route</label>
+            <input type="text" data-ng-model="route" class="form-control" placeholder="Route">
           </div>
         </div>  
         <div class="form-group">
