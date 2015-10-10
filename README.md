@@ -9,6 +9,6 @@ Cohort is a hotchpotch where you can share any media stuff with your dudes. In t
 
 ## Subscriber
 
-## Online invitation letter creater
+## Invitation letter creater
 
-## Online whiteboard creater
+## Whiteboard creater
