@@ -4,6 +4,6 @@
     <video ng-if="datasource.fileType==='video'" src="{{datasource.path}}" width="160" height="90"></video>
   </div>
   <div class="col-md-9">
-    <!-- <commentitem attachment-id="{{attachment._id}}"></commentitem> -->
+    <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
   </div>
 </a>
