@@ -60,11 +60,24 @@ a.activity-item:hover {
   max-height: 180px;
 }
 
-.activity-factor > label {
+.activity-factor {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.activity-factor > p {
+#create-activity .activity-factor {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.activity-factor > label {
+  color: #fff;
+  background-color: #333;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+#view-activity .activity-factor > p {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid #666;
