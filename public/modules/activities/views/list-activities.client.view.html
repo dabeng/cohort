@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-4" data-ng-repeat="activity in activities">
         <a data-ng-href="#!/activities/{{activity._id}}" class="activity-item">
-          <img class="activity-cover" src="modules/activities/img/{{activity.category}}.jpg">
+          <img class="activity-cover" ng-src="modules/activities/img/{{activity.category}}.jpg">
             <small class="activity-details">
               Posted on
               <span data-ng-bind="activity.created | date:'short'"></span>
