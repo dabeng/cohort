@@ -38,6 +38,7 @@ angular.module('comments').directive('commenteditor', function() {
         };
 
         Comments.save(params, function(newComment) {
+          newComment.commenter = $scope.$parent.authentication.user;
           $scope.$parent.$broadcast("newComment", newComment);
           $scope.cancelCommentEdit($event);
         });
