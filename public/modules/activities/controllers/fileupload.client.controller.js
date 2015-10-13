@@ -19,6 +19,7 @@ angular.module('activities')
       } else {
         $scope.$parent.attachments = $scope.$parent.attachments.concat(data.result.attachment);
         data.files[0].$destroy();
+
       }
     });
 

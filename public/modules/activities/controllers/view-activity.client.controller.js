@@ -20,9 +20,10 @@ angular.module('activities').controller('ViewActivityCtrl',
         activity: $stateParams.activityId
       });
 
-      // $scope.comments = Comments.query({
-      //   activity: $stateParams.activityId
-      // });
+      $scope.comments = Comments.query({
+        activity: $stateParams.activityId
+      });
+
     };
 
     // Remove existing Activity
@@ -41,6 +42,10 @@ angular.module('activities').controller('ViewActivityCtrl',
         });
       }
     };
+
+    $scope.$on('newComment', function(e, data) {
+      $scope.comments.push(data);
+    });
 
   }
 ]);

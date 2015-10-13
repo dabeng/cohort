@@ -38,7 +38,7 @@ angular.module('comments').directive('commenteditor', function() {
         };
 
         Comments.save(params, function(newComment) {
-          $scope.$parent.$broadcast("newcomment", newComment);
+          $scope.$parent.$broadcast("newComment", newComment);
           $scope.cancelCommentEdit($event);
         });
       };
