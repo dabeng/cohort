@@ -7,6 +7,14 @@ angular.module('activities')
         maxFileSize: 100000000
     };
 
+    $scope.$on('fileuploadprocess', function (e, data) {
+      var image = new Image();
+      image.onload = function() {
+        alert("The image width is " +this.width + " and image height is " + this.height);
+      };
+      image.src = URL.createObjectURL(data.files[0]);
+    });
+
     $scope.$on('fileuploadsubmit', function (e, data) {
       if (data.files[0].attachDes) {
         data.formData = {'attachDes': data.files[0].attachDes};
