@@ -44,6 +44,7 @@ angular.module('activities').controller('ViewActivityCtrl',
     };
 
     $scope.$on('newComment', function(e, data) {
+      data.commenter = $scope.authentication.user;
       $scope.comments.push(data);
     });
 
