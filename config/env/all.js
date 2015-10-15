@@ -44,6 +44,7 @@ module.exports = {
         'public/lib/blueimp-file-upload/js/jquery.fileupload-validate.js',
         'public/lib/blueimp-file-upload/js/jquery.fileupload-angular.js',
         'public/lib/highcharts/highcharts.js',
+        // 'public/js/jquery.fileupload-attachment.validate.js',
         'public/js/mapdata/map.js',
         'public/js/mapdata/world.js',
         'public/lib/highcharts-ng/dist/highcharts-ng.js'

@@ -7,12 +7,21 @@ angular.module('activities')
         maxFileSize: 100000000
     };
 
+    // $scope.$on('fileuploadadd', function (e, data) {
+    //    var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'jpeg,jpg,gif';
+    //                 if (allowdtypes.indexOf(fileType) < 0) {
+    //                     // alert('Invalid file type, aborted');
+    //                     return false;
+    //                 }
+    // });
+
     $scope.$on('fileuploadprocess', function (e, data) {
-      var image = new Image();
-      image.onload = function() {
-        alert("The image width is " +this.width + " and image height is " + this.height);
-      };
-      image.src = URL.createObjectURL(data.files[0]);
+      // data.files[0].error = true;
+      // var image = new Image();
+      // image.onload = function() {
+      //   //alert("The image width is " +this.width + " and image height is " + this.height);
+      // };
+      // image.src = URL.createObjectURL(data.files[0]);
     });
 
     $scope.$on('fileuploadsubmit', function (e, data) {
