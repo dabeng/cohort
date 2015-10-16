@@ -31,6 +31,7 @@ function keepThumbnailImage(uploading, callback) {
   );
 }
 
+// crop the pictures to the standard size that is 16:9 and bigger than 450x450
 function keepStandardImage(uploading, callback) {
   var originalWidth = uploading.originalWidth;
   var originalHeight = uploading.originalHeight;
@@ -39,7 +40,7 @@ function keepStandardImage(uploading, callback) {
   var resizeHeight = 0;
   var stdImagePath = uploading.targetPath + '/' + uploading.timestamp + '-' + uploading.filename
     + '-std' + uploading.extension;
-  if (originalWidth > 800 || originalHeight > 450) {
+  if (originalWidth >= 800 || originalHeight >= 450) {
     if (originalWidth / originalHeight >= ratio) {
       resizeHeight = 450;
     } else {
