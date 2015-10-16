@@ -12,8 +12,16 @@ $.widget('blueimp.fileupload', $.blueimp.fileupload, {
       var imageTypes = /^image\/(gif|jpe?g|png)$/;
       if (imageTypes.test(file.type)) {
         var maxSize =  5*1024*1024;
+        var minSize = 50*1024;
         if (file.size > maxSize) {
           file.error = 'Picture should be less than 5M';
+          data.files.error = true;
+          dfd.rejectWith(this, [data]);
+        } else {
+          dfd.resolveWith(this, [data]);
+        }
+      if (file.size < minSize) {
+          file.error = 'Picture should be more than 50K';
           data.files.error = true;
           dfd.rejectWith(this, [data]);
         } else {
