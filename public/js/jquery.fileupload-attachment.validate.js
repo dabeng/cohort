@@ -1,6 +1,7 @@
 $.blueimp.fileupload.prototype.options.processQueue.push(
   { action: 'imageSize' },
-  { action: 'imageDimension' }
+  { action: 'imageDimension' },
+  { action: 'videoSize' }
 );
 
 $.widget('blueimp.fileupload', $.blueimp.fileupload, {
@@ -8,7 +9,7 @@ $.widget('blueimp.fileupload', $.blueimp.fileupload, {
     imageSize: function (data, options) {
       var dfd = $.Deferred();
       var file = data.files[data.index];
-      var imageTypes = /(\.|\/)(gif|jpe?g|png)$/i;
+      var imageTypes = /^image\/(gif|jpe?g|png)$/;
       if (imageTypes.test(file.type)) {
         var maxSize =  5*1024*1024;
         if (file.size > maxSize) {
@@ -26,12 +27,12 @@ $.widget('blueimp.fileupload', $.blueimp.fileupload, {
     imageDimension: function (data, options) {
       var dfd = $.Deferred();
       var file = data.files[data.index];
-      var imageTypes = /(\.|\/)(gif|jpe?g|png)$/i;
+      var imageTypes = /^image\/(gif|jpe?g|png)$/;
       if (imageTypes.test(file.type)) {
         var image = new Image();
         image.onload = function() {
-          if (this.width < 300 || this.height < 300) {
-            file.error = 'Picture should be bigger than 300x300';
+          if (this.width < 450 || this.height < 450) {
+            file.error = 'Picture should be bigger than 450x450';
           }
           if (this.width > 8000 || this.height > 4500) {
             if (file.error) {
@@ -48,6 +49,24 @@ $.widget('blueimp.fileupload', $.blueimp.fileupload, {
           }
         };
         image.src = URL.createObjectURL(data.files[0]);
+      } else {
+        dfd.resolveWith(this, [data]);
+      }
+      return dfd.promise();
+    },
+    videoSize: function (data, options) {
+      var dfd = $.Deferred();
+      var file = data.files[data.index];
+      var videoTypes = /^video\/.*$/;
+      if (videoTypes.test(file.type)) {
+        var maxSize =  50*1024*1024;
+        if (file.size > maxSize) {
+          file.error = 'Video should be less than 50M';
+          data.files.error = true;
+          dfd.rejectWith(this, [data]);
+        } else {
+          dfd.resolveWith(this, [data]);
+        }
       } else {
         dfd.resolveWith(this, [data]);
       }

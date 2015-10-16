@@ -3,8 +3,7 @@
 angular.module('activities')
   .controller('AttachmentUploadCtrl', [ '$scope', '$http', '$filter', '$window', function ($scope, $http) {
     $scope.options = {
-      // loadVideoFileTypes: /^mp4$/
-        maxFileSize: 100000000
+      acceptFileTypes: /(\.|\/)(gif|jpe?g|png|mp4)$/i
     };
 
     // $scope.$on('fileuploadadd', function (e, data) {
