@@ -6,23 +6,6 @@ angular.module('activities')
       acceptFileTypes: /(\.|\/)(gif|jpe?g|png|mp4)$/i
     };
 
-    // $scope.$on('fileuploadadd', function (e, data) {
-    //    var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'jpeg,jpg,gif';
-    //                 if (allowdtypes.indexOf(fileType) < 0) {
-    //                     // alert('Invalid file type, aborted');
-    //                     return false;
-    //                 }
-    // });
-
-    $scope.$on('fileuploadprocess', function (e, data) {
-      // data.files[0].error = true;
-      // var image = new Image();
-      // image.onload = function() {
-      //   //alert("The image width is " +this.width + " and image height is " + this.height);
-      // };
-      // image.src = URL.createObjectURL(data.files[0]);
-    });
-
     $scope.$on('fileuploadsubmit', function (e, data) {
       if (data.files[0].attachDes) {
         data.formData = {'attachDes': data.files[0].attachDes};
@@ -33,9 +16,9 @@ angular.module('activities')
       if (data.result.error_message) {
         alert(data.result.error_message);
       } else {
-        $scope.$parent.attachments = $scope.$parent.attachments.concat(data.result.attachment);
+        // $scope.$parent.attachments = $scope.$parent.attachments.concat();
         data.files[0].$destroy();
-
+        $scope.$emit('newAttachment', data.result.attachment);
       }
     });
 

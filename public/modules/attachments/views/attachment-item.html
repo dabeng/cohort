@@ -1,9 +1,19 @@
-<a class="attachment-item row" ng-href="#!/attachments/{{attachment._id}}">
-  <div class="col-md-3">
+<div class="attachment-item row">
+  <a class="col-md-3" ng-href="#!/attachments/{{attachment._id}}">
     <img ng-if="attachment.fileType==='picture'" ng-src="{{attachment.thumbImagePath}}" ng-click="playAttachment($event)">
     <video ng-if="attachment.fileType==='video'" ng-src="{{attachment.path}}" width="160" height="90"></video>
+  </a>
+  <div class="col-md-3">
+    <small>
+      <em class="text-muted">
+        Uploaded on
+        <span ng-bind="attachment.dateTime | date:'MMMM d, y \'at\' h:mm a'"></span>
+        by
+        <span ng-bind="attachment.uploader.displayName"></span>
+      </em>
+    </small>
   </div>
-  <div class="col-md-9">
+  <div class="col-md-6">
     <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
   </div>
-</a>
+</div>

@@ -9,22 +9,18 @@ angular.module('activities').controller('ViewActivityCtrl',
     $scope.currentAttach = "";
     $scope.attachCollapsed = true;
 
-    // Find existing Activity
-    $scope.init = function() {
-      $scope.activity = Activities.get({
-        activityId: $stateParams.activityId
-      });
-      $scope.activityId = $stateParams.activityId;
+    $scope.activity = Activities.get({
+      activityId: $stateParams.activityId
+    });
+    $scope.activityId = $stateParams.activityId;
 
-      $scope.attachments = Attachments.query({
-        activity: $stateParams.activityId
-      });
+    $scope.attachments = Attachments.query({
+      activity: $stateParams.activityId
+    });
 
-      $scope.comments = Comments.query({
-        activity: $stateParams.activityId
-      });
-
-    };
+    $scope.comments = Comments.query({
+      activity: $stateParams.activityId
+    });
 
     // Remove existing Activity
     $scope.remove = function(activity) {
@@ -46,6 +42,11 @@ angular.module('activities').controller('ViewActivityCtrl',
     $scope.$on('newComment', function(e, data) {
       data.commenter = $scope.authentication.user;
       $scope.comments.push(data);
+    });
+
+    $scope.$on('newAttachment', function(e, data) {
+      data.uploader = $scope.authentication.user;
+      $scope.attachments.push(data);
     });
 
   }

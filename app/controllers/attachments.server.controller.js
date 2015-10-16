@@ -227,24 +227,6 @@ exports.uploadAttachment = function(req, res) {
 };
 
 /**
- * Create a Attachment
- */
-exports.createAttachmentRecord = function(req, res) {
-  var attachment = new Attachment(req.body);
-  attachment.user = req.user;
-
-  attachment.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(attachment);
-    }
-  });
-};
-
-/**
  * Show the current attachment
  */
 exports.read = function(req, res) {
