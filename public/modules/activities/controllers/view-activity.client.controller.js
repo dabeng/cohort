@@ -24,19 +24,9 @@ angular.module('activities').controller('ViewActivityCtrl',
 
     // Remove existing Activity
     $scope.remove = function(activity) {
-      if ( activity ) {
-        activity.$remove();
-
-        for (var i in $scope.activities) {
-          if ($scope.activities [i] === activity) {
-            $scope.activities.splice(i, 1);
-          }
-        }
-      } else {
-        $scope.activity.$remove(function() {
-          $location.path('activities');
-        });
-      }
+      $scope.activity.$remove(function() {
+        $location.path('activities');
+      });
     };
 
     $scope.$on('newComment', function(e, data) {
