@@ -4,7 +4,7 @@ angular.module('comments').directive('commenteditor', function() {
   return {
     restrict: 'E',
     scope: {
-      activityId: '@'
+      foreignKey: '@'
     },
     templateUrl: 'modules/comments/views/comment-editor.html',
     controller: function($scope, Comments) {
@@ -33,9 +33,10 @@ angular.module('comments').directive('commenteditor', function() {
         $event.stopPropagation();
         var params = {
           'content': $scope.commentValue,
-          'dateTime': new Date(),
-          'activity': $scope.activityId
+          'dateTime': new Date()
         };
+        var foreignKey = angular.fromJson($scope.foreignKey);
+        params[foreignKey.name] = foreignKey.value;
 
         Comments.save(params, function(newComment) {
           $scope.$emit('newComment', newComment);
