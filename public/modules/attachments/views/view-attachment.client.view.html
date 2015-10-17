@@ -23,5 +23,5 @@
   </small>
   <label><i class="fa fa-comments fa-lg"></i> Discussions</label>
   <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
-  <commenteditor activity-id="{{activityId}}" style="width:100%;"></commenteditor>
+  <commenteditor foreign-key='{"name":"attachment","value":"{{attachment._id}}"}' style="width:100%;"></commenteditor>
 </section>

@@ -12,7 +12,6 @@ angular.module('activities').controller('ViewActivityCtrl',
     $scope.activity = Activities.get({
       activityId: $stateParams.activityId
     });
-    $scope.activityId = $stateParams.activityId;
 
     $scope.attachments = Attachments.query({
       activity: $stateParams.activityId

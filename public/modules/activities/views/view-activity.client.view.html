@@ -37,7 +37,7 @@
   <div class="activity-factor">
     <label><i class="fa fa-comments fa-lg"></i> Discussions</label>
     <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
-    <commenteditor foreign-key='{"name":"activity","value":"{{activityId}}"}' style="width:100%;"></commenteditor>
+    <commenteditor foreign-key='{"name":"activity","value":"{{activity._id}}"}' style="width:100%;"></commenteditor>
   </div>
   <div class="activity-factor">
     <label class="control-label"><i class="fa fa-picture-o fa-lg"></i> Pictures and Vedios</label>
