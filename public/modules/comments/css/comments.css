@@ -1,8 +1,13 @@
+.one-comment {
+  border-bottom: 1px dashed #666;
+}
+
 commenteditor {
   display: inline-block;
 }
 
 .ta-comment {
+  margin-top: 10px;
   width: 100%;
   resize: vertical;
 }

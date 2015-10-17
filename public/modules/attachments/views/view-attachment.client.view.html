@@ -21,7 +21,9 @@
       <span data-ng-bind="attachment.uploader.displayName"></span>
     </em>
   </small>
-  <label><i class="fa fa-comments fa-lg"></i> Discussions</label>
-  <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
-  <commenteditor foreign-key='{"name":"attachment","value":"{{attachment._id}}"}' style="width:100%;"></commenteditor>
+  <div style="margin-top:20px;">
+    <label style="display:block;"><i class="fa fa-comments fa-lg"></i> Discussions</label>
+    <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
+    <commenteditor foreign-key='{"name":"attachment","value":"{{attachment._id}}"}' style="width:100%;"></commenteditor>
+  </div>
 </section>
