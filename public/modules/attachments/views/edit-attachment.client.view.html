@@ -1,0 +1,29 @@
+<section data-ng-controller="EditAttachmentCtrl" data-ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Attachment</h1>
+  </div>
+  <div class="col-md-12">
+    <div class="original-attach">
+      <img ng-if="attachment.fileType==='picture'" ng-src="{{attachment.path}}" ng-click="playAttachment($event)">
+      <video ng-if="attachment.fileType==='video'" controls="controls">
+        <source ng-src="{{attachment.path}}" type="video/mp4" />
+      </video>
+    </div>
+    <form class="form-horizontal" data-ng-submit="update()" novalidate>
+      <fieldset>
+        <div class="form-group">
+    <!--       <label class="control-label" for="name">Name</label>
+          <div class="controls">
+            <input type="text" data-ng-model="cookbook.name" id="name" class="form-control" placeholder="Name" required>
+          </div> -->
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

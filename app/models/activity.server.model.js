@@ -32,7 +32,6 @@ var ActivitySchema = new Schema({
   },
   dateTime: {
     type: Date,
-    default: Date.now,
     expires: 60*60*24
   },
   dest: {
