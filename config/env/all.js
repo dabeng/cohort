@@ -23,6 +23,7 @@ module.exports = {
       js: [
         'public/lib/jquery/dist/jquery.js',
         'public/lib/DataTables/media/js/jquery.dataTables.js',
+        'public/lib/DataTables/media/js/dataTables.bootstrap.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js', 
         'public/lib/angular-cookies/angular-cookies.js', 
