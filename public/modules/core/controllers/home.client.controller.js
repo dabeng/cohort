@@ -1,13 +1,13 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$animate',
-  function($scope, Authentication, $animate) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication',
+  function($scope, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
-    $animate.enabled(false);
     $scope.myInterval = 3000;
+    $scope.noWrapSlides = false;
     $scope.slides = [{ image: 'modules/core/img/slides/01.jpg', text: 'basketball at Dida' },
       { image: 'modules/core/img/slides/02.jpg', text: 'basketball at Qinghua' },
       { image: 'modules/core/img/slides/03.jpg', text: 'basketball at Beida' },

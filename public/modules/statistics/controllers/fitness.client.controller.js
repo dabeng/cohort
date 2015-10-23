@@ -26,7 +26,7 @@ angular.module('statistics').controller('FitnessCtrl', function($scope) {
   var columns = [
     { title: 'pull-up' },
     { title: 'sit-up' },
-    { title: 'running' },
+    { title: 'running (km)' },
     { title: 'date' }
   ];
 
@@ -39,5 +39,7 @@ angular.module('statistics').controller('FitnessCtrl', function($scope) {
     'data': dataset,
     'initComplete': initCompleteCallback
   };
+
+  $scope.dateTime = new Date();
 
 });

@@ -1,13 +1,13 @@
 <section data-ng-controller="HomeController">
   <div id="slides-wrapper">
-    <carousel interval="myInterval" set-ng-animate="false" id="welcome-slides">
-      <slide ng-repeat="slide in slides" active="slide.active">
+    <uib-carousel interval="myInterval" no-wrap="noWrapSlides" id="welcome-slides">
+      <uib-slide ng-repeat="slide in slides" active="slide.active">
         <img ng-src="{{slide.image}}" style="margin:auto;">
         <div class="carousel-caption">
           <h2>{{slide.text}}</h2>
         </div>
-      </slide>
-    </carousel>
+      </uib-slide>
+    </uib-carousel>
   </div>
   <div class="container-fluid">
     <div class="row">
