@@ -6,9 +6,11 @@
     <form class="form-horizontal" data-ng-submit="create()" novalidate>
       <fieldset>
         <div class="form-group">
-          <div class="activity-factor">
-            <label class="control-label"><i class="fa fa-leaf fa-lg"></i> Name</label>
-            <input type="text" data-ng-model="name" class="form-control" placeholder="Name" required>
+          <div class="row">
+            <div class="col-md-2 field-name">Name</div>
+            <div class="col-md-10">
+              <input type="text" ng-model="name" class="form-control" aria-describedby="activity-name" required>
+            </div>
           </div>
           <div class="activity-factor">
             <label class="control-label"><i class="fa fa-tags fa-lg"></i> Category</label>
@@ -40,13 +42,13 @@
             </p>
             <uib-timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -78px; left: 230px;"></uib-timepicker>
           </div>
-          <div class="activity-factor">
-            <label class="control-label"><i class="fa fa-anchor fa-lg"></i> Destination</label>
-            <input type="text" data-ng-model="dest" class="form-control" placeholder="Destination" required>  
+          <div class="input-group">
+            <span class="input-group-addon" id="activity-dest">Destination</span>
+            <input type="text" ng-model="dest" class="form-control" aria-describedby="activity-dest" required>
           </div>
-          <div class="activity-factor">
-            <label class="control-label"><i class="fa fa-paper-plane fa-lg"></i> Route</label>
-            <input type="text" data-ng-model="route" class="form-control" placeholder="Route">
+          <div class="input-group">
+            <span class="input-group-addon" id="activity-route">Route</span>
+            <input type="text" ng-model="route" class="form-control" aria-describedby="activity-route" required>
           </div>
         </div>  
         <div class="form-group">

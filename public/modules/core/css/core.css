@@ -70,3 +70,7 @@ html, body {
   background-repeat: repeat-x;
   border-color: #ccc;
 }
+.field-name {
+  text-align: right;
+  line-height: 34px;
+}
