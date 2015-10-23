@@ -13,19 +13,19 @@
           <div class="activity-factor">
             <label class="control-label"><i class="fa fa-tags fa-lg"></i> Category</label>
             <div class="btn-group" style="width: 100%;">
-              <label class="btn btn-default cat-label" ng-model="category" btn-radio="'basketball'">
+              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'basketball'">
                 <i class="fa fa-dribbble fa-lg"></i>basketball
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" btn-radio="'football'">
+              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'football'">
                 <i class="fa fa-futbol-o fa-lg"></i>football
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" btn-radio="'fishing'">
+              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'fishing'">
                 <i class="fa fa-ticket fa-lg"></i>fishing
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" btn-radio="'party'">
+              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'party'">
                 <i class="fa fa-beer fa-lg"></i>party
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" btn-radio="'travel'">
+              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'travel'">
                 <i class="fa fa-plane fa-lg"></i>travel
               </label>
             </div>
@@ -33,12 +33,12 @@
           <div class="activity-factor" style="height:80px;">
             <label class="control-label"><i class="fa fa-clock-o fa-lg"></i> Date and Time</label>
             <p class="input-group" style="width:200px;">
-              <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
+              <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
-            <timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -78px; left: 230px;"></timepicker>
+            <uib-timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -78px; left: 230px;"></uib-timepicker>
           </div>
           <div class="activity-factor">
             <label class="control-label"><i class="fa fa-anchor fa-lg"></i> Destination</label>

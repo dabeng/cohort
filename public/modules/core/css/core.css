@@ -65,8 +65,8 @@ html, body {
   border: 1px dashed;
 }
 .input-group-addon {
-  color: #fff;
-  font-weight: bold;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  text-shadow: 0 1px 0 #fff;
+  background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+  background-repeat: repeat-x;
+  border-color: #ccc;
 }
