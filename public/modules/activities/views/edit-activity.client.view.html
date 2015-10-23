@@ -16,19 +16,19 @@
             <label class="control-label"><i class="fa fa-tags fa-lg"></i>Category</label>
             <div class="btn-group" style="width: 100%;">
               <p class="alert alert-info">
-                <label class="btn btn-default cat-label" ng-model="activity.category" btn-radio="'basketball'">
+                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'basketball'">
                   <i class="fa fa-dribbble fa-lg"></i>basketball
                 </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" btn-radio="'football'">
+                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'football'">
                   <i class="fa fa-futbol-o fa-lg"></i>football
                 </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" btn-radio="'fishing'">
+                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'fishing'">
                   <i class="fa fa-ticket fa-lg"></i>fishing
                 </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" btn-radio="'party'">
+                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'party'">
                   <i class="fa fa-beer fa-lg"></i>party
                 </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" btn-radio="'travel'">
+                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'travel'">
                   <i class="fa fa-plane fa-lg"></i>travel
                 </label>
               </p>
@@ -38,7 +38,7 @@
             <label class="control-label"><i class="fa fa-clock-o fa-lg"></i>Date and Time</label><br/>
             <div class="col-md-4">
               <p class="input-group alert alert-info" >
-                <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="activity.dateTime" is-open="opened" min-date="'1982-01-01'" ng-required="true" close-text="Close"/>
+                <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="activity.dateTime" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
@@ -46,28 +46,28 @@
             </div>
             <div class="col-md-4">
               <p class="alert alert-info" style="height: 66px;">
-                <timepicker ng-model="activity.dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -32px;"></timepicker>
+                <uib-timepicker ng-model="activity.dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -32px;"></uib-timepicker>
               </p>
             </div>
           </div>
           <div class="row">
             <label class="control-label" for="dest"><i class="fa fa-anchor fa-lg"></i>Destination</label>
             <p class="alert alert-info">
-              <input type="text" data-ng-model="activity.dest" id="dest" class="form-control" placeholder="Destination" required>
+              <input type="text" ng-model="activity.dest" id="dest" class="form-control" placeholder="Destination" required>
             </p>
           </div>
           <div class="row">
             <label class="control-label" for="route"><i class="fa fa-paper-plane fa-lg"></i>Route</label>
             <p class="alert alert-info">
-              <input type="text" data-ng-model="activity.route" id="name" class="form-control" placeholder="Route" required>
+              <input type="text" ng-model="activity.route" id="name" class="form-control" placeholder="Route" required>
             </p>
           </div>
         </div>
         <div class="form-group">
           <input type="submit" value="Update" class="btn btn-success pull-right">
         </div>
-        <div data-ng-show="error" class="text-danger">
-          <strong data-ng-bind="error"></strong>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
         </div>
       </fieldset>
     </form>
