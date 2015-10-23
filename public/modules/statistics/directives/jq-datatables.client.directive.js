@@ -7,7 +7,7 @@ angular.module('statistics').directive('jqDatatables', function() {
     scope: {
       'options': '='
     },
-    template: '<table class="display" width="100%"></table>',
+    template: '<table class="table table-striped table-bordered nowrap" width="100%"></table>',
     link: function(scope, element, attrs) {
       element.dataTable(scope.options);
     }
