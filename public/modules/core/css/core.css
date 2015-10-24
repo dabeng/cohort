@@ -73,6 +73,9 @@ html, body {
 .field {
   padding: 20px 0px;
 }
+.field-category label {
+  margin-right: 20px;
+}
 .field-name {
   text-align: right;
   line-height: 34px;

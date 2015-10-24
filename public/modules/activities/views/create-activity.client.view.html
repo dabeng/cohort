@@ -7,33 +7,38 @@
       <fieldset>
         <div class="form-group">
           <div class="row field">
-            <div class="col-md-2 field-name">Name</div>
+            <div class="col-md-2 field-name">Name:</div>
             <div class="col-md-10">
               <input type="text" ng-model="name" class="form-control" aria-describedby="activity-name" required>
             </div>
           </div>
-          <div class="row field">
-            <div class="col-md-2 field-name">Category</div>
-            <div class="col-md-10">
-              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'basketball'">
+          <div class="row field field-category">
+            <div class="col-md-2 field-name">Category:</div>
+            <div class="col-md-10" style="height:34px;line-height:34px;">
+              <label>
+                <input type="radio" ng-model="category" value="basketball"/>
                 <i class="fa fa-dribbble fa-lg"></i>basketball
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'football'">
+              <label>
+                <input type="radio" ng-model="category" value="football">
                 <i class="fa fa-futbol-o fa-lg"></i>football
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'fishing'">
+              <label>
+                <input type="radio" ng-model="category" value="fishing">
                 <i class="fa fa-ticket fa-lg"></i>fishing
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'party'">
+              <label>
+                <input type="radio" ng-model="category" value="party">
                 <i class="fa fa-beer fa-lg"></i>party
               </label>
-              <label class="btn btn-default cat-label" ng-model="category" uib-btn-radio="'travel'">
+              <label>
+                <input type="radio" ng-model="category" value="travel">
                 <i class="fa fa-plane fa-lg"></i>travel
               </label>
             </div>
           </div>
           <div class="row field">
-            <div class="col-md-2 field-name">Date and Time</div>
+            <div class="col-md-2 field-name">Date and Time:</div>
             <div class="col-md-10">
               <div class="input-group" style="width:200px;">
               <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="dateTime" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
@@ -45,13 +50,13 @@
             </div>
           </div>
           <div class="row field" style="margin-top:-30px;">
-            <div class="col-md-2 field-name">Destination</div>
+            <div class="col-md-2 field-name">Destination:</div>
             <div class="col-md-10">
               <input type="text" ng-model="dest" class="form-control" aria-describedby="activity-dest" required>
             </div>
           </div>
           <div class="row field">
-            <div class="col-md-2 field-name">Route</div>
+            <div class="col-md-2 field-name">Route:</div>
             <div class="col-md-10">
               <input type="text" ng-model="route" class="form-control" aria-describedby="activity-route" required>
             </div>
