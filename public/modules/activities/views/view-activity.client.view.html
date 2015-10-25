@@ -18,26 +18,27 @@
       <span ng-bind="activity.user.displayName"></span>
     </em>
   </small>
-  <section>
-  <div class="field">
-    <div class="col-md-2 field-name">Category:</div>
-    <div class="col-md-10 field-value" ng-bind="activity.category"></div>
-  </div>
-  <div class="field">
-    <div class="col-md-2 field-name">Date and Time</div>
-    <div class="col-md-10 field-value" ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></div>
-  </div>
-  <div class="field">
-    <div class="col-md-2 field-name">Destination:</div>
-    <div class="col-md-10 field-value" ng-bind="activity.dest"></div>
-  </div>
-  <div class="field">
-    <div class="col-md-2 field-name">Route:</div>
-    <div class="col-md-10 field-value" ng-bind="activity.route"></div>
-  </div>
+  <label class="info-button"><i class="fa fa-leaf fa-lg"></i>Basic Information</label>
+  <section class="info-block" uib-collapse>
+    <div class="row">
+      <div class="col-md-2 field-name">Category:</div>
+      <div class="col-md-10 field-value" ng-bind="activity.category"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 field-name">Date and Time</div>
+      <div class="col-md-10 field-value" ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 field-name">Destination:</div>
+      <div class="col-md-10 field-value" ng-bind="activity.dest"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 field-name">Route:</div>
+      <div class="col-md-10 field-value" ng-bind="activity.route"></div>
+    </div>
   </section>
-  <section>
-    <label><i class="fa fa-comments fa-lg"></i> Discussions</label>
+  <label class="info-button"><i class="fa fa-comments fa-lg"></i> Discussions</label>
+  <section uib-collapse>
     <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
     <commenteditor foreign-key='{"name":"activity","value":"{{activity._id}}"}' style="width:100%;"></commenteditor>
   </section>

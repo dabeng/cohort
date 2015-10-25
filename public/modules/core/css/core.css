@@ -83,3 +83,15 @@ html, body {
   padding: 6px 12px;
   border-bottom: 1px solid #888;
 }
+.info-button {
+  display: block;
+  margin-top: 30px;
+}
+.info-field {
+  margin-right: 0px;
+  margin-left:  0px;
+}
+.info-block .row {
+  margin-right: 15px;
+  margin-left: 0;
+}
