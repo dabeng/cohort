@@ -6,25 +6,24 @@
   <hr/>
   <div class="col-md-12">
     <div class="col-md-3">
-      <div class="input-group">
-        <span class="input-group-addon" id="pull-up">pull-up</span>
-        <input type="text" class="form-control" placeholder="50" aria-describedby="pull-up">
-      </div>
+      <label>pull-up:</label>
+      <input type="text" class="form-control table-field" placeholder="50" aria-describedby="pull-up">
     </div>
     <div class="col-md-3">
-      <div class="input-group">
-        <span class="input-group-addon" id="sit-up">sit-up</span>
-        <input type="text" class="form-control" placeholder="100" aria-describedby="sit-up">
-      </div>
+      <label>sit-up:</label>
+      <input type="text" class="form-control table-field" placeholder="100" aria-describedby="sit-up">
     </div>
     <div class="col-md-3">
-      <div class="input-group">
-        <span class="input-group-addon" id="running">running</span>
-        <input type="text" class="form-control" placeholder="5" aria-describedby="running">
-      </div>
+      <label>running:</label>
+      <input type="text" class="form-control table-field" placeholder="5" aria-describedby="running">
     </div>
     <div class="col-md-3">
-   
+      <div class="input-group" style="width:200px;">
+        <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="dateTime" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
     </div>
   </div>
 </section>
