@@ -41,10 +41,10 @@
             <div class="col-md-2 field-name">Date and Time:</div>
             <div class="col-md-10">
               <div class="input-group" style="width:200px;">
-              <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="dateTime" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+                <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="dateTime" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
               </div>
               <uib-timepicker ng-model="dateTime" hour-step="1" minute-step="1" show-meridian="true" style="float:left;margin-top:-68px;margin-left:210px;"></uib-timepicker>
             </div>

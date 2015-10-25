@@ -6,61 +6,60 @@
     <form class="form-horizontal" data-ng-submit="update()" novalidate>
       <fieldset>
         <div class="form-group">
-          <div class="row">
-            <label class="control-label" for="name"><i class="fa fa-leaf fa-lg"></i>Name</label>
-            <p class="alert alert-info">
+          <div class="row field">
+            <div class="col-md-2 field-name">Name:</div>
+            <div class="col-md-10">
               <input type="text" data-ng-model="activity.name" id="name" class="form-control" placeholder="Name" required>
-            </p>
-          </div>
-          <div class="row">
-            <label class="control-label"><i class="fa fa-tags fa-lg"></i>Category</label>
-            <div class="btn-group" style="width: 100%;">
-              <p class="alert alert-info">
-                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'basketball'">
-                  <i class="fa fa-dribbble fa-lg"></i>basketball
-                </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'football'">
-                  <i class="fa fa-futbol-o fa-lg"></i>football
-                </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'fishing'">
-                  <i class="fa fa-ticket fa-lg"></i>fishing
-                </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'party'">
-                  <i class="fa fa-beer fa-lg"></i>party
-                </label>
-                <label class="btn btn-default cat-label" ng-model="activity.category" uib-btn-radio="'travel'">
-                  <i class="fa fa-plane fa-lg"></i>travel
-                </label>
-              </p>
             </div>
           </div>
-          <div class="row">
-            <label class="control-label"><i class="fa fa-clock-o fa-lg"></i>Date and Time</label><br/>
-            <div class="col-md-4">
-              <p class="input-group alert alert-info" >
+          <div class="row field field-category">
+            <div class="col-md-2 field-name">Category:</div>
+            <div class="col-md-10" style="height:34px;line-height:34px;">
+              <label>
+                <input type="radio" ng-model="activity.category" value="basketball"/>
+                <i class="fa fa-dribbble fa-lg"></i>basketball
+              </label>
+              <label>
+                <input type="radio" ng-model="activity.category" value="football">
+                <i class="fa fa-futbol-o fa-lg"></i>football
+              </label>
+              <label>
+                <input type="radio" ng-model="activity.category" value="fishing">
+                <i class="fa fa-ticket fa-lg"></i>fishing
+              </label>
+              <label>
+                <input type="radio" ng-model="activity.category" value="party">
+                <i class="fa fa-beer fa-lg"></i>party
+              </label>
+              <label>
+                <input type="radio" ng-model="activity.category" value="travel">
+                <i class="fa fa-plane fa-lg"></i>travel
+              </label>
+            </div>
+          </div>
+          <div class="row field">
+            <div class="col-md-2 field-name">Date and Time:</div>
+            <div class="col-md-10">
+              <div class="input-group" style="width:200px;">
                 <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="activity.dateTime" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
-              </p>
-            </div>
-            <div class="col-md-4">
-              <p class="alert alert-info" style="height: 66px;">
-                <uib-timepicker ng-model="activity.dateTime" hour-step="1" minute-step="1" show-meridian="true" style=" position: relative;top: -32px;"></uib-timepicker>
-              </p>
+              </div>
+              <uib-timepicker ng-model="activity.dateTime" hour-step="1" minute-step="1" show-meridian="true" style="float:left;margin-top:-68px;margin-left:210px;"></uib-timepicker>
             </div>
           </div>
-          <div class="row">
-            <label class="control-label" for="dest"><i class="fa fa-anchor fa-lg"></i>Destination</label>
-            <p class="alert alert-info">
-              <input type="text" ng-model="activity.dest" id="dest" class="form-control" placeholder="Destination" required>
-            </p>
+          <div class="row field" style="margin-top:-30px;">
+            <div class="col-md-2 field-name">Destination:</div>
+            <div class="col-md-10">
+              <input type="text" ng-model="activity.dest" class="form-control" placeholder="Destination" required>
+            </div>
           </div>
-          <div class="row">
-            <label class="control-label" for="route"><i class="fa fa-paper-plane fa-lg"></i>Route</label>
-            <p class="alert alert-info">
-              <input type="text" ng-model="activity.route" id="name" class="form-control" placeholder="Route" required>
-            </p>
+          <div class="row field">
+            <div class="col-md-2 field-name">Route:</div>
+            <div class="col-md-10">
+              <input type="text" ng-model="activity.route" class="form-control" placeholder="Route" required>
+            </div>
           </div>
         </div>
         <div class="form-group">
