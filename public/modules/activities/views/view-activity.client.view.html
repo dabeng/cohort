@@ -13,32 +13,34 @@
   <small>
     <em class="text-muted">
       Posted on
-      <span data-ng-bind="activity.created | date:'mediumDate'"></span>
+      <span ng-bind="activity.created | date:'mediumDate'"></span>
       by
-      <span data-ng-bind="activity.user.displayName"></span>
+      <span ng-bind="activity.user.displayName"></span>
     </em>
   </small>
-  <div class="activity-factor">
-    <label><i class="fa fa-tags fa-lg"></i> Category</label>
-    <p data-ng-bind="activity.category"></p>
+  <section>
+  <div class="field">
+    <div class="col-md-2 field-name">Category:</div>
+    <div class="col-md-10 field-value" ng-bind="activity.category"></div>
   </div>
-  <div class="activity-factor">
-    <label><i class="fa fa-clock-o fa-lg"></i> Date and Time</label>
-    <p data-ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></p>
+  <div class="field">
+    <div class="col-md-2 field-name">Date and Time</div>
+    <div class="col-md-10 field-value" ng-bind="activity.dateTime | date:'EEEE, MMMM d, y h:mm a'"></div>
   </div>
-  <div class="activity-factor">
-    <label><i class="fa fa-anchor fa-lg"></i> Destination</label>
-    <p data-ng-bind="activity.dest"></p>
+  <div class="field">
+    <div class="col-md-2 field-name">Destination:</div>
+    <div class="col-md-10 field-value" ng-bind="activity.dest"></div>
   </div>
-  <div class="activity-factor">
-    <label><i class="fa fa-paper-plane fa-lg"></i> Route</label>
-    <p data-ng-bind="activity.route"></p>
+  <div class="field">
+    <div class="col-md-2 field-name">Route:</div>
+    <div class="col-md-10 field-value" ng-bind="activity.route"></div>
   </div>
-  <div class="activity-factor">
+  </section>
+  <section>
     <label><i class="fa fa-comments fa-lg"></i> Discussions</label>
     <commentitem datasource="comment" ng-repeat="comment in comments"></commentitem>
     <commenteditor foreign-key='{"name":"activity","value":"{{activity._id}}"}' style="width:100%;"></commenteditor>
-  </div>
+  </section>
   <div class="activity-factor">
     <label class="control-label"><i class="fa fa-picture-o fa-lg"></i> Pictures and Vedios</label>
     <form id="fileupload" action="{{'/attachments/' + activity._id}}" method="POST" enctype="multipart/form-data" ng-controller="AttachmentUploadCtrl" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
