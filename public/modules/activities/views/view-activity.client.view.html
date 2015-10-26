@@ -43,7 +43,7 @@
     <commenteditor foreign-key='{"name":"activity","value":"{{activity._id}}"}' style="width:100%;"></commenteditor>
   </section>
   <div class="activity-factor">
-    <label class="control-label"><i class="fa fa-picture-o fa-lg"></i> Pictures and Vedios</label>
+    <label class="info-button"><i class="fa fa-picture-o fa-lg"></i> Pictures and Vedios</label>
     <form id="fileupload" action="{{'/attachments/' + activity._id}}" method="POST" enctype="multipart/form-data" ng-controller="AttachmentUploadCtrl" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
       <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
       <div class="fileupload-buttonbar">
