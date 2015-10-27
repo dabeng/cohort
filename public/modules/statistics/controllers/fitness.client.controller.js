@@ -16,10 +16,14 @@ angular.module('statistics').controller('FitnessCtrl',
     var data = Fitnesses.query({ exerciser: $scope.authentication.user._id });
 
     var columns = [
-      { title: 'date' },
-      { title: 'sit-up' },
-      { title: 'running (km)' },
-      { title: 'pull-up' }
+      { 'title': 'date',
+        'render': function ( data, type, full, meta ) {
+          return data.slice(0, 10);
+        }
+      },
+      { 'title': 'sit-up' },
+      { 'title': 'running (km)' },
+      { 'title': 'pull-up' }
     ];
 
     var initCompleteCallback = function(settings, json) {
@@ -28,6 +32,7 @@ angular.module('statistics').controller('FitnessCtrl',
 
     $scope.tableOptions = {
       'columns': columns,
+      'order': [[ 0, 'desc' ]],
       'initComplete': initCompleteCallback,
       'data': data
     };
