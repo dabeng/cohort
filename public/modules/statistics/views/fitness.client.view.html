@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>Statistics of Fitness</h1>
   </div>
-  <jq-datatables options="tableOptions"></jq-datatables>
+  <jq-datatables options="tableOptions" dataset="dataset"></jq-datatables>
   <label class="info-button"><i class="fa fa-pencil-square-o fa-lg"></i> Add Record</label>
   <div class="col-md-12" style="margin-top:20px;">
     <div class="col-md-3">
@@ -27,4 +27,7 @@
     </div>
   </div>
   <input type="button" class="btn btn-success pull-right" value="Add" ng-click="addRecord()">
+  <div ng-show="error" class="text-danger">
+    <strong ng-bind="fitness.error"></strong>
+  </div>
 </section>

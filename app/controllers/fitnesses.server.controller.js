@@ -85,7 +85,12 @@ exports.list = function(req, res) {
     } else {
       var aFitnesses = [];
       fitnesses.forEach(function(item, index) {
-        aFitnesses.push([item._doc.fitnessDay, item._doc.pullup, item._doc.situp, item._doc.running]);
+        aFitnesses.push([
+          item._doc.fitnessDay,
+          item._doc.pullup,
+          item._doc.situp,
+          item._doc.running
+        ]);
       });
       res.send(aFitnesses);
     }
