@@ -40,28 +40,34 @@ angular.module('statistics').controller('FitnessCtrl',
     $scope.fitness = {};
     $scope.fitness.fitnessDay = new Date();
 
+    // $scope.fitnessForm.submitted = false;
     $scope.addRecord = function() {
-      // Create new Fitness object
-      var fitness = new Fitnesses ({
-        fitnessDay: this.fitness.fitnessDay,
-        pullup: parseInt(this.fitness.pullup),
-        situp: parseInt(this.fitness.situp),
-        running: parseFloat(this.fitness.running)
-      });
+      if ($scope.fitnessForm.$valid) {
+        // Create new Fitness object
+        var fitness = new Fitnesses ({
+          fitnessDay: this.fitness.fitnessDay,
+          pullup: parseInt(this.fitness.pullup),
+          situp: parseInt(this.fitness.situp),
+          running: parseFloat(this.fitness.running)
+        });
 
-      fitness.$save(function(response) {
-        $scope.tableOptions.data.push([
-          response.fitnessDay,
-          response.pullup,
-          response.situp,
-          response.running
-        ]);
+        fitness.$save(function(response) {
+          $scope.tableOptions.data.push([
+            response.fitnessDay,
+            response.pullup,
+            response.situp,
+            response.running
+          ]);
 
         // Clear form fields
-        $scope.fitness = null;
-      }, function(errorResponse) {
-        $scope.fitness.error = errorResponse.data.message;
-      });
+          $scope.fitness = null;
+        }, function(errorResponse) {
+          $scope.fitness.error = errorResponse.data.message;
+        });
+      } else {
+        $scope.fitnessForm.submitted = true;        
+      }
+
     };
 
 }]);
