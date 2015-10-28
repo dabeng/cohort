@@ -4,7 +4,7 @@
   </div>
   <jq-datatables options="tableOptions" dataset="dataset"></jq-datatables>
   <label class="info-button"><i class="fa fa-pencil-square-o fa-lg"></i> Add Record</label>
-  <div ng-form="fitnessForm" class="col-md-12" style="margin-top:20px;">
+  <div ng-form="fitnessForm" class="col-md-12" style="margin-top:20px;" novalidate>
     <div class="col-md-3">
       <div class="input-group" style="width:200px;">
         <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="fitness.fitnessDay" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
@@ -15,7 +15,7 @@
     </div>
     <div class="col-md-3">
       <label>pull-up:</label>
-      <input type="text" name="pullup" ng-model="fitness.pullup" class="form-control table-field" placeholder="50" aria-describedby="pull-up" uib-tooltip="It's a required field." tooltip-trigger="none" tooltip-placement="top"  tooltip-class="validationTooltip" tooltip-is-open="fitnessForm.submitted && fitnessForm.pullup.$error.required" required>
+      <input type="number" max="300" name="pullup" ng-model="fitness.pullup" class="form-control table-field" placeholder="50" aria-describedby="pull-up" uib-tooltip="{{validationInfo.pullup}}" tooltip-trigger="none" tooltip-placement="top"  tooltip-class="validationTooltip" tooltip-is-open="fitnessForm.submitted && fitnessForm.pullup.$invalid" ng-pattern="/^\d+$/" required>
     </div>
     <div class="col-md-3">
       <label>sit-up:</label>

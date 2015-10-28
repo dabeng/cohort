@@ -41,6 +41,7 @@ angular.module('statistics').controller('FitnessCtrl',
     $scope.fitness.fitnessDay = new Date();
 
     // $scope.fitnessForm.submitted = false;
+    $scope.validationInfo = {};
     $scope.addRecord = function() {
       if ($scope.fitnessForm.$valid) {
         // Create new Fitness object
@@ -65,7 +66,19 @@ angular.module('statistics').controller('FitnessCtrl',
           $scope.fitness.error = errorResponse.data.message;
         });
       } else {
-        $scope.fitnessForm.submitted = true;        
+        $scope.fitnessForm.submitted = true;
+        if ($scope.fitnessForm.$error.required) {
+          $scope.validationInfo.pullup = 'It\'s a required field.';
+        }
+        if ($scope.fitnessForm.$error.number) {
+          $scope.validationInfo.pullup = 'The value should be an integer.';
+        }
+        if ($scope.fitnessForm.$error.pattern) {
+          $scope.validationInfo.pullup = 'The value should be an integer that is greater than or equal to 0.';
+        }
+        if ($scope.fitnessForm.$error.max) {
+          $scope.validationInfo.pullup = 'The value should be less than or equal to 300.';
+        } 
       }
 
     };
