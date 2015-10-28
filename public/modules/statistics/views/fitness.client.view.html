@@ -15,11 +15,11 @@
     </div>
     <div class="col-md-3">
       <label>pull-up:</label>
-      <input type="number" max="300" name="pullup" ng-model="fitness.pullup" class="form-control table-field" placeholder="50" aria-describedby="pull-up" uib-tooltip="{{validationInfo.pullup}}" tooltip-trigger="none" tooltip-placement="top"  tooltip-class="validationTooltip" tooltip-is-open="fitnessForm.submitted && fitnessForm.pullup.$invalid" ng-pattern="/^\d+$/" required>
+      <input type="number" name="pullup" class="form-control table-field" aria-describedby="pullup" placeholder="50" max="300"  ng-model="fitness.pullup" uib-tooltip="{{validationInfo.pullup}}" tooltip-trigger="none" tooltip-placement="top" tooltip-class="validationTooltip" tooltip-is-open="submitted && fitnessForm.pullup.$invalid" ng-pattern="/^\d+$/" required>
     </div>
     <div class="col-md-3">
       <label>sit-up:</label>
-      <input type="text" ng-model="fitness.situp" class="form-control table-field" placeholder="100" aria-describedby="sit-up">
+      <input type="number" name="situp" aria-describedby="sit-up" class="form-control table-field" placeholder="100" max="500" ng-model="fitness.situp" uib-tooltip="{{validationInfo.situp}}" tooltip-trigger="none" tooltip-placement="top" tooltip-class="validationTooltip" tooltip-is-open="submitted && fitnessForm.situp.$invalid" ng-pattern="/^\d+$/" required>
     </div>
     <div class="col-md-3">
       <label>running:</label>

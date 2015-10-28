@@ -40,7 +40,7 @@ angular.module('statistics').controller('FitnessCtrl',
     $scope.fitness = {};
     $scope.fitness.fitnessDay = new Date();
 
-    // $scope.fitnessForm.submitted = false;
+    $scope.submitted = false;
     $scope.validationInfo = {};
     $scope.addRecord = function() {
       if ($scope.fitnessForm.$valid) {
@@ -61,23 +61,39 @@ angular.module('statistics').controller('FitnessCtrl',
           ]);
 
         // Clear form fields
-          $scope.fitness = null;
+          $scope.submitted = false;
+          $scope.fitness = {};
+          $scope.validationInfo = {};
         }, function(errorResponse) {
           $scope.fitness.error = errorResponse.data.message;
         });
       } else {
-        $scope.fitnessForm.submitted = true;
-        if ($scope.fitnessForm.$error.required) {
+        $scope.submitted = true;
+        // validate pullup field
+        if ($scope.fitnessForm.pullup.$error.required) {
           $scope.validationInfo.pullup = 'It\'s a required field.';
         }
-        if ($scope.fitnessForm.$error.number) {
+        if ($scope.fitnessForm.pullup.$error.number) {
           $scope.validationInfo.pullup = 'The value should be an integer.';
         }
-        if ($scope.fitnessForm.$error.pattern) {
+        if ($scope.fitnessForm.pullup.$error.pattern) {
           $scope.validationInfo.pullup = 'The value should be an integer that is greater than or equal to 0.';
         }
-        if ($scope.fitnessForm.$error.max) {
+        if ($scope.fitnessForm.pullup.$error.max) {
           $scope.validationInfo.pullup = 'The value should be less than or equal to 300.';
+        }
+        // validate situp field
+        if ($scope.fitnessForm.situp.$error.required) {
+          $scope.validationInfo.situp = 'It\'s a required field.';
+        }
+        if ($scope.fitnessForm.situp.$error.number) {
+          $scope.validationInfo.situp = 'The value should be an integer.';
+        }
+        if ($scope.fitnessForm.situp.$error.pattern) {
+          $scope.validationInfo.situp = 'The value should be an integer that is greater than or equal to 0.';
+        }
+        if ($scope.fitnessForm.situp.$error.max) {
+          $scope.validationInfo.situp = 'The value should be less than or equal to 500.';
         } 
       }
 
