@@ -7,7 +7,7 @@
   <div ng-form="fitnessForm" class="col-md-12" style="margin-top:20px;" novalidate>
     <div class="col-md-3">
       <div class="input-group" style="width:200px;">
-        <input type="text" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="fitness.fitnessDay" is-open="opened" min-date="'2015-01-01'" ng-required="true" close-text="Close"/>
+        <input type="date" class="form-control" uib-datepicker-popup="{{'yyyy/MM/dd'}}" ng-model="fitness.fitnessDay" is-open="opened" min-date="'2015-01-01'" max-date="fitness.maxDate" ng-required="true" close-text="Close"/>
         <span class="input-group-btn">
           <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
         </span>
@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-3">
       <label>running:</label>
-      <input type="text"ng-model="fitness.running" class="form-control table-field" placeholder="5" aria-describedby="running">
+      <input type="number" name="running" aria-describedby="running" class="form-control table-field" placeholder="5" max="20" ng-model="fitness.running" uib-tooltip="{{validationInfo.running}}" tooltip-trigger="none" tooltip-placement="top" tooltip-class="validationTooltip" tooltip-is-open="submitted && fitnessForm.running.$invalid" ng-pattern="/^\d+$/" required>
     </div>
   </div>
   <input type="submit" class="btn btn-success pull-right" value="Add" ng-click="addRecord()">

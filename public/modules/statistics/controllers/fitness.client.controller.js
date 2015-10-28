@@ -39,6 +39,7 @@ angular.module('statistics').controller('FitnessCtrl',
 
     $scope.fitness = {};
     $scope.fitness.fitnessDay = new Date();
+    $scope.fitness.maxDate = new Date();
 
     $scope.submitted = false;
     $scope.validationInfo = {};
@@ -69,6 +70,10 @@ angular.module('statistics').controller('FitnessCtrl',
         });
       } else {
         $scope.submitted = true;
+        // validate fitness-day field
+        if ($scope.fitnessForm.fitnessDay.$error.required) {
+          $scope.validationInfo.fitnessDay = 'It\'s a required field.';
+        }
         // validate pullup field
         if ($scope.fitnessForm.pullup.$error.required) {
           $scope.validationInfo.pullup = 'It\'s a required field.';
@@ -94,6 +99,19 @@ angular.module('statistics').controller('FitnessCtrl',
         }
         if ($scope.fitnessForm.situp.$error.max) {
           $scope.validationInfo.situp = 'The value should be less than or equal to 500.';
+        }
+        // validate running field
+        if ($scope.fitnessForm.running.$error.required) {
+          $scope.validationInfo.running = 'It\'s a required field.';
+        }
+        if ($scope.fitnessForm.running.$error.number) {
+          $scope.validationInfo.running = 'The value should be an integer.';
+        }
+        if ($scope.fitnessForm.running.$error.pattern) {
+          $scope.validationInfo.running = 'The value should be an integer that is greater than or equal to 0.';
+        }
+        if ($scope.fitnessForm.running.$error.max) {
+          $scope.validationInfo.running = 'The value should be less than or equal to 20.';
         } 
       }
 
