@@ -7,6 +7,7 @@ var init = require('./config/init')(),
 	mongoose = require('mongoose'),
 	chalk = require('chalk');
 
+
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
@@ -34,3 +35,6 @@ exports = module.exports = app;
 
 // Logging initialization
 console.log('MEAN.JS application started on port ' + config.port);
+
+// start up agenda jobs
+require('./app/jobs/agenda.server')();
