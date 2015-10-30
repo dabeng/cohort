@@ -8,7 +8,7 @@ module.exports = function() {
   require('./email.server.job')(agenda);
 
   agenda.on('ready', function() {
-    agenda.every('3 seconds', 'sending fitness report to user');
+    agenda.every('10 seconds', 'sending fitness report to user');
     agenda.start();
   });
 };
