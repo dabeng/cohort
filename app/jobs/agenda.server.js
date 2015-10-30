@@ -9,6 +9,7 @@ module.exports = function() {
 
   agenda.on('ready', function() {
     agenda.every('5 seconds', 'sending fitness weekly report');
+    // agenda.every('8 seconds', 'sending fitness monthly report');
 
     agenda.start();
   });
