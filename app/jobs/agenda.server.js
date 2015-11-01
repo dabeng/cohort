@@ -18,10 +18,14 @@ module.exports = function() {
     */ 
 
     // Runs every weekday Monday at 09:00:00 AM
-    agenda.every('0 0 9 * * 1', 'sending fitness weekly report');
+    // agenda.every('0 0 9 * * 1', 'sending fitness weekly report');
 
     // Runs every month 1st at 09:00:00 AM
-    agenda.every('0 0 9 1 * *', 'sending fitness monthly report');
+    // agenda.every('0 0 9 1 * *', 'sending fitness monthly report');
+
+    // just testing
+    // agenda.every('5 seconds', 'testing job');
+    agenda.every('0 28 20 1 * *', 'sending fitness monthly report');
 
     agenda.start();
   });

@@ -1,12 +1,13 @@
 'use strict';
 
 var nodemailer = require('nodemailer'),
+  hbs = require('nodemailer-express-handlebars'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
   Fitness = mongoose.model('Fitness'),
   ObjectId = mongoose.Types.ObjectId;
 
-var sendEmail = function(user, fitnesses, done) {
+var sendEmail = function(reportName, user, fitnesses, done) {
   // create reusable transporter object using SMTP transport
   // NB! No need to recreate the transporter object. You can use
   // the same transporter object for all e-mails
@@ -24,14 +25,34 @@ var sendEmail = function(user, fitnesses, done) {
     situps += fitness.situp;
     runnings += fitness.running;
   });
+
+var handlebarsOptions = {
+     viewEngine: {
+         extname: '.hbs',
+         layoutsDir: 'app/views/email/',
+         defaultLayout : 'main',
+         partialsDir : 'app/views/email/partials/'
+     },
+     viewPath: 'app/views/email/',
+     extName: '.hbs'
+ };
+
+   
+//attach the plugin to the nodemailer transporter
+transporter.use('compile', hbs(handlebarsOptions));
+
   // setup e-mail data with unicode symbols
   var mailOptions = {
     from: 'cohort.net@gamil.com', // sender address
     to: user.email, // list of receivers
-    subject: 'Fitness Weekly Report from Cohort', // Subject line
-    html: '<p><b>pullups:</b>' + pullups + '</p>'
-      + '<p><b>situps:</b>' + situps + '</p>'
-      + '<p><b>runnings:</b>' + runnings + '</p>'
+    subject: 'Fitness ' + reportName + ' Report from Cohort', // Subject line
+    template: 'fitness-report',
+    context: {
+      'reportName': reportName,
+      'pullups': pullups,
+      'situps': situps,
+      'runnings': runnings 
+    }
   };
 
   // send mail with defined transport object
@@ -44,7 +65,7 @@ var sendEmail = function(user, fitnesses, done) {
   });
 };
 
-var sendFitnessReport = function(period, done) {
+var sendFitnessReport = function(period, done) { console.log('OK');
   // firstly, retrive user info
   User.find({}, function(err, users) {
     if (err) {
@@ -66,11 +87,16 @@ var sendFitnessReport = function(period, done) {
         }, function(err, fitnesses) {
           if (err) {
             console.log('Failed to retrive fitness info[' + err + ']');
-            process.exit(1);
           }
           if (fitnesses.length) {
             // now, we can send email of this report
-            sendEmail(user, fitnesses, done);
+            var reportName = '';
+            if (period === 7) {
+              reportName = 'Weekly';
+            } else {
+              reportName = 'Monthly';
+            }
+            sendEmail(reportName, user, fitnesses, done);
           }
         });
       });
@@ -86,6 +112,10 @@ module.exports = function(agenda) {
 
   agenda.define('sending fitness monthly report', function(job, done) {
     sendFitnessReport(30, done);
+  });
+
+  agenda.define('testing job', function(job) {
+    console.log('~~~~OK~~~~');
   });
 
   // More email related jobs
