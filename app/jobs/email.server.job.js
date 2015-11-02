@@ -50,7 +50,22 @@ var sendEmail = function(reportName, user, fitnesses, done) {
       'pullups': pullups,
       'situps': situps,
       'runnings': runnings 
-    }
+    },
+    attachments: [
+      {
+        filename: 'pullup.jpg',
+        path: 'public/images/email/pullup.jpg',
+        cid: 'pullup@cohort'
+      }, {
+        filename: 'situp.jpg',
+        path: 'public/images/email/situp.jpg',
+        cid: 'situp@cohort'
+      }, {
+        filename: 'running.jpg',
+        path: 'public/images/email/running.jpg',
+        cid: 'running@cohort'
+      }
+    ]
   };
 
   // send mail with defined transport object
