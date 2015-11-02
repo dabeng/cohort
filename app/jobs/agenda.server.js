@@ -25,7 +25,7 @@ module.exports = function() {
 
     // just testing
     // agenda.every('5 seconds', 'testing job');
-    agenda.every('0 28 20 1 * *', 'sending fitness monthly report');
+    agenda.every('0 35 08 2 * *', 'sending fitness monthly report');
 
     agenda.start();
   });

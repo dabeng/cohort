@@ -26,27 +26,25 @@ var sendEmail = function(reportName, user, fitnesses, done) {
     runnings += fitness.running;
   });
 
-var handlebarsOptions = {
-     viewEngine: {
-         extname: '.hbs',
-         layoutsDir: 'app/views/email/',
-         defaultLayout : 'main',
-         partialsDir : 'app/views/email/partials/'
-     },
-     viewPath: 'app/views/email/',
-     extName: '.hbs'
- };
-
-   
-//attach the plugin to the nodemailer transporter
-transporter.use('compile', hbs(handlebarsOptions));
+  var handlebarsOptions = {
+    viewEngine: {
+      extname: '.hbs',
+      layoutsDir: 'app/views/email/',
+      defaultLayout : 'main',
+      partialsDir : 'app/views/email/partials/'
+    },
+    viewPath: 'app/views/email/',// path to the directory where email template is
+    extName: '.hbs'
+   };
+  //attach the plugin to the nodemailer transporter
+  transporter.use('compile', hbs(handlebarsOptions));
 
   // setup e-mail data with unicode symbols
   var mailOptions = {
     from: 'cohort.net@gamil.com', // sender address
     to: user.email, // list of receivers
     subject: 'Fitness ' + reportName + ' Report from Cohort', // Subject line
-    template: 'fitness-report',
+    template: 'fitness-report',// email template
     context: {
       'reportName': reportName,
       'pullups': pullups,
@@ -65,16 +63,14 @@ transporter.use('compile', hbs(handlebarsOptions));
   });
 };
 
-var sendFitnessReport = function(period, done) { console.log('OK');
+var sendFitnessReport = function(period, done) {
   // firstly, retrive user info
   User.find({}, function(err, users) {
     if (err) {
       console.log('Failed to retrive user info[' + err + ']');
     }
     if (users.length){
-      var userEmails = [];
       users.forEach(function(user, index){
-        // userEmails.push(user.email);
         var oneWeekAgo = new Date();
         oneWeekAgo.setDate(oneWeekAgo.getDate() - period);
         oneWeekAgo.setHours(0,0,0,0);// set to zero clock
