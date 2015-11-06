@@ -162,7 +162,7 @@ var sendEmail = function(reportName, user, fitnesses, done) {
     if(error){
       return console.log(error);
     }
-    console.log('Message sent: ' + info.response);
+    console.log('Successfully sending ' + mailOptions.subject + 'to ' + user.displayName );
   });
 };
 
