@@ -11,21 +11,20 @@ module.exports = function() {
     /* [format]
      * (1) seconds - 0~59
      * (2) minutes - 0~59
-     * (3) hours - 0~59
+     * (3) hours - 0~23
      * (4) date - 1~31
      * (5) months - 0~11
      * (6) day - 0(Sunday)~5(Friday)
     */ 
 
     // Runs every weekday Monday at 09:00:00 AM
-    // agenda.every('0 0 9 * * 1', 'sending fitness weekly report');
+    agenda.every('0 0 9 * * 1', 'sending fitness weekly report');
 
     // Runs every month 1st at 09:00:00 AM
-    // agenda.every('0 0 9 1 * *', 'sending fitness monthly report');
+    agenda.every('0 0 9 1 * *', 'sending fitness monthly report');
 
     // just testing
-    // agenda.every('5 seconds', 'testing job');
-    agenda.every('0 33 15 2 * *', 'sending fitness monthly report');
+    // agenda.every('5 seconds', 'sending fitness monthly report');
 
     agenda.start();
   });

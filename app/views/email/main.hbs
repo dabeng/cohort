@@ -29,13 +29,13 @@
     }
     .report-heading {
       background-color: #fff;
-      border-bottom: 1px dashed #aaa;
       padding: 0px 20px;
       text-align: center;
       font-size: 2em;
     }
     .report-heading p {
       margin: 0;
+      font-size: 2em;
     }
     .report-content {
       background-color: #fff;
@@ -46,6 +46,57 @@
     }
     .report-content p:last-child {
       padding-bottom: 10px; 
+    }
+    .fitness-table {
+      width:100%;
+    }
+    .fitness-table td {
+      text-align:center;
+      border-top: 1px dashed #aaa;
+    }
+    /* third column */
+    .fitness-table tr > td:nth-child(2) {
+      font-size: 4em;
+      color: #666;
+    }
+    .fitness-table tr > td:nth-child(3) {
+      font-size: 5em;
+      font-weight: bold;
+      color: #2a8a85;
+    }
+    .fitness-table tr > td:nth-child(4) {
+      font-size: 4em;
+      color: #666;
+    }
+    .fitness-table tr > td:last-child {
+      text-align: left;
+    }
+    .fitness-table th {
+      font-size: 1.2em;
+    }
+    .fitness-table th:nth-child(2) {
+      width: 15%;
+    }
+    .fitness-table th:nth-child(3) {
+      width: 15%;
+    }
+    .fitness-table th:nth-child(4) {
+      width: 15%;
+    }
+    .evaluation-col {
+      position: relative;
+    }
+    .evaluation-col img {
+      height: 180px;
+    }
+    .evaluation-col span {
+      position: absolute;
+      font-size: 1.5em;
+      padding: 0px 10px;
+      color: #fff;
+      background-color: rgba(0,0,0,0.4);
+      bottom: 6px;
+      left: 0px;
     }
   </style>
 </head>

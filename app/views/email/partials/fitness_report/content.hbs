@@ -1,38 +1,43 @@
-<table>
+<table class="fitness-table">
   <thead>
-    <th>
-      <td>Categories</td>
-      <td>Practical Sums</td>
-      <td>Operator</td>
-      <td>Criteria Sums</td>
-      <td>Evaluation result</td>
-    </th>
+    <tr>
+      <th>Categories</th>
+      <th>Practical Sums</th>
+      <th>Operator</th>
+      <th>Criteria Sums</th>
+      <th>Evaluation result</th>
+    </tr>
   </thead>
   <tbody>
     <tr>
       <td><img src="cid:pullup@cohort"/></td>
-      <td>{{pullups}}</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{realData.pullups}}</td>
+      <td>{{operators.pullups}}</td>
+      <td>{{baseData.pullups}}</td>
+      <td class="evaluation-col">
+        <img src="cid:{{evaluations.pullups.picture}}"/>
+        <span>{{evaluations.pullups.text}}<span>
+      </td>
     </tr>
     <tr>
       <td><img src="cid:situp@cohort"/></td>
-      <td>{{situps}}</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{realData.situps}}</td>
+      <td>{{operators.situps}}</td>
+      <td>{{baseData.situps}}</td>
+      <td class="evaluation-col">
+        <img src="cid:{{evaluations.situps.picture}}"/>
+        <span>{{evaluations.situps.text}}</span>
+      </td>
     </tr>
     <tr>
       <td><img src="cid:running@cohort"/></td>
-      <td>{{runnings}}</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{realData.runnings}}</td>
+      <td>{{operators.runnings}}</td>
+      <td>{{baseData.runnings}}</td>
+      <td class="evaluation-col">
+        <img src="cid:{{evaluations.runnings.picture}}"/>
+        <span>{{evaluations.runnings.text}}</span>
+      </td>
     </tr>
   </tbody>
-  <span></span>
-  <span>{{pullups}}</span>
-</p>
-<p><span><img src="cid:situp@cohort"/></p>
-<p><span><img src="cid:running@cohort"/></p>
+</table>
