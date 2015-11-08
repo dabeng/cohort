@@ -1,25 +1,25 @@
 # Cohort
 Cohort is a hotchpotch where you can share any media stuff with your dudes. In the other hand, I regard it as a undefended area where I play around and demonstrate the every aspect of MEAN.JS(MongoDB + Express + AngularJS + Node.js).
 
-## Functionalities
+## Functionalities Perspective 
 
 ### Activites
 
 ### Cookbooks
 
-### Reminder
+### Fitness Report
 
 ### Subscriber
 
 ### Invitation Letter Creater
 
-### Whiteboard Creater
+### Minutes of Meeting
 
-## Module Level
+## Module Perspective
 
-### Schedule Task
+### Schedule Task -- [agenda](https://github.com/rschmukler/agenda)
 
-### Real-time Communication
+### Real-time Communication -- [socket.io](https://github.com/socketio/socket.io/)
 
 ### Remote Control
 
