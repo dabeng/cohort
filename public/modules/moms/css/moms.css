@@ -1,0 +1,87 @@
+.sticky-note {
+  display: inline-block;
+  margin: 20px;
+  position: relative;
+  width: 250px;
+
+  /* CSS3 Transform */
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+
+.sticky-note-inner {
+  font-family:'Reenie Beanie';
+  min-height: 250px;
+  min-width: 250px;
+  padding: 45px 20px 10px;
+  
+  /* CSS3 Border Radius */
+  -webkit-border-radius: 0 0 0 200px/0 0 0 10px;
+  -moz-border-radius: 0 0 0 200px/0 0 0 10px;
+  -ms-border-radius: 0 0 0 200px/0 0 0 10px;
+  -o-border-radius: 0 0 0 200px/0 0 0 10px;
+  border-radius: 0 0 0 200px/0 0 0 10px;
+    
+  /* CSS3 Box Shadow */
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+}
+
+.sticky-note-inner:after {
+  bottom: 16px;
+  content: "";
+  height: 55%;
+  left: 10px;
+  position: absolute;
+  width: 50%;
+  z-index: -2;
+
+  /* CSS3 Box Shadow */
+  -webkit-box-shadow: -5px 10px 10px rgba(0,0,0,0.5);
+  -moz-box-shadow: -5px 10px 10px rgba(0,0,0,0.5);
+  box-shadow: -5px 10px 10px rgba(0,0,0,0.5);
+    
+  /* CSS3 Transform */
+  -webkit-transform: skew(-8deg) rotate(-6deg);
+  -moz-transform: skew(-8deg) rotate(-6deg);
+  -ms-transform: skew(-8deg) rotate(-6deg);
+  -o-transform: skew(-8deg) rotate(-6deg);
+  transform: skew(-8deg) rotate(-6deg);
+}
+
+.yellow .sticky-note-inner {
+  background-color: #ffcd5a;
+    
+  /* CSS3 Linear Gradient */
+  background-image: -webkit-gradient(linear,50% 0%,50% 100%,color-stop(0%,#ffb71e),color-stop(22%,#ffcd5a),color-stop(100%,#ffcd5a));
+  background-image: -webkit-linear-gradient(top,#ffb71e 0%,#ffcd5a 22%,#ffcd5a 100%);
+  background-image: -moz-linear-gradient(top,#ffb71e 0%,#ffcd5a 22%,#ffcd5a 100%);
+  background-image: -o-linear-gradient(top,#ffb71e 0%,#ffcd5a 22%,#ffcd5a 100%);
+  background-image: linear-gradient(top,#ffb71e 0%,#ffcd5a 22%,#ffcd5a 100%);
+}
+
+.blue .sticky-note-inner {
+  background-color: #1e9dff;
+  
+  /* CSS3 Linear Gradient */
+  background-image: -webkit-gradient(linear,50% 0%,50% 100%,color-stop(0%,#1e9dff),color-stop(22%,#5bb8ff),color-stop(100%,#5bb8ff));
+  background-image: -webkit-linear-gradient(top,#1e9dff 0%,#5bb8ff 22%,#5bb8ff 100%);
+  background-image: -moz-linear-gradient(top,#1e9dff 0%,#5bb8ff 22%,#5bb8ff 100%);
+  background-image: -o-linear-gradient(top,#1e9dff 0%,#5bb8ff 22%,#5bb8ff 100%);
+  background-image: linear-gradient(top,#1e9dff 0%,#5bb8ff 22%,#5bb8ff 100%);
+}
+
+.green .sticky-note-inner {
+  background-color: #15b227;
+ 
+  /* CSS3 Linear Gradient */
+  background-image: -webkit-gradient(linear,50% 0%,50% 100%,color-stop(0%,#15b227),color-stop(22%,#40b24d),color-stop(100%,#40b24d));
+  background-image: -webkit-linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
+  background-image: -moz-linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
+  background-image: -o-linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
+  background-image: linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
+}
