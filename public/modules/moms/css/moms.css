@@ -1,7 +1,15 @@
-.comment-wrapper {
+.mom-wrapper {
   position: absolute;
   top: 166px;
+  width: 100%;
   bottom: 0px;
+}
+.mom-contents {
+  height: 100%;
+  background:url(../img/blackboard.jpg);
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  background-origin:content-box;
 }
 .sticky-note {
   display: inline-block;
