@@ -1,3 +1,8 @@
+.comment-wrapper {
+  position: absolute;
+  top: 166px;
+  bottom: 0px;
+}
 .sticky-note {
   display: inline-block;
   margin: 20px;

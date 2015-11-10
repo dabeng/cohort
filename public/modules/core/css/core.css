@@ -23,6 +23,10 @@ html, body {
 .content {
 	/*margin-top: 50px;*/
 }
+.container {
+  height: 100%;
+  position: relative;
+}
 .undecorated-link:hover {
 	text-decoration: none;
 }
