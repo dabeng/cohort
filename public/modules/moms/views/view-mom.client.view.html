@@ -22,7 +22,7 @@
     <div class="col-md-10 mom-contents"></div>
     <div class="col-md-2 mom-attendees">
       <ul>
-        <li> xudong</li>
+        <li ng-repeat="attendee in attendees" style="{{attendee.backgroundColor}}">{{attendee.userName}}</li>
       </ul>
     </div>
   </div>

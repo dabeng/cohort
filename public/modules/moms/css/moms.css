@@ -15,9 +15,16 @@
   height: 100%;
   border: 1px dashed #666;
 }
-.mom-attendees li {
+.mom-attendees ul {
+  margin:0;
+  padding:0;
   list-style-type:none;
+  width:100%;
+}
+.mom-attendees li {
   font-size: 1.5em;
+  text-align: center;
+  color: #fff;
 }
 .sticky-note {
   display: inline-block;
