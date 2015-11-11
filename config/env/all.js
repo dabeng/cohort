@@ -49,7 +49,8 @@ module.exports = {
         'public/js/jquery.fileupload-attachment.validate.js',
         'public/js/mapdata/map.js',
         'public/js/mapdata/world.js',
-        'public/lib/highcharts-ng/dist/highcharts-ng.js'
+        'public/lib/highcharts-ng/dist/highcharts-ng.js',
+        'public/lib/socket.io-client/socket.io.js'
       ]
     },
     css: [

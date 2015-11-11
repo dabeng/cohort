@@ -5,7 +5,8 @@
 var init = require('./config/init')(),
 	config = require('./config/config'),
 	mongoose = require('mongoose'),
-	chalk = require('chalk');
+	chalk = require('chalk'),
+	http = require('http');
 
 
 /**
@@ -27,8 +28,24 @@ var app = require('./config/express')(db);
 // Bootstrap passport config
 require('./config/passport')();
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+io.on('connection', function (socket) {
+  // io.emit('this', { will: 'be received by everyone'});
+  socket.broadcast.emit('user connected', { hello: 'world' });
+
+  // socket.on('private message', function (from, msg) {
+  //   console.log('I received a private message by ', from, ' saying ', msg);
+  // });
+
+  // socket.on('disconnect', function () {
+  //   io.emit('user disconnected');
+  // });
+});
+
 // Start the app by listening on <port>
-app.listen(config.port);
+// app.listen(config.port);
+server.listen(config.port);
 
 // Expose app
 exports = module.exports = app;

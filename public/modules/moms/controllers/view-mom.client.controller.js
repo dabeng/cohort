@@ -5,6 +5,12 @@ angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$lo
   function($scope, $stateParams, $location, Authentication, Moms) {
     $scope.authentication = Authentication;
 
+    var socket = io.connect('http://localhost:3000');
+  socket.on('user connected', function (data) {
+    console.log(data);
+    // socket.emit('my other event', { my: 'data' });
+  });
+
     $scope.generateColor = function() {
       var hue = parseInt(Math.random() * 360);
       var saturation = parseInt(Math.random() * 75 + 25) + '%';
