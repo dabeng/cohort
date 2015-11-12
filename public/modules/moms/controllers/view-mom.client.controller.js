@@ -5,11 +5,7 @@ angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$lo
   function($scope, $stateParams, $location, Authentication, Moms) {
     $scope.authentication = Authentication;
 
-    var socket = io.connect('http://localhost:3000');
-  socket.on('user connected', function (data) {
-    console.log(data);
-    // socket.emit('my other event', { my: 'data' });
-  });
+
 
     $scope.generateColor = function() {
       var hue = parseInt(Math.random() * 360);
@@ -19,9 +15,38 @@ angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$lo
     };
 
     $scope.attendees = [];
-    $scope.attendees.push({
-      'userName': $scope.authentication.user.displayName,
-      'backgroundColor': 'background-color:' + $scope.generateColor()
+
+    var socket = io.connect('http://localhost:3000', { 'query': 'name=' + Authentication.user.displayName });
+    socket.on('attendee logined', function (data) {
+      var nameList = [];
+      $scope.attendees.forEach(function(attendee, index) {
+        nameList.push(attendee.name);
+      });
+      data.attendeeList.forEach(function(name, index) {
+        if (nameList.indexOf(name) === -1) {
+          $scope.$apply(function() {
+            // console.log(data);
+            $scope.attendees.push({
+              'name': name,
+              'backgroundColor': 'background-color:' + $scope.generateColor()
+            });
+          });
+        }
+      });
+    });
+    socket.on('attendee logouted', function (data) {
+      var index = -1;
+      $scope.attendees.forEach(function(attendee, i) {
+        if (attendee.name === data.attendeeName) {
+          index = i;
+        }
+      });
+      if (index) {
+        $scope.$apply(function() {
+          $scope.attendees.splice(index, 1);
+        });
+      }
+
     });
 
     // Remove existing Mom

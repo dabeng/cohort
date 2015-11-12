@@ -30,9 +30,27 @@ require('./config/passport')();
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+// io.use(function(socket, next) {
+//   // var handshakeData = socket.request;
+//   // console.log("middleware1:", socket.request._query['foo']);
+//   // console.log("middleware2:", socket.handshake.query.foo);
+//   socket.broadcast.emit('user connected', { hello: socket.handshake.query.foo });
+//   next();
+// });
+var attendeeList = [];
 io.on('connection', function (socket) {
   // io.emit('this', { will: 'be received by everyone'});
-  socket.broadcast.emit('user connected', { hello: 'world' });
+  var attendee = socket.handshake.query.name;
+  if (attendeeList.indexOf(attendee) === -1) {
+  	attendeeList.push(attendee);
+  }
+  io.emit('attendee logined', { 'attendeeList': attendeeList });
+
+    socket.on('disconnect', function() {
+      var logoutAttendee = socket.handshake.query.name;
+      attendeeList.splice(attendeeList.indexOf(logoutAttendee), 1);
+      socket.broadcast.emit('attendee logouted', { 'attendeeName': logoutAttendee });
+    });
 
   // socket.on('private message', function (from, msg) {
   //   console.log('I received a private message by ', from, ' saying ', msg);
