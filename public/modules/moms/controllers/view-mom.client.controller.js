@@ -5,8 +5,6 @@ angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$lo
   function($scope, $stateParams, $location, Authentication, Moms) {
     $scope.authentication = Authentication;
 
-
-
     $scope.generateColor = function() {
       var hue = parseInt(Math.random() * 360);
       var saturation = parseInt(Math.random() * 75 + 25) + '%';
@@ -25,7 +23,6 @@ angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$lo
       data.attendeeList.forEach(function(name, index) {
         if (nameList.indexOf(name) === -1) {
           $scope.$apply(function() {
-            // console.log(data);
             $scope.attendees.push({
               'name': name,
               'backgroundColor': 'background-color:' + $scope.generateColor()
@@ -41,7 +38,7 @@ angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$lo
           index = i;
         }
       });
-      if (index) {
+      if (index > -1) {
         $scope.$apply(function() {
           $scope.attendees.splice(index, 1);
         });
