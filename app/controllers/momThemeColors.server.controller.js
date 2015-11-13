@@ -5,23 +5,23 @@
  */
 var mongoose = require('mongoose'),
   errorHandler = require('./errors.server.controller'),
-  Mom = mongoose.model('Mom'),
+  MomThemeColor = mongoose.model('MomThemeColor'),
   _ = require('lodash');
 
 /**
  * Create a Mom
  */
 exports.create = function(req, res) {
-  var mom = new Mom(req.body);
-  mom.creator = req.user;
+  var momThemeColor = new MomThemeColor(req.body);
+  momThemeColor.attendee = req.user;
 
-  mom.save(function(err) {
+  momThemeColor.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(mom);
+      res.jsonp(momThemeColor);
     }
   });
 };
@@ -30,24 +30,24 @@ exports.create = function(req, res) {
  * Show the current Mom
  */
 exports.read = function(req, res) {
-  res.jsonp(req.mom);
+  res.jsonp(req.momThemeColor);
 };
 
 /**
  * Update a Mom
  */
 exports.update = function(req, res) {
-  var mom = req.mom ;
+  var momThemeColor = req.momThemeColor ;
 
-  mom = _.extend(mom , req.body);
+  momThemeColor = _.extend(momThemeColor , req.body);
 
-  mom.save(function(err) {
+  momThemeColor.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(mom);
+      res.jsonp(momThemeColor);
     }
   });
 };
@@ -56,51 +56,51 @@ exports.update = function(req, res) {
  * Delete an Mom
  */
 exports.delete = function(req, res) {
-  var mom = req.mom ;
+  var momThemeColor = req.momThemeColor ;
 
-  mom.remove(function(err) {
+  momThemeColor.remove(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(mom);
+      res.jsonp(momThemeColor);
     }
   });
 };
 
 /**
- * List of Moms
+ * List of Mom Theme Colors
  */
 exports.list = function(req, res) { 
-  Mom.find().sort('-created').populate('user', 'displayName').exec(function(err, moms) {
+  MomThemeColor.find().sort('-created').populate('user', 'displayName').exec(function(err, momThemeColors) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(moms);
+      res.jsonp(momThemeColors);
     }
   });
 };
 
 /**
- * Mom middleware
+ * Mom Theme Color middleware
  */
-exports.momByID = function(req, res, next, id) { 
-  Mom.findById(id).populate('creator','displayName').exec(function(err, mom) {
+exports.momThemeColorByID = function(req, res, next, id) { 
+  MomThemeColor.findById(id).populate('user', 'displayName').exec(function(err, momThemeColor) {
     if (err) return next(err);
-    if (! mom) return next(new Error('Failed to load Mom ' + id));
-    req.mom = mom ;
+    if (! momThemeColor) return next(new Error('Failed to load mom theme color' + id));
+    req.momThemeColor = momThemeColor ;
     next();
   });
 };
 
 /**
- * Mom authorization middleware
+ * Mom Theme Color authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-  if (req.mom.creator.id !== req.user.id) {
+  if (req.momThemeColor.attendee.id !== req.user.id) {
     return res.status(403).send('User is not authorized');
   }
   next();

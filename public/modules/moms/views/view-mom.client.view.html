@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1 data-ng-bind="mom.name"></h1>
   </div>
-  <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == mom.user._id))">
+  <div class="pull-right" ng-show="((authentication.user) && (authentication.user._id == mom.creator._id))">
     <a class="btn btn-primary" href="/#!/moms/{{mom._id}}/edit">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
@@ -15,7 +15,7 @@
       Posted on
       <span data-ng-bind="mom.created | date:'mediumDate'"></span>
       by
-      <span data-ng-bind="mom.user.displayName"></span>
+      <span data-ng-bind="mom.creator.displayName"></span>
     </em>
   </small>
   <div class="row mom-wrapper">

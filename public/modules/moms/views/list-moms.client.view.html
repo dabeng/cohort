@@ -1,23 +1,23 @@
-<section data-ng-controller="ListMomsCtrl" data-ng-init="find()">
+<section ng-controller="ListMomsCtrl" data-ng-init="find()">
   <div class="page-header">
     <h1>Minutes of Meeting</h1>
   </div>
   <div class="list-group">
     <div class="sticky-note yellow">
-  <div class="sticky-note-inner">
-    <a data-ng-repeat="mom in moms" data-ng-href="#!/moms/{{mom._id}}" class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span data-ng-bind="mom.created | date:'medium'"></span>
-        by
-        <span data-ng-bind="mom.user.displayName"></span>
-      </small>
-      <h4 class="list-group-item-heading" data-ng-bind="mom.name"></h4>
+      <div class="sticky-note-inner">
+        <a ng-repeat="mom in moms" data-ng-href="#!/moms/{{mom._id}}" class="list-group-item">
+          <small class="list-group-item-text">
+            Posted on
+            <span data-ng-bind="mom.created | date:'medium'"></span>
+            by
+            <span data-ng-bind="mom.user.displayName"></span>
+          </small>
+          <h4 class="list-group-item-heading" data-ng-bind="mom.name"></h4>
         </a>
       </div>
     </div>
-    </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!moms.$resolved || moms.length">
-      No Moms yet, why don't you <a href="/#!/moms/create">create one</a>?
-    </div>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-hide="!moms.$resolved || moms.length">
+    No Moms yet, why don't you <a href="/#!/moms/create">create one</a>?
+  </div>
 </section>

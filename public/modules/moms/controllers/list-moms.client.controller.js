@@ -1,7 +1,8 @@
 'use strict';
 
 // Moms controller
-angular.module('moms').controller('ListMomsCtrl', ['$scope', '$stateParams', '$location', 'Authentication', 'Moms',
+angular.module('moms').controller('ListMomsCtrl',
+  ['$scope', '$stateParams', '$location', 'Authentication', 'Moms',
   function($scope, $stateParams, $location, Authentication, Moms) {
     $scope.authentication = Authentication;
 
