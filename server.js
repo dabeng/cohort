@@ -28,26 +28,7 @@ var app = require('./config/express')(db);
 // Bootstrap passport config
 require('./config/passport')();
 
-// var server = require('http').createServer(app);
-// var io = require('socket.io')(server);
-
-// var attendeeList = [];
-// io.on('connection', function (socket) {
-//   var attendee = socket.handshake.query.name;
-//   if (attendeeList.indexOf(attendee) === -1) {
-//   	attendeeList.push(attendee);
-//   }
-//   io.emit('attendee logined', { 'attendeeList': attendeeList });
-
-//   socket.on('disconnect', function() {
-//     var logoutAttendee = socket.handshake.query.name;
-//     attendeeList.splice(attendeeList.indexOf(logoutAttendee), 1);
-//     socket.broadcast.emit('attendee logouted', { 'attendeeName': logoutAttendee });
-//   });
-
-// });
-
-var server = require('./app/sockets/mom')(app);
+var server = require('./app/sockets/mom.server.socket')(app);
 
 // Start the app by listening on <port>
 // app.listen(config.port);
