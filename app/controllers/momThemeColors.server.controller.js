@@ -6,7 +6,8 @@
 var mongoose = require('mongoose'),
   errorHandler = require('./errors.server.controller'),
   MomThemeColor = mongoose.model('MomThemeColor'),
-  _ = require('lodash');
+  _ = require('lodash'),
+  ObjectId = mongoose.Types.ObjectId;
 
 /**
  * Create a Mom
@@ -72,8 +73,14 @@ exports.delete = function(req, res) {
 /**
  * List of Mom Theme Colors
  */
-exports.list = function(req, res) { 
-  MomThemeColor.find().sort('-created').populate('user', 'displayName').exec(function(err, momThemeColors) {
+exports.list = function(req, res) {
+  if (req.query.attendee) {
+    req.query.attendee = new ObjectId(req.query.attendee);
+  }
+  if (req.query.mom) {
+    req.query.mom = new ObjectId(req.query.mom);
+  }
+  MomThemeColor.find(req.query || {}).exec(function(err, momThemeColors) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

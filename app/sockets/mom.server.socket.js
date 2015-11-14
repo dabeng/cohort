@@ -20,7 +20,6 @@ module.exports = function(app) {
       var logoutAttendee = socket.handshake.query.name;
       attendeeList.splice(attendeeList.indexOf(logoutAttendee), 1);
       socket.broadcast.emit('attendee logouted', { 'attendeeName': logoutAttendee });
-      socket.disconnect(true);
     });
 
   });
