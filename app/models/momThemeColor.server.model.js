@@ -12,10 +12,12 @@ var mongoose = require('mongoose'),
 var MomThemeColorSchema = new Schema({
   attendee: {
     type: Schema.ObjectId,
+    required: true,
     ref: 'User'
   },
   mom: {
     type: Schema.ObjectId,
+    required: true,
     ref: 'Mom'
   },
   themeColor: {

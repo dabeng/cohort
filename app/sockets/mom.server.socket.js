@@ -16,9 +16,11 @@ module.exports = function(app) {
     io.emit('attendee logined', { 'attendeeList': attendeeList });
 
     socket.on('disconnect', function() {
+
       var logoutAttendee = socket.handshake.query.name;
       attendeeList.splice(attendeeList.indexOf(logoutAttendee), 1);
       socket.broadcast.emit('attendee logouted', { 'attendeeName': logoutAttendee });
+      socket.disconnect(true);
     });
 
   });

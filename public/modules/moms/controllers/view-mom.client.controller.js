@@ -1,9 +1,14 @@
 'use strict';
 
 // Moms controller
-angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$location', 'Authentication', 'Moms',
-  function($scope, $stateParams, $location, Authentication, Moms) {
+angular.module('moms').controller('ViewMomCtrl',
+  ['$scope', '$stateParams', '$location', '$window', 'Authentication', 'Moms',
+  function($scope, $stateParams, $location, $window, Authentication, Moms) {
     $scope.authentication = Authentication;
+
+    $scope.$on('$destroy', function() {
+      socket.disconnect();
+    })
 
     $scope.generateColor = function() {
       var hue = parseInt(Math.random() * 360);
@@ -14,7 +19,12 @@ angular.module('moms').controller('ViewMomCtrl', ['$scope', '$stateParams', '$lo
 
     $scope.attendees = [];
 
-    var socket = io.connect('http://localhost:3000', { 'query': 'name=' + Authentication.user.displayName });
+    var socket = io.connect('http://localhost:3000',{'forceNew': true,'query': 'name=' + Authentication.user.displayName });
+    
+    // if (!socket.connected) {
+    //   socket.socket.reconnect();
+    // }
+
     socket.on('attendee logined', function (data) {
       var nameList = [];
       $scope.attendees.forEach(function(attendee, index) {
