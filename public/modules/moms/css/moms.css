@@ -1,3 +1,8 @@
+@font-face
+{
+  font-family: 'Reenie Beanie';
+  src: url('ReenieBeanie.ttf');
+}
 #mom-wrapper {
   position: absolute;
   top: 166px;
@@ -14,6 +19,12 @@
 #mom-board {
   width: 100%;
   height: 100%;
+  border: none;
+  resize: none;
+  color: #fff;
+  background-color: transparent;
+  font-family: 'Reenie Beanie';
+  font-size: 2em;
 }
 #mom-attendees {
   height: calc(100% - 10px);
@@ -117,3 +128,4 @@
   background-image: -o-linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
   background-image: linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
 }
+
