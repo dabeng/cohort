@@ -10,7 +10,7 @@ angular.module('moms').controller('ViewMomCtrl',
       socket.disconnect();
     })
 
-    $scope.generateColor = function() {
+    $scope.generateThemeColor = function() {
       var hue = parseInt(Math.random() * 360);
       var saturation = parseInt(Math.random() * 75 + 25) + '%';
       var lightness = parseInt(Math.random() * 35 + 40) + '%';
@@ -21,7 +21,9 @@ angular.module('moms').controller('ViewMomCtrl',
 
     var socket = io.connect('http://localhost:3000', {
       'forceNew': true,
-      'query': 'name=' + Authentication.user.displayName
+      'query': 'name=' + $scope.authentication.user.displayName
+        + '&id=' + $scope.authentication.user._id
+        + '&momId=' + $stateParams.momId
     });
 
     socket.on('attendee logined', function (data) {
@@ -29,43 +31,13 @@ angular.module('moms').controller('ViewMomCtrl',
       $scope.attendees.forEach(function(attendee, index) {
         nameList.push(attendee.name);
       });
-      data.attendeeList.forEach(function(name, index) {
-        if (nameList.indexOf(name) === -1) {
+      data.attendeeList.forEach(function(attendee, index) {
+        if (nameList.indexOf(attendee.name) === -1) {
           $scope.$apply(function() {
-            // check if the user logined the current mom before
-            MomThemeColors.query({
-              attendee: $scope.authentication.user._id,
-              mom: $stateParams.momId
-      }, function(themeColors) {
-        if (themeColors.length) {
-              $scope.attendees.push({
-              'name': name,
-              'backgroundColor': 'background-color:' + themeColors[0].themeColor
+            $scope.attendees.push({
+              'name': attendee.name,
+              'backgroundColor': 'background-color:' + attendee.themeColor
             });
-        } else {//Create new Mom
-          
-      // Create new Mom object
-      var momThemeColor = new MomThemeColors ({
-        mom: $stateParams.momId,
-        themeColor: $scope.generateColor()
-      });
-
-      // Redirect after save
-      momThemeColor.$save(function(response) {
-        
-
-    $scope.attendees.push({
-              'name': name,
-              'backgroundColor': 'background-color:' + response.themeColor
-            });
-    }, function(errorResponse) {
-      $scope.error = errorResponse.data.message;
-    });
-  
-        }
-      });
-
-        
           });
         }
       });
