@@ -91,5 +91,16 @@ angular.module('moms').controller('ViewMomCtrl',
         momId: $stateParams.momId
       });
     };
+
+    $scope.updatBoard = function() {
+      socket.emit('updating board', $scope.boardContent);
+    };
+
+    socket.on('board updated', function (data) {
+      $scope.$apply(function() {
+        $scope.boardContent = data.boardContent;
+      });
+    });
+
   }
 ]);

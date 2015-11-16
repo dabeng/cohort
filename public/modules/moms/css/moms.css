@@ -1,27 +1,31 @@
-.mom-wrapper {
+#mom-wrapper {
   position: absolute;
   top: 166px;
   width: 100%;
   bottom: 0px;
 }
-.mom-contents {
-  height: 100%;
+#mom-contents {
+  height: calc(100% - 10px);
   background:url(../img/blackboard.jpg);
   background-repeat:no-repeat;
   background-size:100% 100%;
   background-origin:content-box;
 }
-.mom-attendees {
+#mom-board {
+  width: 100%;
   height: 100%;
+}
+#mom-attendees {
+  height: calc(100% - 10px);
   border: 1px dashed #666;
 }
-.mom-attendees ul {
+#mom-attendees ul {
   margin:0;
   padding:0;
   list-style-type:none;
   width:100%;
 }
-.mom-attendees li {
+#mom-attendees li {
   font-size: 1.5em;
   text-align: center;
   color: #fff;

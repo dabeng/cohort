@@ -18,9 +18,11 @@
       <span data-ng-bind="mom.creator.displayName"></span>
     </em>
   </small>
-  <div class="row mom-wrapper">
-    <div class="col-md-10 mom-contents"></div>
-    <div class="col-md-2 mom-attendees">
+  <div class="row" id="mom-wrapper">
+    <div class="col-md-10 " id="mom-contents">
+      <textarea id="mom-board" ng-model="boardContent" ng-change="updatBoard()"></textarea>
+    </div>
+    <div class="col-md-2" id="mom-attendees">
       <ul>
         <li ng-repeat="attendee in attendees" style="{{attendee.backgroundColor}}">{{attendee.name}}</li>
       </ul>

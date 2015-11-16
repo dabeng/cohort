@@ -74,6 +74,10 @@ module.exports = function(app) {
       socket.broadcast.emit('attendee logouted', { 'attendeeName': name });
     });
 
+    socket.on('updating board', function(data) {
+      socket.broadcast.emit('board updated', { 'boardContent': data });
+    });
+
   });
 
   return server;
