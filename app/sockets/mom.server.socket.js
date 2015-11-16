@@ -32,11 +32,12 @@ module.exports = function(app) {
       }
     });
     if (isNewAttendee) {
+      // check if current user loggined the current miutes of meeting before
       MomThemeColor.findOne( { 'attendee': new ObjectId(id), 'mom': new ObjectId(momId) } , function(err, mtc) {
         if (err) {
           return console.log(err);
         }
-        if (mtc) {
+        if (mtc) {// if it's first time, we genetate a theme color automatically for him
           attendeeList.push({ 'name': name, 'id': id, 'themeColor': mtc._doc.themeColor });
           io.emit('attendee logined', { 'attendeeList': attendeeList });
         } else {
@@ -51,16 +52,15 @@ module.exports = function(app) {
               return console.log(err);
             }
             attendeeList.push({ 'name': name, 'id': id, 'themeColor': color });
+            // emit all the attendees' info to client side because all the client side need to
+            // know the full attendee list
             io.emit('attendee logined', { 'attendeeList': attendeeList });
           });
         }
       });
     }
     
-
     socket.on('disconnect', function() {
-
-      var name = socket.handshake.query.name;
       var logoutAttendeeIndex = 0;
       attendeeList.some(function(attendee, index) {
         if (attendee.name === name) {
