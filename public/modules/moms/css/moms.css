@@ -17,12 +17,13 @@
   top: 0px;
   width: calc(100% - 30px);
   height: 100%;
+  padding: 0px;
   border: none;
   resize: none;
   color: #fff;
   background-color: transparent;
   font-family: 'Reenie Beanie';
-  font-size: 2em;
+  font-size: 30px;
 }
 #mom-attendees {
   height: calc(100% - 10px);

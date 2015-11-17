@@ -19,7 +19,6 @@ var MomSchema = new Schema({
   boardContent: {
     type: String,
     default: '',
-    required: 'Please fill board content of MOM',
     trim: true
   },
   created: {

@@ -51,6 +51,7 @@ module.exports = {
         'public/js/mapdata/world.js',
         'public/lib/highcharts-ng/dist/highcharts-ng.js',
         'public/lib/socket.io-client/socket.io.js',
+        'public/lib/svg.js/dist/svg.js',
         'public/lib/textarea-caret-position/index.js'
       ]
     },

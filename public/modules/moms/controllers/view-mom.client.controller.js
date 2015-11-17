@@ -14,7 +14,7 @@ angular.module('moms').controller('ViewMomCtrl',
       socket.disconnect();
     });
 
-    $scope.generateThemeColor = function() {
+    var generateThemeColor = function() {
       var hue = parseInt(Math.random() * 360);
       var saturation = parseInt(Math.random() * 75 + 25) + '%';
       var lightness = parseInt(Math.random() * 35 + 40) + '%';
@@ -37,6 +37,9 @@ angular.module('moms').controller('ViewMomCtrl',
       });
       data.attendeeList.forEach(function(attendee, index) {
         if (nameList.indexOf(attendee.name) === -1) {
+          if (attendee.name === $scope.authentication.user.displayName) {
+            $scope.myThemeColor = attendee.themeColor;
+          }
           $scope.$apply(function() {
             $scope.attendees.push({
               'name': attendee.name,
@@ -110,6 +113,7 @@ angular.module('moms').controller('ViewMomCtrl',
 
     $scope.updatBoard = function() {
       socket.emit('updating board', $scope.mom.boardContent);
+      updateMyWords();
     };
 
     socket.on('board updated', function (data) {
@@ -117,6 +121,16 @@ angular.module('moms').controller('ViewMomCtrl',
         $scope.mom.boardContent = data.boardContent;
       });
     });
+
+    var updateMyWords = function() {
+      var draw = SVG('mom-boardBehind');
+      var board = document.getElementById('mom-board');
+      var caretPos = getCaretCoordinates(board, board.selectionEnd);
+      var fontHeight = 35;
+      var start = caretPos.top + 18;
+      var end = caretPos.left;
+      draw.path('M 0 ' + start + ' H ' + end).stroke({ width: fontHeight, color: $scope.myThemeColor });
+    };
 
   }
 ]);
