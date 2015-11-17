@@ -27,9 +27,8 @@ module.exports = function(app) {
       if (attendee.name === name) {
         isNewAttendee = false;
         return false;
-      } else {
-        return true;
       }
+      return true;
     });
     if (isNewAttendee) {
       // check if current user loggined the current miutes of meeting before
@@ -66,9 +65,8 @@ module.exports = function(app) {
         if (attendee.name === name) {
           logoutAttendeeIndex = index;
           return true;
-        } else {
-          return false;
         }
+        return false;
       });
       attendeeList.splice(logoutAttendeeIndex, 1);
       socket.broadcast.emit('attendee logouted', { 'attendeeName': name });

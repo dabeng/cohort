@@ -7,8 +7,12 @@ angular.module('moms').controller('ViewMomCtrl',
     $scope.authentication = Authentication;
 
     $scope.$on('$destroy', function() {
+      // when it's the logout of last online attendee, we store the latest mom content to the database
+      if ($scope.attendees.length === 1) {
+        $scope.updateBoardContent();
+      }
       socket.disconnect();
-    })
+    });
 
     $scope.generateThemeColor = function() {
       var hue = parseInt(Math.random() * 360);
@@ -43,18 +47,20 @@ angular.module('moms').controller('ViewMomCtrl',
       });
     });
     socket.on('attendee logouted', function (data) {
+      // remove the logouted attendee in curent attendee list
       var index = -1;
-      $scope.attendees.forEach(function(attendee, i) {
+      $scope.attendees.some(function(attendee, i) {
         if (attendee.name === data.attendeeName) {
           index = i;
+          return true;
         }
+        return false;
       });
       if (index > -1) {
         $scope.$apply(function() {
           $scope.attendees.splice(index, 1);
         });
       }
-
     });
 
     // Remove existing Mom
@@ -74,7 +80,7 @@ angular.module('moms').controller('ViewMomCtrl',
       }
     };
 
-    // Update existing Mom
+    // Update the basic properties of existing Mom
     $scope.update = function() {
       var mom = $scope.mom;
 
@@ -82,6 +88,16 @@ angular.module('moms').controller('ViewMomCtrl',
         $location.path('moms/' + mom._id);
       }, function(errorResponse) {
         $scope.error = errorResponse.data.message;
+      });
+    };
+
+    $scope.updateBoardContent = function() {
+      var mom = $scope.mom;
+
+      mom.$update(function() {
+      
+      }, function(errorResponse) {
+        console.log(errorResponse.data.message);
       });
     };
 
@@ -93,12 +109,12 @@ angular.module('moms').controller('ViewMomCtrl',
     };
 
     $scope.updatBoard = function() {
-      socket.emit('updating board', $scope.boardContent);
+      socket.emit('updating board', $scope.mom.boardContent);
     };
 
     socket.on('board updated', function (data) {
       $scope.$apply(function() {
-        $scope.boardContent = data.boardContent;
+        $scope.mom.boardContent = data.boardContent;
       });
     });
 

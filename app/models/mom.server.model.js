@@ -13,7 +13,13 @@ var MomSchema = new Schema({
   name: {
     type: String,
     default: '',
-    required: 'Please fill Mom name',
+    required: 'Please fill MOM name',
+    trim: true
+  },
+  boardContent: {
+    type: String,
+    default: '',
+    required: 'Please fill board content of MOM',
     trim: true
   },
   created: {
