@@ -50,7 +50,8 @@ module.exports = {
         'public/js/mapdata/map.js',
         'public/js/mapdata/world.js',
         'public/lib/highcharts-ng/dist/highcharts-ng.js',
-        'public/lib/socket.io-client/socket.io.js'
+        'public/lib/socket.io-client/socket.io.js',
+        'public/lib/textarea-caret-position/index.js'
       ]
     },
     css: [

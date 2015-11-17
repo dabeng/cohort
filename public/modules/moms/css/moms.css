@@ -11,13 +11,11 @@
 }
 #mom-contents {
   height: calc(100% - 10px);
-  background:url(../img/blackboard.jpg);
-  background-repeat:no-repeat;
-  background-size:100% 100%;
-  background-origin:content-box;
 }
 #mom-board {
-  width: 100%;
+  position: absolute;
+  top: 0px;
+  width: calc(100% - 30px);
   height: 100%;
   border: none;
   resize: none;
