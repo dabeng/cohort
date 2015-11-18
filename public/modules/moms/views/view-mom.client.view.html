@@ -24,7 +24,7 @@
         <image width="100%" height="100%" preserveAspectRatio="none" xlink:href="../../../modules/moms/img/blackboard.jpg">
         </image>
       </svg>
-      <textarea id="mom-board" ng-model="mom.boardContent" ng-change="updatBoard()"></textarea>
+      <textarea id="mom-board" ng-model="mom.boardContent" ng-trim="false" ng-change="updatBoard()"></textarea>
     </div>
     <div class="col-md-2" id="mom-attendees">
       <ul>
