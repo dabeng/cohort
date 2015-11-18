@@ -129,7 +129,10 @@ angular.module('moms').controller('ViewMomCtrl',
       var fontHeight = 35;
       var start = caretPos.top + 18;
       var end = caretPos.left;
-      draw.path('M 0 ' + start + ' H ' + end).stroke({ width: fontHeight, color: $scope.myThemeColor });
+      if (!$scope.myWords) {
+        $scope.myWords = draw.path('M 0 ' + start + ' H ' + end).stroke({ width: fontHeight, color: $scope.myThemeColor });
+      }
+      $scope.myWords.plot('M0,' + start + 'H' + end);
     };
 
   }
