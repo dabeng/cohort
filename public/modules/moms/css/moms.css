@@ -80,7 +80,11 @@
 }
 
 .mom-details {
-  font-family: 'Lato',
+  font-family: 'Lato';
+  background-color: #fff;
+  display: block;
+  padding: 2px 5px;
+  border-radius: 5px;
 }
 
 .mom-title {
