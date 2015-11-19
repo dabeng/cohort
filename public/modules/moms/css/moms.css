@@ -44,9 +44,12 @@
   text-align: center;
   color: #fff;
 }
+.list-group > a{
+  color: #000;
+}
 .sticky-note {
   display: inline-block;
-  margin: 20px;
+  margin: 15px;
   position: relative;
   width: 250px;
 
@@ -59,7 +62,6 @@
 }
 
 .sticky-note-inner {
-  font-family:'Reenie Beanie';
   min-height: 250px;
   min-width: 250px;
   padding: 45px 20px 10px;
@@ -75,6 +77,14 @@
   -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
   -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
   box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+}
+
+.mom-details {
+  font-family: 'Lato',
+}
+
+.mom-title {
+  font-family:'Reenie Beanie';
 }
 
 .sticky-note-inner:after {

@@ -73,7 +73,7 @@ exports.delete = function(req, res) {
  * List of Moms
  */
 exports.list = function(req, res) { 
-  Mom.find().sort('-created').populate('user', 'displayName').exec(function(err, moms) {
+  Mom.find().sort('-created').populate('creator', 'displayName').exec(function(err, moms) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
