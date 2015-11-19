@@ -53,7 +53,7 @@ angular.module('moms').controller('ViewMomCtrl',
       });
       // store the coordidates of path which is used to identify different attendee's words to the local storage.
       // It's like we use highlighter to paint different attendee's words.
-      // localStorage.setItem(, 'value');
+      localStorage.setItem($scope.authentication.user.username, '');
     });
     socket.on('attendee logouted', function (data) {
       // remove the logouted attendee in curent attendee list
@@ -119,7 +119,6 @@ angular.module('moms').controller('ViewMomCtrl',
 
     $scope.updatBoard = function() {
       socket.emit('updating board', $scope.mom.boardContent);
-      updateMyWords();
     };
 
     socket.on('board updated', function (data) {
@@ -127,19 +126,6 @@ angular.module('moms').controller('ViewMomCtrl',
         $scope.mom.boardContent = data.boardContent;
       });
     });
-
-    var updateMyWords = function() {
-      var draw = SVG('mom-boardBehind');
-      var board = document.getElementById('mom-board');
-      var caretPos = getCaretCoordinates(board, board.selectionEnd);
-      var fontHeight = 35;
-      var start = caretPos.top + 18;
-      var end = caretPos.left;
-      if (!$scope.myWords) {
-        $scope.myWords = draw.path('M 0 ' + start + ' H ' + end).stroke({ width: fontHeight, color: $scope.myThemeColor });
-      }
-      $scope.myWords.plot('M0,' + start + 'H' + end);
-    };
 
   }
 ]);
