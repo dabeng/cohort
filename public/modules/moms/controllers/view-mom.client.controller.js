@@ -25,35 +25,41 @@ angular.module('moms').controller('ViewMomCtrl',
 
     var socket = io.connect('http://localhost:3000', {
       'forceNew': true,
-      'query': 'name=' + $scope.authentication.user.displayName
+      'query': 'username=' + $scope.authentication.user.username
+        + '&displayName=' + $scope.authentication.user.displayName
         + '&id=' + $scope.authentication.user._id
         + '&momId=' + $stateParams.momId
     });
 
     socket.on('attendee logined', function (data) {
+      // append one attendee info to attendee list on right side
       var nameList = [];
       $scope.attendees.forEach(function(attendee, index) {
-        nameList.push(attendee.name);
+        nameList.push(attendee.username);
       });
       data.attendeeList.forEach(function(attendee, index) {
-        if (nameList.indexOf(attendee.name) === -1) {
-          if (attendee.name === $scope.authentication.user.displayName) {
+        if (nameList.indexOf(attendee.username) === -1) {
+          if (attendee.username === $scope.authentication.user.username) {
             $scope.myThemeColor = attendee.themeColor;
           }
           $scope.$apply(function() {
             $scope.attendees.push({
-              'name': attendee.name,
+              'username': attendee.username,
+              'displayName': attendee.displayName,
               'backgroundColor': 'background-color:' + attendee.themeColor
             });
           });
         }
       });
+      // store the coordidates of path which is used to identify different attendee's words to the local storage.
+      // It's like we use highlighter to paint different attendee's words.
+      // localStorage.setItem(, 'value');
     });
     socket.on('attendee logouted', function (data) {
       // remove the logouted attendee in curent attendee list
       var index = -1;
       $scope.attendees.some(function(attendee, i) {
-        if (attendee.name === data.attendeeName) {
+        if (attendee.username === data.attendeeName) {
           index = i;
           return true;
         }

@@ -19,12 +19,13 @@ module.exports = function(app) {
 
   var attendeeList = [];
   io.on('connection', function (socket) {
-    var name = socket.handshake.query.name;
+    var username = socket.handshake.query.username;
+    var displayName = socket.handshake.query.displayName;
     var id = socket.handshake.query.id;
     var momId = socket.handshake.query.momId;
     var isNewAttendee = true;
     attendeeList.every(function(attendee, index) {
-      if (attendee.name === name) {
+      if (attendee.username === username) {
         isNewAttendee = false;
         return false;
       }
@@ -37,7 +38,7 @@ module.exports = function(app) {
           return console.log(err);
         }
         if (mtc) {// if it's first time, we genetate a theme color automatically for him
-          attendeeList.push({ 'name': name, 'id': id, 'themeColor': mtc._doc.themeColor });
+          attendeeList.push({ 'username': username, 'displayName': displayName,'id': id, 'themeColor': mtc._doc.themeColor });
           io.emit('attendee logined', { 'attendeeList': attendeeList });
         } else {
           var color = generateThemeColor();
@@ -50,7 +51,7 @@ module.exports = function(app) {
             if (err) {
               return console.log(err);
             }
-            attendeeList.push({ 'name': name, 'id': id, 'themeColor': color });
+            attendeeList.push({ 'username': username, 'id': id, 'themeColor': color });
             // emit all the attendees' info to client side because all the client side need to
             // know the full attendee list
             io.emit('attendee logined', { 'attendeeList': attendeeList });
@@ -62,14 +63,14 @@ module.exports = function(app) {
     socket.on('disconnect', function() {
       var logoutAttendeeIndex = 0;
       attendeeList.some(function(attendee, index) {
-        if (attendee.name === name) {
+        if (attendee.username === username) {
           logoutAttendeeIndex = index;
           return true;
         }
         return false;
       });
       attendeeList.splice(logoutAttendeeIndex, 1);
-      socket.broadcast.emit('attendee logouted', { 'attendeeName': name });
+      socket.broadcast.emit('attendee logouted', { 'attendeeName': username });
     });
 
     socket.on('updating board', function(data) {
